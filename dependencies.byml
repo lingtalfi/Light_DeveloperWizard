@@ -1,0 +1,11 @@
+dependencies: 
+    Ling: 
+        - Bat
+        - BabyYaml
+        - Light
+        - SqlWizard
+        - UniverseTools
+    
+
+post_install: 
+    map: true
