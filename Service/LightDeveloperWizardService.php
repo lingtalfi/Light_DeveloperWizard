@@ -4,13 +4,13 @@
 namespace Ling\Light_DeveloperWizard\Service;
 
 
-use Ling\BabyYaml\BabyYamlUtil;
-use Ling\Bat\BDotTool;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
-use Ling\Light_DeveloperWizard\Helper\DeveloperWizardBreezeGeneratorHelper;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
-use Ling\SqlWizard\Util\MysqlStructureReader;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddStandardPermissionsProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateBreezeApiProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\SynchronizeDbProcess;
 use Ling\UniverseTools\PlanetTool;
+use Ling\WebWizardTools\WebWizard\WebWizardToolsDefaultWebWizard;
 
 /**
  * The LightDeveloperWizardService class.
@@ -55,6 +55,7 @@ class LightDeveloperWizardService
     public function runWizard()
     {
 
+
         $appDir = $this->container->getApplicationDir();
         $container = $this->container;
 
@@ -95,103 +96,39 @@ class LightDeveloperWizardService
             $createFile = $planetDir . "/assets/fixtures/create-structure.sql";
             $createFileExists = file_exists($createFile);
 
+            $ww = new WebWizardToolsDefaultWebWizard();
+            $ww->setProcess(new SynchronizeDbProcess());
+            $ww->setProcess(new GenerateBreezeApiProcess());
+            $ww->setProcess(new AddStandardPermissionsProcess());
+            $ww->setContext([
+                "createFile" => $createFile,
+                "createFileExists" => $createFileExists,
+                "preferencesExist" => $preferencesExist,
+                "preferences" => $preferences,
+                "container" => $container,
+                "galaxy" => $galaxy,
+                "planet" => $planet,
+                "planetDir" => $planetDir,
+            ]);
+            $ww->setTriggerExtraParams([
+                "planetdir" => $planetDir,
+            ]);
+            $ww->setOnProcessSuccessMessage('
+            <a href="?planetdir=' . htmlspecialchars($planetDir) . '">Click here to continue</a>');
+
+            $ww->setProcessFilter(function ($pName) use ($createFileExists) {
+                if (in_array($pName, [
+                        "syncdb",
+                        "generate-breeze-api",
+                    ]) && false === $createFileExists) {
+                    return 'Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file.</a>';
+                }
+                return true;
+            });
+
 
             if (null !== $task) {
-                switch ($task) {
-                    case "syncdb":
-
-
-                        if (true === $createFileExists) {
-                            $options = [];
-                            if (false === $preferencesExist) {
-                                /**
-                                 * Let's gather the created tables and memorize them as scope for the next time
-                                 */
-                                $taskMsgs[] = "creating developer-wizard preferences file in " . DeveloperWizardFileTool::getFilePath($planetDir);
-                                $reader = new MysqlStructureReader();
-                                $infos = $reader->readFile($createFile);
-                                $tables = array_keys($infos);
-                                DeveloperWizardFileTool::updateFile($planetDir, [
-                                    "db_synchronizer" => [
-                                        "scope" => $tables,
-                                    ]
-                                ]);
-                                $preferences = DeveloperWizardFileTool::getPreferences($planetDir);
-                            }
-
-
-                            $scope = BDotTool::getDotValue("db_synchronizer.scope", $preferences, []);
-                            $sScope = '';
-                            if (empty($scope)) {
-                                $sScope = 'empty scope';
-                            } else {
-                                $sScope = 'scope: ' . implode(', ', $scope);
-                            }
-                            $taskMsgs[] = "Synchronizing db for planet $planet, with $sScope.";
-                            $container->get("db_synchronizer")->synchronize($createFile, $options);
-
-                        } else {
-                            $error = "Create file not found, cannot synchronize the database.";
-                        }
-
-                        break;
-                    case "generate_api":
-
-                        if (true === $createFileExists) {
-
-                            $preferences = DeveloperWizardFileTool::getPreferences($planetDir);
-                            $tablePrefix = BDotTool::getDotValue("breeze_generator.table_prefix", $preferences, null);
-
-                            // guessing the table prefix
-                            //--------------------------------------------
-                            if (null === $tablePrefix) {
-                                $reader = new MysqlStructureReader();
-                                $infos = $reader->readFile($createFile);
-                                $firstTable = key($infos);
-                                $p = explode('_', $firstTable, 2);
-                                if (1 === count($p)) {
-                                    $error = "No prefix found for table $firstTable.";
-                                } else {
-                                    $tablePrefix = array_shift($p);
-                                    // memorizing...
-                                    DeveloperWizardFileTool::updateFile($planetDir, [
-                                        "breeze_generator" => [
-                                            "table_prefix" => $tablePrefix,
-                                        ],
-                                    ]);
-                                }
-                            }
-
-                            $taskMsgs[] = "Using the table prefix: $tablePrefix.";
-
-
-                            $genConfPath = $appDir . "/config/data/$planet/Light_BreezeGenerator/$tablePrefix.byml";
-                            if (false === file_exists($genConfPath)) {
-                                $taskMsgs[] = "Creating generator conf file in $genConfPath.";
-                                DeveloperWizardBreezeGeneratorHelper::spawnConfFile($genConfPath, [
-                                    "galaxyName" => $galaxy,
-                                    "planetName" => $planet,
-                                    "createFilePath" => $createFile,
-                                    "prefix" => $tablePrefix,
-                                    "otherPrefixes" => [], // collecting all prefixes from db?
-                                ]);
-                            }
-
-                            $genConf = BabyYamlUtil::readFile($genConfPath);
-                            $taskMsgs[] = "Generating api based on the configuration file $genConfPath.";
-                            $container->get("breeze_generator")->setConf(['tmpId' => $genConf])->generate("tmpId");
-
-
-                        } else {
-                            $error = "Create file not found, cannot generate the api.";
-                        }
-
-
-                        break;
-                    default:
-                        $error = 'Unrecognized task: ' . $task;
-                        break;
-                }
+                $ww->execute($task);
             }
 
 
@@ -206,19 +143,10 @@ class LightDeveloperWizardService
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Title</title>
+            <script src="/libs/universe/Ling/Jquery/3.5.1/jquery.min.js"></script>
+            <title>Light Developer Wizard</title>
             <style>
-                .error {
-                    color: red;
-                }
 
-                .info {
-                    color: blue;
-                }
-
-                .success {
-                    color: green;
-                }
             </style>
         </head>
 
@@ -230,16 +158,16 @@ class LightDeveloperWizardService
 
         <?php if (0 === $guiDisplay): ?>
             <p>
-                Please select a planet.
+                Please select a planet <input id="search-input" type="text" value=""/>
             </p>
 
-            <ul>
+            <ul id="planet-list">
                 <?php foreach ($planetDirs as $planetDir):
 
                     list($galaxy, $planet) = PlanetTool::getGalaxyNamePlanetNameByDir($planetDir);
                     ?>
 
-                    <li>
+                    <li class="planet-item" data-name="<?php echo htmlspecialchars($galaxy . "/" . $planet); ?>">
                         <a href="?planetdir=<?php echo htmlspecialchars($planetDir); ?>"><?php echo $galaxy . "/" . $planet; ?></a>
                     </li>
                 <?php endforeach; ?>
@@ -258,57 +186,40 @@ class LightDeveloperWizardService
                 <?php endif; ?>
             </p>
 
-
-            <div class="result">
-                <?php if (null !== $task): ?>
-
-                    <h3>Report
-                        <?php if (null === $error): ?>
-                            <span class="success">(success)</span>
-                        <?php else: ?>
-                            <span class="error">(error)</span>
-                        <?php endif; ?>
-                    </h3>
-                    <?php if (null !== $error): ?>
-                        <span class="error"><?php echo $error; ?></span>
-                    <?php else: ?>
-                        <?php if (null !== $task): ?>
-
-                            <span class="info">Executing task <?php echo $task; ?>:</span>
-
-                            <?php if ($taskMsgs): ?>
-                                <ul>
-                                    <?php foreach ($taskMsgs as $msg): ?>
-                                        <li class="info"><?php echo $msg; ?></li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php endif; ?>
-
-                        <?php endif; ?>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </div>
-
-
-            <?php if (null !== $task && null === $error): ?>
-                <a href="?planetdir=<?php echo htmlspecialchars($planetDir); ?>">Click here to continue</a>
-            <?php else: ?>
-                <div class="tasklist">
-                    <h3>Available tasks</h3>
-                    <ul>
-                        <?php if (true === $createFileExists): ?>
-                            <li><a href="?planetdir=<?php echo htmlspecialchars($planetDir); ?>&task=syncdb">Synchronize
-                                    the
-                                    current db with the create file (using Light_DbSynchronizer)</a></li>
-                            <li><a href="?planetdir=<?php echo htmlspecialchars($planetDir); ?>&task=generate_api">Generate
-                                    the
-                                    api from the create file (using Ling Breeze Generator 2) </a></li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
+            <?php $ww->render(); ?>
         <?php endif; ?>
 
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function (event) {
+                $(document).ready(function () {
+
+
+                    //----------------------------------------
+                    // SEARCH FILTER
+                    //----------------------------------------
+                    var jSearch = $('#search-input');
+                    var jPlanetList = $('#planet-list');
+
+                    jSearch.on('keydown', function () {
+                        var $this = $(this);
+                        clearTimeout($.data(this, 'timer'));
+                        var wait = setTimeout(function () {
+                            var val = $this.val().toLowerCase();
+                            jPlanetList.find('.planet-item').each(function () {
+                                var planetName = $(this).attr("data-name").toLowerCase();
+                                if (-1 !== planetName.indexOf(val)) {
+                                    $(this).show();
+                                } else {
+                                    $(this).hide();
+                                }
+                            });
+                        }, 250);
+                        $(this).data('timer', wait);
+                    });
+                });
+            });
+        </script>
         </body>
         </html>
         <?php

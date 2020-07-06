@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30
+2020-06-30 -> 2020-07-06
 
 
 
@@ -60,6 +60,11 @@ developer_wizard:
 History Log
 =============
 
+- 1.1.0 -- 2020-07-06
+
+    - add addStandardPermission task
+    - refactored api using WebWizardTools under the hood
+    
 - 1.0.0 -- 2020-06-30
 
     - initial commit

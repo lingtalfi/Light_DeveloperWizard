@@ -1,10 +1,12 @@
 dependencies: 
     Ling: 
         - Bat
-        - BabyYaml
         - Light
-        - SqlWizard
         - UniverseTools
+        - WebWizardTools
+        - BabyYaml
+        - SqlWizard
+        - Jquery
     
 
 post_install: 
