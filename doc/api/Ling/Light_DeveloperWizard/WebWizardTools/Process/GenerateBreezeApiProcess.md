@@ -4,7 +4,7 @@
 
 The GenerateBreezeApiProcess class
 ================
-2020-06-30 --> 2020-07-06
+2020-06-30 --> 2020-07-07
 
 
 
@@ -22,7 +22,7 @@ Class synopsis
 ==============
 
 
-class <span class="pl-k">GenerateBreezeApiProcess</span> extends [WebWizardToolsProcess](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Process/WebWizardToolsProcess.md)  {
+class <span class="pl-k">GenerateBreezeApiProcess</span> extends [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md)  {
 
 - Inherited properties
     - protected [Ling\WebWizardTools\Report\WebWizardToolsReport](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Report/WebWizardToolsReport.md) [WebWizardToolsProcess::$report](#property-report) ;
@@ -40,6 +40,8 @@ class <span class="pl-k">GenerateBreezeApiProcess</span> extends [WebWizardTools
     - protected [doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateBreezeApiProcess/doExecute.md)(?array $options = []) : void
 
 - Inherited methods
+    - protected [LightDeveloperWizardBaseProcess::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getSymbolicPath.md)(string $path) : string
+    - protected [LightDeveloperWizardBaseProcess::getTablePrefix](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getTablePrefix.md)(string $planetDir, string $createFile) : string
     - public WebWizardToolsProcess::getReport() : array
     - public WebWizardToolsProcess::getControls() : [WebWizardToolsControl](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Controls/WebWizardToolsControl.md)
     - public WebWizardToolsProcess::setWebWizard([Ling\WebWizardTools\WebWizard\WebWizardToolsWebWizard](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/WebWizard/WebWizardToolsWebWizard.md) $webWizard) : [WebWizardToolsProcess](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Process/WebWizardToolsProcess.md)
@@ -78,6 +80,8 @@ Methods
 
 - [GenerateBreezeApiProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateBreezeApiProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
 - [GenerateBreezeApiProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateBreezeApiProcess/doExecute.md) &ndash; Executes the process.
+- [LightDeveloperWizardBaseProcess::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getSymbolicPath.md) &ndash; Returns the given absolute path, with the application directory replaced by a symbol if found.
+- [LightDeveloperWizardBaseProcess::getTablePrefix](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getTablePrefix.md) &ndash; Returns the table prefix from either the preferences (if found), or guessed from the given createFile otherwise.
 - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
 - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
 - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
@@ -117,4 +121,4 @@ See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\Genera
 
 SeeAlso
 ==============
-Previous class: [AddStandardPermissionsProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess.md)<br>Next class: [SynchronizeDbProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess.md)<br>
+Previous class: [AddStandardPermissionsProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess.md)<br>Next class: [GenerateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateLkaPlanetProcess.md)<br>

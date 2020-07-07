@@ -6,6 +6,11 @@ dependencies:
         - WebWizardTools
         - BabyYaml
         - SqlWizard
+        - Light_DatabaseInfo
+        - Light_UserDatabase
+        - SimplePdoWrapper
+        - Light_ControllerHub
+        - Light_Kit_Admin
         - Jquery
     
 

@@ -14,7 +14,7 @@ use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 /**
  * The SynchronizeDbProcess class.
  */
-class SynchronizeDbProcess extends WebWizardToolsProcess
+class SynchronizeDbProcess extends LightDeveloperWizardBaseProcess
 {
 
     /**

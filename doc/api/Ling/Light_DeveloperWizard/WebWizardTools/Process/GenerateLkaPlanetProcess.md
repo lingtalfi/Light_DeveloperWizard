@@ -2,7 +2,7 @@
 
 
 
-The SynchronizeDbProcess class
+The GenerateLkaPlanetProcess class
 ================
 2020-06-30 --> 2020-07-07
 
@@ -14,7 +14,7 @@ The SynchronizeDbProcess class
 Introduction
 ============
 
-The SynchronizeDbProcess class.
+The GenerateLkaPlanetProcess class.
 
 
 
@@ -22,7 +22,7 @@ Class synopsis
 ==============
 
 
-class <span class="pl-k">SynchronizeDbProcess</span> extends [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md)  {
+class <span class="pl-k">GenerateLkaPlanetProcess</span> extends [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md)  {
 
 - Inherited properties
     - protected [Ling\WebWizardTools\Report\WebWizardToolsReport](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Report/WebWizardToolsReport.md) [WebWizardToolsProcess::$report](#property-report) ;
@@ -36,8 +36,8 @@ class <span class="pl-k">SynchronizeDbProcess</span> extends [LightDeveloperWiza
     - protected string [WebWizardToolsProcess::$disabledReason](#property-disabledReason) ;
 
 - Methods
-    - public [__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess/__construct.md)() : void
-    - protected [doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess/doExecute.md)(?array $options = []) : void
+    - public [__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateLkaPlanetProcess/__construct.md)() : void
+    - protected [doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateLkaPlanetProcess/doExecute.md)(?array $options = []) : void
 
 - Inherited methods
     - protected [LightDeveloperWizardBaseProcess::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getSymbolicPath.md)(string $path) : string
@@ -78,8 +78,8 @@ class <span class="pl-k">SynchronizeDbProcess</span> extends [LightDeveloperWiza
 Methods
 ==============
 
-- [SynchronizeDbProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
-- [SynchronizeDbProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess/doExecute.md) &ndash; Executes the process.
+- [GenerateLkaPlanetProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateLkaPlanetProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+- [GenerateLkaPlanetProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateLkaPlanetProcess/doExecute.md) &ndash; Executes the process.
 - [LightDeveloperWizardBaseProcess::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getSymbolicPath.md) &ndash; Returns the given absolute path, with the application directory replaced by a symbol if found.
 - [LightDeveloperWizardBaseProcess::getTablePrefix](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getTablePrefix.md) &ndash; Returns the table prefix from either the preferences (if found), or guessed from the given createFile otherwise.
 - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
@@ -114,11 +114,11 @@ Methods
 
 Location
 =============
-Ling\Light_DeveloperWizard\WebWizardTools\Process\SynchronizeDbProcess<br>
-See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\SynchronizeDbProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/SynchronizeDbProcess.php)
+Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateLkaPlanetProcess<br>
+See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/GenerateLkaPlanetProcess.php)
 
 
 
 SeeAlso
 ==============
-Previous class: [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md)<br>
+Previous class: [GenerateBreezeApiProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateBreezeApiProcess.md)<br>Next class: [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md)<br>

@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-06
+2020-06-30 -> 2020-07-07
 
 
 
@@ -60,6 +60,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.2.0 -- 2020-07-07
+
+    - add createLkaPlugin task
+    
 - 1.1.0 -- 2020-07-06
 
     - add addStandardPermission task

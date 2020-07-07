@@ -8,6 +8,7 @@ use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddStandardPermissionsProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateBreezeApiProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateLkaPlanetProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\SynchronizeDbProcess;
 use Ling\UniverseTools\PlanetTool;
 use Ling\WebWizardTools\WebWizard\WebWizardToolsDefaultWebWizard;
@@ -100,6 +101,9 @@ class LightDeveloperWizardService
             $ww->setProcess(new SynchronizeDbProcess());
             $ww->setProcess(new GenerateBreezeApiProcess());
             $ww->setProcess(new AddStandardPermissionsProcess());
+            $ww->setProcess(new GenerateLkaPlanetProcess());
+
+
             $ww->setContext([
                 "createFile" => $createFile,
                 "createFileExists" => $createFileExists,
@@ -120,6 +124,7 @@ class LightDeveloperWizardService
                 if (in_array($pName, [
                         "syncdb",
                         "generate-breeze-api",
+                        "generate-lka-planet",
                     ]) && false === $createFileExists) {
                     return 'Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file.</a>';
                 }

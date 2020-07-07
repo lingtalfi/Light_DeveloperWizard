@@ -1,6 +1,6 @@
 Ling/Light_DeveloperWizard
 ================
-2020-06-30 --> 2020-07-06
+2020-06-30 --> 2020-07-07
 
 
 
@@ -59,6 +59,44 @@ Table of contents
     - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
     - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
+- [GenerateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateLkaPlanetProcess.md) &ndash; The GenerateLkaPlanetProcess class.
+    - [GenerateLkaPlanetProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateLkaPlanetProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+    - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
+    - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
+    - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
+    - WebWizardToolsProcess::setControl &ndash; Adds a control to this process.
+    - WebWizardToolsProcess::getName &ndash; Returns the name of this instance.
+    - WebWizardToolsProcess::setName &ndash; Sets the name.
+    - WebWizardToolsProcess::getLabel &ndash; Returns the label of this instance.
+    - WebWizardToolsProcess::setLabel &ndash; Sets the label.
+    - WebWizardToolsProcess::getParams &ndash; Returns the params of this instance.
+    - WebWizardToolsProcess::setParams &ndash; Sets the params.
+    - WebWizardToolsProcess::getLearnMore &ndash; Returns the learnMore of this instance.
+    - WebWizardToolsProcess::setLearnMore &ndash; Sets the learnMore.
+    - WebWizardToolsProcess::isEnabled &ndash; Returns the enabled of this instance.
+    - WebWizardToolsProcess::setEnabled &ndash; Sets the enabled.
+    - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
+    - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
+    - WebWizardToolsProcess::execute &ndash; Executes the process.
+- [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md) &ndash; The LightDeveloperWizardBaseProcess class.
+    - [LightDeveloperWizardBaseProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+    - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
+    - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
+    - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
+    - WebWizardToolsProcess::setControl &ndash; Adds a control to this process.
+    - WebWizardToolsProcess::getName &ndash; Returns the name of this instance.
+    - WebWizardToolsProcess::setName &ndash; Sets the name.
+    - WebWizardToolsProcess::getLabel &ndash; Returns the label of this instance.
+    - WebWizardToolsProcess::setLabel &ndash; Sets the label.
+    - WebWizardToolsProcess::getParams &ndash; Returns the params of this instance.
+    - WebWizardToolsProcess::setParams &ndash; Sets the params.
+    - WebWizardToolsProcess::getLearnMore &ndash; Returns the learnMore of this instance.
+    - WebWizardToolsProcess::setLearnMore &ndash; Sets the learnMore.
+    - WebWizardToolsProcess::isEnabled &ndash; Returns the enabled of this instance.
+    - WebWizardToolsProcess::setEnabled &ndash; Sets the enabled.
+    - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
+    - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
+    - WebWizardToolsProcess::execute &ndash; Executes the process.
 - [SynchronizeDbProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess.md) &ndash; The SynchronizeDbProcess class.
     - [SynchronizeDbProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
@@ -88,6 +126,11 @@ Dependencies
 - [WebWizardTools](https://github.com/lingtalfi/WebWizardTools)
 - [BabyYaml](https://github.com/lingtalfi/BabyYaml)
 - [SqlWizard](https://github.com/lingtalfi/SqlWizard)
+- [Light_DatabaseInfo](https://github.com/lingtalfi/Light_DatabaseInfo)
+- [Light_UserDatabase](https://github.com/lingtalfi/Light_UserDatabase)
+- [SimplePdoWrapper](https://github.com/lingtalfi/SimplePdoWrapper)
+- [Light_ControllerHub](https://github.com/lingtalfi/Light_ControllerHub)
+- [Light_Kit_Admin](https://github.com/lingtalfi/Light_Kit_Admin)
 - [Jquery](https://github.com/lingtalfi/Jquery)
 
 

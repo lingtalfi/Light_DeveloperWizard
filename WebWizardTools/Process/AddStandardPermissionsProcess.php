@@ -11,7 +11,7 @@ use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 /**
  * The AddStandardPermissionsProcess class.
  */
-class AddStandardPermissionsProcess extends WebWizardToolsProcess
+class AddStandardPermissionsProcess extends LightDeveloperWizardBaseProcess
 {
 
     /**

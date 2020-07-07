@@ -51,7 +51,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [GenerateBreezeApiProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/GenerateBreezeApiProcess.php#L36-L100)
+See the source code for method [GenerateBreezeApiProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/GenerateBreezeApiProcess.php#L36-L78)
 
 
 See Also

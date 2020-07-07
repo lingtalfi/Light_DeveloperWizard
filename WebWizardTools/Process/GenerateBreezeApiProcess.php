@@ -16,7 +16,7 @@ use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 /**
  * The GenerateBreezeApiProcess class.
  */
-class GenerateBreezeApiProcess extends WebWizardToolsProcess
+class GenerateBreezeApiProcess extends LightDeveloperWizardBaseProcess
 {
 
     /**
@@ -50,33 +50,11 @@ class GenerateBreezeApiProcess extends WebWizardToolsProcess
 
         if (true === $createFileExists) {
 
-            $preferences = DeveloperWizardFileTool::getPreferences($planetDir);
-            $tablePrefix = BDotTool::getDotValue("breeze_generator.table_prefix", $preferences, null);
-
-            // guessing the table prefix
-            //--------------------------------------------
-            if (null === $tablePrefix) {
-                $reader = new MysqlStructureReader();
-                $infos = $reader->readFile($createFile);
-                $firstTable = key($infos);
-                $p = explode('_', $firstTable, 2);
-                if (1 === count($p)) {
-                    $this->errorMessage("No prefix found for table $firstTable.");
-                } else {
-                    $tablePrefix = array_shift($p);
-                    // memorizing...
-                    DeveloperWizardFileTool::updateFile($planetDir, [
-                        "breeze_generator" => [
-                            "table_prefix" => $tablePrefix,
-                        ],
-                    ]);
-                }
-            }
-
+            $tablePrefix = $this->getTablePrefix($planetDir, $createFile);
             $this->infoMessage("Using the table prefix: $tablePrefix.");
 
 
-            $genConfPath = $appDir . "/config/data/$planet/Light_BreezeGenerator/$tablePrefix.byml";
+            $genConfPath = $appDir . "/config/data/$planet/Light_BreezeGenerator/$tablePrefix.generated.byml";
             if (false === file_exists($genConfPath)) {
                 $this->infoMessage("Creating generator conf file in $genConfPath.");
                 DeveloperWizardBreezeGeneratorHelper::spawnConfFile($genConfPath, [
