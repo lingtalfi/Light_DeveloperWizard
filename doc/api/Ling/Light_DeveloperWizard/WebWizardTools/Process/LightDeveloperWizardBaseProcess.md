@@ -4,7 +4,7 @@
 
 The LightDeveloperWizardBaseProcess class
 ================
-2020-06-30 --> 2020-07-07
+2020-06-30 --> 2020-07-09
 
 
 
@@ -34,6 +34,7 @@ abstract class <span class="pl-k">LightDeveloperWizardBaseProcess</span> extends
     - protected array [WebWizardToolsProcess::$params](#property-params) ;
     - protected bool [WebWizardToolsProcess::$enabled](#property-enabled) ;
     - protected string [WebWizardToolsProcess::$disabledReason](#property-disabledReason) ;
+    - protected string [WebWizardToolsProcess::$category](#property-category) ;
 
 - Methods
     - public [__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/__construct.md)() : void
@@ -41,6 +42,7 @@ abstract class <span class="pl-k">LightDeveloperWizardBaseProcess</span> extends
     - protected [getTablePrefix](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getTablePrefix.md)(string $planetDir, string $createFile) : string
 
 - Inherited methods
+    - public WebWizardToolsProcess::prepare() : void
     - public WebWizardToolsProcess::getReport() : array
     - public WebWizardToolsProcess::getControls() : [WebWizardToolsControl](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Controls/WebWizardToolsControl.md)
     - public WebWizardToolsProcess::setWebWizard([Ling\WebWizardTools\WebWizard\WebWizardToolsWebWizard](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/WebWizard/WebWizardToolsWebWizard.md) $webWizard) : [WebWizardToolsProcess](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Process/WebWizardToolsProcess.md)
@@ -57,6 +59,8 @@ abstract class <span class="pl-k">LightDeveloperWizardBaseProcess</span> extends
     - public WebWizardToolsProcess::setEnabled(bool $enabled) : void
     - public WebWizardToolsProcess::getDisabledReason() : string
     - public WebWizardToolsProcess::setDisabledReason(string $disabledReason) : void
+    - public WebWizardToolsProcess::getCategory() : string
+    - public WebWizardToolsProcess::setCategory(string $category) : self
     - public WebWizardToolsProcess::execute(?array $options = []) : void
     - abstract protected WebWizardToolsProcess::doExecute(?array $options = []) : void
     - protected WebWizardToolsProcess::getContextVar(string $varName, ?$defaultValue = null, ?bool $throwEx = true) : void
@@ -81,6 +85,7 @@ Methods
 - [LightDeveloperWizardBaseProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
 - [LightDeveloperWizardBaseProcess::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getSymbolicPath.md) &ndash; Returns the given absolute path, with the application directory replaced by a symbol if found.
 - [LightDeveloperWizardBaseProcess::getTablePrefix](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getTablePrefix.md) &ndash; Returns the table prefix from either the preferences (if found), or guessed from the given createFile otherwise.
+- WebWizardToolsProcess::prepare &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
 - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
 - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
 - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
@@ -97,6 +102,8 @@ Methods
 - WebWizardToolsProcess::setEnabled &ndash; Sets the enabled.
 - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
 - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
+- WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
+- WebWizardToolsProcess::setCategory &ndash; Sets the category.
 - WebWizardToolsProcess::execute &ndash; Executes the process.
 - WebWizardToolsProcess::doExecute &ndash; Executes the process.
 - WebWizardToolsProcess::getContextVar &ndash; Returns a variable from the wizard context.

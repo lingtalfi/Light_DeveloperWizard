@@ -3,8 +3,8 @@ dependencies:
         - Bat
         - Light
         - UniverseTools
-        - WebWizardTools
         - BabyYaml
+        - WebWizardTools
         - SqlWizard
         - Light_DatabaseInfo
         - Light_UserDatabase

@@ -1,0 +1,10 @@
+<?php
+
+
+namespace Ling\Light_TaskScheduler\Exception;
+
+
+class LightTaskSchedulerException extends \Exception
+{
+
+}

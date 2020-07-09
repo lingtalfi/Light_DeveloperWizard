@@ -2,7 +2,7 @@
 
 
 
-The AddStandardPermissionsProcess class
+The CreateServiceProcess class
 ================
 2020-06-30 --> 2020-07-09
 
@@ -14,7 +14,7 @@ The AddStandardPermissionsProcess class
 Introduction
 ============
 
-The AddStandardPermissionsProcess class.
+The CreateServiceProcess class.
 
 
 
@@ -22,7 +22,11 @@ Class synopsis
 ==============
 
 
-class <span class="pl-k">AddStandardPermissionsProcess</span> extends [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md)  {
+class <span class="pl-k">CreateServiceProcess</span> extends [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md) implements [LightServiceContainerAwareInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerAwareInterface.md) {
+
+- Properties
+    - protected [Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) [$container](#property-container) ;
+    - protected [Ling\Light_DeveloperWizard\Util\ServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil.md) [$util](#property-util) ;
 
 - Inherited properties
     - protected [Ling\WebWizardTools\Report\WebWizardToolsReport](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Report/WebWizardToolsReport.md) [WebWizardToolsProcess::$report](#property-report) ;
@@ -37,13 +41,14 @@ class <span class="pl-k">AddStandardPermissionsProcess</span> extends [LightDeve
     - protected string [WebWizardToolsProcess::$category](#property-category) ;
 
 - Methods
-    - public [__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess/__construct.md)() : void
-    - protected [doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess/doExecute.md)(?array $options = []) : void
+    - public [__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/__construct.md)() : void
+    - public [setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/setContainer.md)([Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) $container) : void
+    - public [prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/prepare.md)() : void
+    - protected [doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/doExecute.md)(?array $options = []) : void
 
 - Inherited methods
     - protected [LightDeveloperWizardBaseProcess::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getSymbolicPath.md)(string $path) : string
     - protected [LightDeveloperWizardBaseProcess::getTablePrefix](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getTablePrefix.md)(string $planetDir, string $createFile) : string
-    - public WebWizardToolsProcess::prepare() : void
     - public WebWizardToolsProcess::getReport() : array
     - public WebWizardToolsProcess::getControls() : [WebWizardToolsControl](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Controls/WebWizardToolsControl.md)
     - public WebWizardToolsProcess::setWebWizard([Ling\WebWizardTools\WebWizard\WebWizardToolsWebWizard](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/WebWizard/WebWizardToolsWebWizard.md) $webWizard) : [WebWizardToolsProcess](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Process/WebWizardToolsProcess.md)
@@ -77,16 +82,95 @@ class <span class="pl-k">AddStandardPermissionsProcess</span> extends [LightDeve
 
 
 
+Properties
+=============
+
+- <span id="property-container"><b>container</b></span>
+
+    This property holds the container for this instance.
+    
+    
+
+- <span id="property-util"><b>util</b></span>
+
+    This property holds the util for this instance.
+    
+    
+
+- <span id="property-report"><b>report</b></span>
+
+    This property holds the report for this instance.
+    
+    
+
+- <span id="property-controls"><b>controls</b></span>
+
+    The controls for this instance.
+    
+    It's an array of controlName => controlInstance.
+    
+    
+
+- <span id="property-name"><b>name</b></span>
+
+    This property holds the name for this instance.
+    
+    
+
+- <span id="property-label"><b>label</b></span>
+
+    This property holds the label for this instance.
+    
+    
+
+- <span id="property-learnMore"><b>learnMore</b></span>
+
+    This property holds the learnMore for this instance.
+    
+    
+
+- <span id="property-webWizard"><b>webWizard</b></span>
+
+    This property holds the webWizard for this instance.
+    
+    
+
+- <span id="property-params"><b>params</b></span>
+
+    The params for this instance.
+    See the [WebWizardTools conception notes](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/pages/conception-notes.md) for more details.
+    
+    
+
+- <span id="property-enabled"><b>enabled</b></span>
+
+    This property holds the enabled for this instance.
+    
+    
+
+- <span id="property-disabledReason"><b>disabledReason</b></span>
+
+    This property holds the disabledReason for this instance.
+    
+    
+
+- <span id="property-category"><b>category</b></span>
+
+    This property holds the category for this instance.
+    
+    
+
 
 
 Methods
 ==============
 
-- [AddStandardPermissionsProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
-- [AddStandardPermissionsProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess/doExecute.md) &ndash; Executes the process.
+- [CreateServiceProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+- [CreateServiceProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/setContainer.md) &ndash; Sets the light service container interface.
+- [CreateServiceProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
+- [CreateServiceProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/doExecute.md) &ndash; Executes the process.
 - [LightDeveloperWizardBaseProcess::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getSymbolicPath.md) &ndash; Returns the given absolute path, with the application directory replaced by a symbol if found.
 - [LightDeveloperWizardBaseProcess::getTablePrefix](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getTablePrefix.md) &ndash; Returns the table prefix from either the preferences (if found), or guessed from the given createFile otherwise.
-- WebWizardToolsProcess::prepare &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
 - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
 - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
 - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
@@ -121,11 +205,11 @@ Methods
 
 Location
 =============
-Ling\Light_DeveloperWizard\WebWizardTools\Process\AddStandardPermissionsProcess<br>
-See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\AddStandardPermissionsProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/AddStandardPermissionsProcess.php)
+Ling\Light_DeveloperWizard\WebWizardTools\Process\CreateServiceProcess<br>
+See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\CreateServiceProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/CreateServiceProcess.php)
 
 
 
 SeeAlso
 ==============
-Previous class: [ServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil.md)<br>Next class: [CreateServiceProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess.md)<br>
+Previous class: [AddStandardPermissionsProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess.md)<br>Next class: [GenerateBreezeApiProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateBreezeApiProcess.md)<br>

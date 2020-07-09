@@ -1,0 +1,11 @@
+task_scheduler:
+    instance: Ling\Light_TaskScheduler\Service\LightTaskSchedulerService
+    methods:
+        setContainer:
+            container: @container()
+        setOptions:
+            options: []
+
+
+
+

@@ -6,12 +6,14 @@ namespace Ling\Light_DeveloperWizard\Service;
 
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
+use Ling\Light_DeveloperWizard\Util\serviceManagerUtil;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddStandardPermissionsProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\CreateServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateBreezeApiProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateLkaPlanetProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\SynchronizeDbProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\WebWizard\LightDeveloperWizardWebWizard;
 use Ling\UniverseTools\PlanetTool;
-use Ling\WebWizardTools\WebWizard\WebWizardToolsDefaultWebWizard;
 
 /**
  * The LightDeveloperWizardService class.
@@ -26,6 +28,12 @@ class LightDeveloperWizardService
      */
     protected $container;
 
+    /**
+     * This property holds the serviceManagerUtil for this instance.
+     * @var serviceManagerUtil
+     */
+    protected $serviceManagerUtil;
+
 
     /**
      * Builds the LightDeveloperWizardService instance.
@@ -33,6 +41,7 @@ class LightDeveloperWizardService
     public function __construct()
     {
         $this->container = null;
+        $this->serviceManagerUtil = null;
     }
 
     /**
@@ -43,6 +52,20 @@ class LightDeveloperWizardService
     public function setContainer(LightServiceContainerInterface $container)
     {
         $this->container = $container;
+    }
+
+
+    /**
+     * Returns a ServiceManagerUtil instance.
+     *
+     * @return ServiceManagerUtil
+     */
+    public function getServiceManagerUtil(): ServiceManagerUtil
+    {
+        if (null === $this->serviceManagerUtil) {
+            $this->serviceManagerUtil = new ServiceManagerUtil();
+        }
+        return $this->serviceManagerUtil;
     }
 
 
@@ -78,11 +101,8 @@ class LightDeveloperWizardService
          *
          */
         $guiDisplay = 0;
-        $error = null;
-        $taskMsgs = [];
         $selectedPlanetDir = $_GET['planetdir'] ?? null;
         $task = $_GET['task'] ?? null;
-        $preferences = [];
 
 
         if (null === $selectedPlanetDir) {
@@ -97,11 +117,14 @@ class LightDeveloperWizardService
             $createFile = $planetDir . "/assets/fixtures/create-structure.sql";
             $createFileExists = file_exists($createFile);
 
-            $ww = new WebWizardToolsDefaultWebWizard();
-            $ww->setProcess(new SynchronizeDbProcess());
-            $ww->setProcess(new GenerateBreezeApiProcess());
-            $ww->setProcess(new AddStandardPermissionsProcess());
-            $ww->setProcess(new GenerateLkaPlanetProcess());
+            $ww = new LightDeveloperWizardWebWizard();
+            $ww->setContainer($container);
+
+            $ww->setProcess((new SynchronizeDbProcess())->setCategory("database"));
+            $ww->setProcess((new GenerateBreezeApiProcess())->setCategory("class generation"));
+            $ww->setProcess((new AddStandardPermissionsProcess())->setCategory("database"));
+            $ww->setProcess((new GenerateLkaPlanetProcess())->setCategory("class generation"));
+            $ww->setProcess((new CreateServiceProcess())->setCategory("service"));
 
 
             $ww->setContext([
@@ -132,9 +155,7 @@ class LightDeveloperWizardService
             });
 
 
-            if (null !== $task) {
-                $ww->execute($task);
-            }
+            $ww->run();
 
 
         }

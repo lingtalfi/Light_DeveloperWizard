@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-07
+2020-06-30 -> 2020-07-09
 
 
 
@@ -32,6 +32,8 @@ Summary
 - [Services](#services)
 - Pages
     - [Conception notes](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conception-notes.md)
+    - [Conventions](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md)
+    - [Task details](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md)
 
 
 
@@ -59,6 +61,11 @@ developer_wizard:
 
 History Log
 =============
+
+- 1.3.0 -- 2020-07-09
+
+    - add createService task
+    
 
 - 1.2.1 -- 2020-07-07
 
