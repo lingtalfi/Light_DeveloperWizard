@@ -49,7 +49,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::getBannerContent](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L693-L700)
+See the source code for method [ServiceManagerUtil::getBannerContent](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L694-L701)
 
 
 See Also

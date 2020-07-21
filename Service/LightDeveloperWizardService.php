@@ -14,6 +14,7 @@ use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateBreezeApiProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateLkaPlanetProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\SynchronizeDbProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\WebWizard\LightDeveloperWizardWebWizard;
+use Ling\Light_PluginInstaller\Service\LightPluginInstallerService;
 use Ling\UniverseTools\PlanetTool;
 
 /**
@@ -101,67 +102,113 @@ class LightDeveloperWizardService
          *
          *
          */
-        $guiDisplay = 0;
+        $guiDisplay = (int)($_GET['display'] ?? 0);
         $selectedPlanetDir = $_GET['planetdir'] ?? null;
         $task = $_GET['task'] ?? null;
 
 
-        if (null === $selectedPlanetDir) {
-            $planetDirs = PlanetTool::getPlanetDirs($universeDir);
-        } else {
-            $guiDisplay = 1;
-            $planetDir = $selectedPlanetDir;
-            $preferencesExist = DeveloperWizardFileTool::hasFile($planetDir);
-            $preferences = DeveloperWizardFileTool::getPreferences($planetDir);
-            list($galaxy, $planet) = PlanetTool::getGalaxyNamePlanetNameByDir($planetDir);
-
-            $createFile = $planetDir . "/assets/fixtures/create-structure.sql";
-            $createFileExists = file_exists($createFile);
-
-            $ww = new LightDeveloperWizardWebWizard();
-            $ww->setContainer($container);
-
-            $ww->setProcess((new SynchronizeDbProcess())->setCategory("database"));
-            $ww->setProcess((new GenerateBreezeApiProcess())->setCategory("class generation"));
-            $ww->setProcess((new AddStandardPermissionsProcess())->setCategory("database"));
-            $ww->setProcess((new GenerateLkaPlanetProcess())->setCategory("class generation"));
-            $ww->setProcess((new CreateServiceProcess())->setCategory("service"));
-            $ww->setProcess((new AddServiceLogDebugMethodProcess())->setCategory("service"));
+        //--------------------------------------------
+        // GUI WIZARD MAIN WINDOW
+        //--------------------------------------------
+        if (
+            0 === $guiDisplay ||
+            1 === $guiDisplay
+        ) {
+            if (null === $selectedPlanetDir) {
+                $planetDirs = PlanetTool::getPlanetDirs($universeDir);
+            } else {
 
 
-            $ww->setContext([
-                "createFile" => $createFile,
-                "createFileExists" => $createFileExists,
-                "preferencesExist" => $preferencesExist,
-                "preferences" => $preferences,
-                "container" => $container,
-                "galaxy" => $galaxy,
-                "planet" => $planet,
-                "planetDir" => $planetDir,
-            ]);
-            $ww->setTriggerExtraParams([
-                "planetdir" => $planetDir,
-            ]);
-            $ww->setOnProcessSuccessMessage('
+                $guiDisplay = 1;
+
+                $planetDir = $selectedPlanetDir;
+                $preferencesExist = DeveloperWizardFileTool::hasFile($planetDir);
+                $preferences = DeveloperWizardFileTool::getPreferences($planetDir);
+                list($galaxy, $planet) = PlanetTool::getGalaxyNamePlanetNameByDir($planetDir);
+
+                $createFile = $planetDir . "/assets/fixtures/create-structure.sql";
+                $createFileExists = file_exists($createFile);
+
+                $ww = new LightDeveloperWizardWebWizard();
+                $ww->setContainer($container);
+
+                $ww->setProcess((new SynchronizeDbProcess())->setCategory("database"));
+                $ww->setProcess((new GenerateBreezeApiProcess())->setCategory("class generation"));
+                $ww->setProcess((new AddStandardPermissionsProcess())->setCategory("database"));
+                $ww->setProcess((new GenerateLkaPlanetProcess())->setCategory("class generation"));
+                $ww->setProcess((new CreateServiceProcess())->setCategory("service"));
+                $ww->setProcess((new AddServiceLogDebugMethodProcess())->setCategory("service"));
+
+
+                $ww->setContext([
+                    "createFile" => $createFile,
+                    "createFileExists" => $createFileExists,
+                    "preferencesExist" => $preferencesExist,
+                    "preferences" => $preferences,
+                    "container" => $container,
+                    "galaxy" => $galaxy,
+                    "planet" => $planet,
+                    "planetDir" => $planetDir,
+                ]);
+                $ww->setTriggerExtraParams([
+                    "planetdir" => $planetDir,
+                ]);
+                $ww->setOnProcessSuccessMessage('
             <a href="?planetdir=' . htmlspecialchars($planetDir) . '">Click here to continue</a>');
 
-            $ww->setProcessFilter(function ($pName) use ($createFileExists) {
-                if (in_array($pName, [
-                        "syncdb",
-                        "generate-breeze-api",
-                        "generate-lka-planet",
-                    ]) && false === $createFileExists) {
-                    return 'Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file.</a>';
-                }
-                return true;
-            });
+                $ww->setProcessFilter(function ($pName) use ($createFileExists) {
+                    if (in_array($pName, [
+                            "syncdb",
+                            "generate-breeze-api",
+                            "generate-lka-planet",
+                        ]) && false === $createFileExists) {
+                        return 'Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file.</a>';
+                    }
+                    return true;
+                });
 
 
-            $ww->run();
+                $ww->run();
+
+            }
+        }
+        //--------------------------------------------
+        // PLUGIN INSTALLER WINDOW
+        //--------------------------------------------
+        elseif (2 === $guiDisplay) {
+
+            /**
+             * @var $service LightPluginInstallerService
+             */
+            $service = $container->get("plugin_installer");
+
+
+            $action = $_GET['action'] ?? null;
+            $plugin = $_GET['plugin'] ?? null;
+
+
+            switch ($action) {
+                case "uninstallall":
+                    $service->uninstallAll();
+                    break;
+                case "installall":
+                    $service->installAll();
+                    break;
+                case "uninstall":
+                    $service->uninstall($plugin);
+                    break;
+                case "install":
+                    $service->install($plugin);
+                    break;
+                default:
+                    break;
+            }
+
+
+            $pluginNames = $service->getRegisteredPluginNames();
 
 
         }
-
 
         ?>
 
@@ -174,17 +221,39 @@ class LightDeveloperWizardService
             <script src="/libs/universe/Ling/Jquery/3.5.1/jquery.min.js"></script>
             <title>Light Developer Wizard</title>
             <style>
+                .topmenu {
+                    background: #72c4ec;
+                    display: flex;
+                    padding: 3px;
+                    color: white;
+                }
 
+                .topmenu .item:not(:last-child) {
+                    margin-right: 10px;
+                }
+
+                .topmenu .item:not(:last-child)::after {
+                    content: "|";
+                    margin-left: 10px;
+                }
+
+                .topmenu a {
+                    color: white;
+                }
             </style>
         </head>
 
 
         <body>
 
+        <div class="topmenu">
+            <div class="item"><a href="?display=0">Wizard</a></div>
+            <div class="item"><a href="?display=2">Plugin installer</a></div>
+        </div>
 
-        <h1>Welcome to the Light_DeveloperWizard script</h1>
 
         <?php if (0 === $guiDisplay): ?>
+            <h1>Welcome to the Light_DeveloperWizard script</h1>
             <p>
                 Please select a planet <input id="search-input" type="text" value=""/>
             </p>
@@ -215,6 +284,23 @@ class LightDeveloperWizardService
             </p>
 
             <?php $ww->render(); ?>
+        <?php elseif (2 === $guiDisplay): ?>
+            <h1>Light_PluginInstaller plugin</h1>
+
+            <ul>
+                <li><a href="?action=uninstallall">Uninstall all</a></li>
+                <li><a href="?action=installall">Install all</a></li>
+            </ul>
+
+            <table>
+                <?php foreach ($pluginNames as $name): ?>
+                    <tr>
+                        <td><?php echo $name; ?></td>
+                        <td><a href="?display=2&action=install&plugin=<?php echo $name; ?>">Install</a></td>
+                        <td><a href="?display=2&action=uninstall&plugin=<?php echo $name; ?>">Uninstall</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         <?php endif; ?>
 
 

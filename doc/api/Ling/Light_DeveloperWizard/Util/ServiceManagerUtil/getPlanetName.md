@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::getPlanetName](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L233-L236)
+See the source code for method [ServiceManagerUtil::getPlanetName](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L234-L237)
 
 
 See Also

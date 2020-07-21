@@ -62,6 +62,11 @@ developer_wizard:
 History Log
 =============
 
+- 1.5.0 -- 2020-07-21
+
+    - add plugin installer tab
+    - fix DeveloperWizardBreezeGeneratorHelper::spawnConfFile generating wrong apiName
+    
 - 1.4.0 -- 2020-07-21
 
     - add "Add logDebug method" task

@@ -192,7 +192,7 @@ class ServiceManagerUtil
      * - use Ling\Light_Logger\LightLoggerService;
      *
      *
-     * @param string|array $useStatement
+     * @param string|array $useStatements
      */
     public function addUseStatements($useStatements)
     {
@@ -206,6 +206,7 @@ class ServiceManagerUtil
      *
      * @param string $propertyName
      * @param callable $fn
+     * @param array $options
      */
     public function updatePropertyComment(string $propertyName, callable $fn, array $options = [])
     {

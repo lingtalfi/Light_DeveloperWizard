@@ -28,7 +28,7 @@ class <span class="pl-k">ServiceManagerUtil</span>  {
     - protected string [$galaxy](#property-galaxy) ;
     - protected string [$planet](#property-planet) ;
     - protected [Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) [$container](#property-container) ;
-    - protected Ling\ClassCooker\ClassCooker [$cooker](#property-cooker) ;
+    - protected [Ling\ClassCooker\ClassCooker](https://github.com/lingtalfi/ClassCooker/blob/master/doc/api/Ling/ClassCooker/ClassCooker.md) [$cooker](#property-cooker) ;
 
 - Methods
     - public [__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/__construct.md)() : void
@@ -57,7 +57,7 @@ class <span class="pl-k">ServiceManagerUtil</span>  {
     - public [configHasBannerComment](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/configHasBannerComment.md)($bannerName) : bool
     - public [addConfigOption](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/addConfigOption.md)(string $name, $value, ?array $options = []) : void
     - public [addConfigHook](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/addConfigHook.md)(string $serviceName, array $methodItem) : void
-    - private [getCooker](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getCooker.md)() : Ling\ClassCooker\ClassCooker
+    - private [getCooker](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getCooker.md)() : [ClassCooker](https://github.com/lingtalfi/ClassCooker/blob/master/doc/api/Ling/ClassCooker/ClassCooker.md)
     - private [error](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/error.md)(string $msg) : void
     - private [getBannerContent](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getBannerContent.md)(string $bannerName) : string
 

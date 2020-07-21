@@ -33,7 +33,7 @@ Available options are:
 - accessors: string, the methods to add to the class, those will just be appended to the class by default,
      or appended after the method name defined with the accessorsAfter property if set
 - accessorsAfter: string, the name of the method after which the accessors string shall be appended.
-- afterProperty: string, the property after which to insert the new property. See the class cooker's addProperty documentation for more details.
+- afterProperty: string, the property after which to insert the new property. See the [class cooker's addProperty documentation](https://github.com/lingtalfi/ClassCooker/blob/master/doc/api/Ling/ClassCooker/ClassCooker/addProperty.md) for more details.
 
 
 

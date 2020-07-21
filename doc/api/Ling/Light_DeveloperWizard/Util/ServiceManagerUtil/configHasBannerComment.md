@@ -23,7 +23,7 @@ public [ServiceManagerUtil::configHasBannerComment](https://github.com/lingtalfi
 
 Returns whether the service config file contains the banner comment which name is given.
 
-See more details in the standard service config file section.
+See more details in the [standard service config file](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#standard-service-configuration-file) section.
 
 
 
@@ -51,7 +51,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::configHasBannerComment](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L490-L497)
+See the source code for method [ServiceManagerUtil::configHasBannerComment](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L491-L498)
 
 
 See Also

@@ -231,6 +231,7 @@ Dependencies
 ============
 - [Bat](https://github.com/lingtalfi/Bat)
 - [Light](https://github.com/lingtalfi/Light)
+- [Light_PluginInstaller](https://github.com/lingtalfi/Light_PluginInstaller)
 - [UniverseTools](https://github.com/lingtalfi/UniverseTools)
 - [BabyYaml](https://github.com/lingtalfi/BabyYaml)
 - [ClassCooker](https://github.com/lingtalfi/ClassCooker)

@@ -2,6 +2,7 @@ dependencies:
     Ling: 
         - Bat
         - Light
+        - Light_PluginInstaller
         - UniverseTools
         - BabyYaml
         - ClassCooker

@@ -22,11 +22,11 @@ public [ServiceManagerUtil::addConfigHook](https://github.com/lingtalfi/Light_De
 
 
 Adds a hook to the given service name, with the given methodItem.
-It assumes a standard service config file environment.
+It assumes a [standard service config file](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#standard-service-configuration-file) environment.
 
 The methodItem structure:
 
-- method: string, the name of the method (we will use the methods_collection technique see the Light documentation for more info).
+- method: string, the name of the method (we will use the methods_collection technique see the [Light documentation](https://github.com/lingtalfi/Light) for more info).
 - ?args: array of arguments, if any, for the aforementioned method
 
 
@@ -59,7 +59,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::addConfigHook](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L553-L590)
+See the source code for method [ServiceManagerUtil::addConfigHook](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L554-L591)
 
 
 See Also

@@ -60,7 +60,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::configHasHook](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L440-L478)
+See the source code for method [ServiceManagerUtil::configHasHook](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L441-L479)
 
 
 See Also

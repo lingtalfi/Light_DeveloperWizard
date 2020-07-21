@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::getPlanetIdentifier](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L244-L247)
+See the source code for method [ServiceManagerUtil::getPlanetIdentifier](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L245-L248)
 
 
 See Also

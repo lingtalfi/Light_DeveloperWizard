@@ -16,7 +16,7 @@ Description
 ================
 
 
-private [ServiceManagerUtil::getCooker](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getCooker.md)() : Ling\ClassCooker\ClassCooker
+private [ServiceManagerUtil::getCooker](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getCooker.md)() : [ClassCooker](https://github.com/lingtalfi/ClassCooker/blob/master/doc/api/Ling/ClassCooker/ClassCooker.md)
 
 
 
@@ -36,7 +36,7 @@ This method has no parameters.
 Return values
 ================
 
-Returns Ling\ClassCooker\ClassCooker.
+Returns [ClassCooker](https://github.com/lingtalfi/ClassCooker/blob/master/doc/api/Ling/ClassCooker/ClassCooker.md).
 
 
 Exceptions thrown
@@ -52,7 +52,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::getCooker](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L662-L673)
+See the source code for method [ServiceManagerUtil::getCooker](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L663-L674)
 
 
 See Also
