@@ -7,6 +7,7 @@ namespace Ling\Light_DeveloperWizard\Service;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\Util\serviceManagerUtil;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddServiceLogDebugMethodProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddStandardPermissionsProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\CreateServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateBreezeApiProcess;
@@ -125,6 +126,7 @@ class LightDeveloperWizardService
             $ww->setProcess((new AddStandardPermissionsProcess())->setCategory("database"));
             $ww->setProcess((new GenerateLkaPlanetProcess())->setCategory("class generation"));
             $ww->setProcess((new CreateServiceProcess())->setCategory("service"));
+            $ww->setProcess((new AddServiceLogDebugMethodProcess())->setCategory("service"));
 
 
             $ww->setContext([
@@ -243,6 +245,9 @@ class LightDeveloperWizardService
                         }, 250);
                         $(this).data('timer', wait);
                     });
+
+
+                    jSearch.focus();
                 });
             });
         </script>

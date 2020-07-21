@@ -4,6 +4,8 @@ dependencies:
         - Light
         - UniverseTools
         - BabyYaml
+        - ClassCooker
+        - TokenFun
         - WebWizardTools
         - SqlWizard
         - Light_DatabaseInfo

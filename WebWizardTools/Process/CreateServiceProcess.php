@@ -88,7 +88,28 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
         if (true === $hasClassFile) {
             $this->infoMessage("The planet $planetIdentifier already has a service class.");
 
+
+            if (false === $util->serviceHasProperty("options")) {
+
+                $this->infoMessage("Adding options property to the service class for The planet $planetIdentifier.");
+
+                $serviceName = $util->getServiceName();
+                $tpl = __DIR__ . "/../../assets/property-templates/service-options.txt";
+                $tpl2 = __DIR__ . "/../../assets/method-templates/ServiceClass/setOptions.txt";
+                $str = file_get_contents($tpl);
+                $str = str_replace('Light_XXX', $serviceName, $str);
+                $sGetter = file_get_contents($tpl2);
+
+                $util->addPropertyByTemplate("options", $str, [
+                    'constructorInit' => '        $this->options = [];' . PHP_EOL,
+                    'accessors' => $sGetter,
+                    'accessorsAfter' => '__construct',
+                ]);
+            }
+
+
         } else {
+
             $this->infoMessage("Creating <a href=\"https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service\">basic service class</a> for planet $planetIdentifier.");
             $tpl = __DIR__ . "/../../assets/class-templates/Service/BasicServiceClass.phptpl";
             $planet = $util->getPlanetName();

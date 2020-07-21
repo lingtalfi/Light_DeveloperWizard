@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-09
+2020-06-30 -> 2020-07-21
 
 
 
@@ -62,10 +62,13 @@ developer_wizard:
 History Log
 =============
 
+- 1.4.0 -- 2020-07-21
+
+    - add "Add logDebug method" task
+    
 - 1.3.0 -- 2020-07-09
 
     - add createService task
-    
 
 - 1.2.1 -- 2020-07-07
 

@@ -4,7 +4,7 @@
 
 The AddStandardPermissionsProcess class
 ================
-2020-06-30 --> 2020-07-09
+2020-06-30 --> 2020-07-21
 
 
 
@@ -128,4 +128,4 @@ See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\AddSta
 
 SeeAlso
 ==============
-Previous class: [ServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil.md)<br>Next class: [CreateServiceProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess.md)<br>
+Previous class: [AddServiceLogDebugMethodProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLogDebugMethodProcess.md)<br>Next class: [CreateServiceProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess.md)<br>
