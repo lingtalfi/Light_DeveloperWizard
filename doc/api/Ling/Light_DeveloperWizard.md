@@ -1,6 +1,6 @@
 Ling/Light_DeveloperWizard
 ================
-2020-06-30 --> 2020-07-21
+2020-06-30 --> 2020-07-23
 
 
 
@@ -49,6 +49,30 @@ Table of contents
     - [ServiceManagerUtil::configHasBannerComment](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/configHasBannerComment.md) &ndash; Returns whether the service config file contains the banner comment which name is given.
     - [ServiceManagerUtil::addConfigOption](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/addConfigOption.md) &ndash; Adds the option with the given name and value to the "setOptions" method in the service configuration file.
     - [ServiceManagerUtil::addConfigHook](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/addConfigHook.md) &ndash; Adds a hook to the given service name, with the given methodItem.
+- [AddServiceLingBreeze2GetFactoryMethodProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLingBreeze2GetFactoryMethodProcess.md) &ndash; The AddServiceLingBreeze2GetFactoryMethodProcess class.
+    - [AddServiceLingBreeze2GetFactoryMethodProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLingBreeze2GetFactoryMethodProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+    - [AddServiceLingBreeze2GetFactoryMethodProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLingBreeze2GetFactoryMethodProcess/setContainer.md) &ndash; Sets the light service container interface.
+    - [AddServiceLingBreeze2GetFactoryMethodProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLingBreeze2GetFactoryMethodProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
+    - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
+    - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
+    - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
+    - WebWizardToolsProcess::setControl &ndash; Adds a control to this process.
+    - WebWizardToolsProcess::getName &ndash; Returns the name of this instance.
+    - WebWizardToolsProcess::setName &ndash; Sets the name.
+    - WebWizardToolsProcess::getLabel &ndash; Returns the label of this instance.
+    - WebWizardToolsProcess::setLabel &ndash; Sets the label.
+    - WebWizardToolsProcess::getParams &ndash; Returns the params of this instance.
+    - WebWizardToolsProcess::setParams &ndash; Sets the params.
+    - WebWizardToolsProcess::getLearnMore &ndash; Returns the learnMore of this instance.
+    - WebWizardToolsProcess::setLearnMore &ndash; Sets the learnMore.
+    - WebWizardToolsProcess::isEnabled &ndash; Returns the enabled of this instance.
+    - WebWizardToolsProcess::setEnabled &ndash; Sets the enabled.
+    - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
+    - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
+    - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
+    - WebWizardToolsProcess::setCategory &ndash; Sets the category.
+    - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [AddServiceLogDebugMethodProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLogDebugMethodProcess.md) &ndash; The AddServiceLogDebugMethodProcess class.
     - [AddServiceLogDebugMethodProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLogDebugMethodProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - [AddServiceLogDebugMethodProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLogDebugMethodProcess/setContainer.md) &ndash; Sets the light service container interface.
@@ -72,6 +96,7 @@ Table of contents
     - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
     - WebWizardToolsProcess::setCategory &ndash; Sets the category.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [AddStandardPermissionsProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess.md) &ndash; The AddStandardPermissionsProcess class.
     - [AddStandardPermissionsProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - WebWizardToolsProcess::prepare &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
@@ -94,6 +119,7 @@ Table of contents
     - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
     - WebWizardToolsProcess::setCategory &ndash; Sets the category.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [CreateServiceProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess.md) &ndash; The CreateServiceProcess class.
     - [CreateServiceProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - [CreateServiceProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/CreateServiceProcess/setContainer.md) &ndash; Sets the light service container interface.
@@ -117,6 +143,7 @@ Table of contents
     - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
     - WebWizardToolsProcess::setCategory &ndash; Sets the category.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [GenerateBreezeApiProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateBreezeApiProcess.md) &ndash; The GenerateBreezeApiProcess class.
     - [GenerateBreezeApiProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateBreezeApiProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - WebWizardToolsProcess::prepare &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
@@ -139,6 +166,7 @@ Table of contents
     - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
     - WebWizardToolsProcess::setCategory &ndash; Sets the category.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [GenerateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateLkaPlanetProcess.md) &ndash; The GenerateLkaPlanetProcess class.
     - [GenerateLkaPlanetProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/GenerateLkaPlanetProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - WebWizardToolsProcess::prepare &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
@@ -161,6 +189,7 @@ Table of contents
     - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
     - WebWizardToolsProcess::setCategory &ndash; Sets the category.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md) &ndash; The LightDeveloperWizardBaseProcess class.
     - [LightDeveloperWizardBaseProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - WebWizardToolsProcess::prepare &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
@@ -183,6 +212,7 @@ Table of contents
     - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
     - WebWizardToolsProcess::setCategory &ndash; Sets the category.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [SynchronizeDbProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess.md) &ndash; The SynchronizeDbProcess class.
     - [SynchronizeDbProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - WebWizardToolsProcess::prepare &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
@@ -205,6 +235,7 @@ Table of contents
     - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
     - WebWizardToolsProcess::setCategory &ndash; Sets the category.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [LightDeveloperWizardWebWizard](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/WebWizard/LightDeveloperWizardWebWizard.md) &ndash; The LightDeveloperWizardWebWizard class.
     - [LightDeveloperWizardWebWizard::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/WebWizard/LightDeveloperWizardWebWizard/__construct.md) &ndash; Builds the WebWizardToolsWebWizard instance.
     - [LightDeveloperWizardWebWizard::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/WebWizard/LightDeveloperWizardWebWizard/setContainer.md) &ndash; Sets the container.

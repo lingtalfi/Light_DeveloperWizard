@@ -51,7 +51,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::configHasBannerComment](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L491-L498)
+See the source code for method [ServiceManagerUtil::configHasBannerComment](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L560-L567)
 
 
 See Also

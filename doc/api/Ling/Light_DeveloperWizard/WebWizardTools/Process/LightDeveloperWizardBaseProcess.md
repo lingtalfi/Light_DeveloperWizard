@@ -4,7 +4,7 @@
 
 The LightDeveloperWizardBaseProcess class
 ================
-2020-06-30 --> 2020-07-21
+2020-06-30 --> 2020-07-23
 
 
 
@@ -62,6 +62,7 @@ abstract class <span class="pl-k">LightDeveloperWizardBaseProcess</span> extends
     - public WebWizardToolsProcess::getCategory() : string
     - public WebWizardToolsProcess::setCategory(string $category) : self
     - public WebWizardToolsProcess::execute(?array $options = []) : void
+    - public WebWizardToolsProcess::addLogMessage(string $msg, string $type) : void
     - abstract protected WebWizardToolsProcess::doExecute(?array $options = []) : void
     - protected WebWizardToolsProcess::getContextVar(string $varName, ?$defaultValue = null, ?bool $throwEx = true) : void
     - protected WebWizardToolsProcess::traceMessage(string $msg) : void
@@ -105,6 +106,7 @@ Methods
 - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
 - WebWizardToolsProcess::setCategory &ndash; Sets the category.
 - WebWizardToolsProcess::execute &ndash; Executes the process.
+- WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - WebWizardToolsProcess::doExecute &ndash; Executes the process.
 - WebWizardToolsProcess::getContextVar &ndash; Returns a variable from the wizard context.
 - WebWizardToolsProcess::traceMessage &ndash; Adds a message of type "trace" to the process report.

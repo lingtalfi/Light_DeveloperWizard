@@ -4,7 +4,7 @@
 
 The AddServiceLogDebugMethodProcess class
 ================
-2020-06-30 --> 2020-07-21
+2020-06-30 --> 2020-07-23
 
 
 
@@ -68,6 +68,7 @@ class <span class="pl-k">AddServiceLogDebugMethodProcess</span> extends [LightDe
     - public WebWizardToolsProcess::getCategory() : string
     - public WebWizardToolsProcess::setCategory(string $category) : self
     - public WebWizardToolsProcess::execute(?array $options = []) : void
+    - public WebWizardToolsProcess::addLogMessage(string $msg, string $type) : void
     - protected WebWizardToolsProcess::getContextVar(string $varName, ?$defaultValue = null, ?bool $throwEx = true) : void
     - protected WebWizardToolsProcess::traceMessage(string $msg) : void
     - protected WebWizardToolsProcess::infoMessage(string $msg) : void
@@ -190,6 +191,7 @@ Methods
 - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
 - WebWizardToolsProcess::setCategory &ndash; Sets the category.
 - WebWizardToolsProcess::execute &ndash; Executes the process.
+- WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - WebWizardToolsProcess::getContextVar &ndash; Returns a variable from the wizard context.
 - WebWizardToolsProcess::traceMessage &ndash; Adds a message of type "trace" to the process report.
 - WebWizardToolsProcess::infoMessage &ndash; Adds a message of type "info" to the process report.
@@ -212,4 +214,4 @@ See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\AddSer
 
 SeeAlso
 ==============
-Previous class: [ServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil.md)<br>Next class: [AddStandardPermissionsProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess.md)<br>
+Previous class: [AddServiceLingBreeze2GetFactoryMethodProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLingBreeze2GetFactoryMethodProcess.md)<br>Next class: [AddStandardPermissionsProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddStandardPermissionsProcess.md)<br>

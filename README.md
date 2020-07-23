@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-21
+2020-06-30 -> 2020-07-23
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.6.0 -- 2020-07-23
+
+    - add AddServiceLingBreeze2GetFactoryMethodProcess task class 
+    
 - 1.5.0 -- 2020-07-21
 
     - add plugin installer tab

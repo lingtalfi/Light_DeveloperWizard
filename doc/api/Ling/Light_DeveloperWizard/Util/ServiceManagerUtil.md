@@ -4,7 +4,7 @@
 
 The ServiceManagerUtil class
 ================
-2020-06-30 --> 2020-07-21
+2020-06-30 --> 2020-07-23
 
 
 
@@ -60,6 +60,7 @@ class <span class="pl-k">ServiceManagerUtil</span>  {
     - private [getCooker](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getCooker.md)() : [ClassCooker](https://github.com/lingtalfi/ClassCooker/blob/master/doc/api/Ling/ClassCooker/ClassCooker.md)
     - private [error](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/error.md)(string $msg) : void
     - private [getBannerContent](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getBannerContent.md)(string $bannerName) : string
+    - private [specialError](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/specialError.md)(string $msg, string $msgType, ?$onError = null, ?[Ling\WebWizardTools\Process\WebWizardToolsProcess](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/api/Ling/WebWizardTools/Process/WebWizardToolsProcess.md) $process = null) : void
 
 }
 
@@ -127,6 +128,7 @@ Methods
 - [ServiceManagerUtil::getCooker](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getCooker.md) &ndash; Returns a cooker instance.
 - [ServiceManagerUtil::error](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/error.md) &ndash; Throws an exception.
 - [ServiceManagerUtil::getBannerContent](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getBannerContent.md) &ndash; Returns a banner comment.
+- [ServiceManagerUtil::specialError](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/specialError.md) &ndash; Do something with the given error.
 
 
 
@@ -141,4 +143,4 @@ See the source code of [Ling\Light_DeveloperWizard\Util\ServiceManagerUtil](http
 
 SeeAlso
 ==============
-Previous class: [DeveloperWizardFileTool](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Tool/DeveloperWizardFileTool.md)<br>Next class: [AddServiceLogDebugMethodProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLogDebugMethodProcess.md)<br>
+Previous class: [DeveloperWizardFileTool](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Tool/DeveloperWizardFileTool.md)<br>Next class: [AddServiceLingBreeze2GetFactoryMethodProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/AddServiceLingBreeze2GetFactoryMethodProcess.md)<br>

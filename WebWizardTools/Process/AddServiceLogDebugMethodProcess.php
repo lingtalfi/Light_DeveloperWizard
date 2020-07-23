@@ -89,7 +89,7 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
 
         } else {
             $this->infoMessage("Adding the <a href=\"https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#logdebug-method\">logDebug method</a> for planet $planetIdentifier's service.");
-            $tpl = __DIR__ . "/../../assets/method-templates/ServiceClass/logDebug.php.tpl";
+            $tpl = __DIR__ . "/../../assets/method-templates/ServiceClass/logDebug.php.txt";
 
 
             $serviceName = $util->getServiceName();

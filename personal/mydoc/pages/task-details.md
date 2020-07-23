@@ -1,9 +1,10 @@
 Task details
 =============
-2020-07-09 -> 2020-07-20
+2020-07-09 -> 2020-07-21
 
 
 
+- [Add getFactory method](#add-getfactory-method)
 - [Add logDebug method](#add-logdebug-method)
 - [Add standard permissions](#add-standard-permissions)
 - [Create service process](#create-service-process)
@@ -31,6 +32,15 @@ This task implements the [logDebug method convention](https://github.com/lingtal
 - add the **useDebug** option in the service config file if it's not already defined. It uses the service's setOptions method call to achieve that    
 - add the hook to the [logger service](https://github.com/lingtalfi/Light_Logger), with a channel of **$serviceName.debug**, 
     and which writes to the file **$appDir/log/$serviceName_debug.txt**    
+
+
+
+Add getFactory method
+-----------
+2020-07-21
+
+
+This task implements the [getFactory method convention](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#getfactory-method).
 
 
 

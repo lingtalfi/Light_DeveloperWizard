@@ -9,6 +9,7 @@ Here are some conventions used by the developer wizard.
 
 
 - [Basic service](#basic-service)
+- [getFactory method](#getfactory-method)
 - [logDebug method](#logdebug-method)
 - [Standard service configuration file](#standard-service-configuration-file)
 - [ldw standard available options in docBlock](#ldw-standard-available-options-in-docblock)
@@ -86,6 +87,29 @@ See more details in the [Light](https://github.com/lingtalfi/Light) documentatio
 
 
 
+
+getFactory method
+------------
+2020-07-21
+
+
+This is a pattern that I found and use for services which use the [LingBreezeGenerator2](https://github.com/lingtalfi/Light_BreezeGenerator/blob/master/doc/pages/ling-breeze-generator-2.md) generator. It's for service classes.
+
+The service class has a **factory** property, which defaults to null, and is used as a cache for the **getFactory** method
+that goes along with it.
+
+So the class has the public **getFactory** method, which returns that custom factory, and creates it if necessary.
+
+Note: this task applies only on a service class that already has a container property, such as a **standard service** for instance.
+
+The exact name of the factory class is the one used in the [generate-breeze-api task](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#generate-breeze-api),
+something like: CustomLightTaskSchedulerApiFactory.
+
+
+
+
+
+
 logDebug method
 ------------
 2020-07-09 -> 2020-07-21
@@ -103,8 +127,6 @@ after the service.
 
 The exact log file path is: ${appDir}/log/${serviceName}_debug.txt
 The exact channel is: ${serviceName}.debug
-
-
 
 
 Standard service configuration file

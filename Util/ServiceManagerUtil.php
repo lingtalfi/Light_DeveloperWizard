@@ -8,12 +8,15 @@ use Ling\BabyYaml\BabyYamlUtil;
 use Ling\Bat\BDotTool;
 use Ling\Bat\CaseTool;
 use Ling\Bat\ClassTool;
+use Ling\Bat\FileSystemTool;
 use Ling\Bat\StringTool;
 use Ling\ClassCooker\ClassCooker;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Exception\LightDeveloperWizardException;
 use Ling\TokenFun\TokenFinder\Tool\TokenFinderTool;
+use Ling\TokenFun\Tool\TokenTool;
 use Ling\UniverseTools\PlanetTool;
+use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 
 /**
  * The ServiceManagerUtil class.
@@ -108,6 +111,16 @@ class ServiceManagerUtil
     /**
      * Adds the given property to the service class, and optionally with its initialization and accessor methods.
      *
+     * By default, the property is written below the last property if any.
+     * If not, it's written before the first method of the class if any.
+     * If not, it's added at the beginning of the class (just after the class declaration).
+     *
+     * Or, you can decide exactly where to put it with the **afterProperty** option.
+     *
+     *
+     *
+     *
+     *
      * Available options are:
      * - constructorInit: string, the initialization string to append to the constructor method body (if any).
      *      Note that the constructor must be there, it will not be added if it's not there, and in fact,
@@ -119,6 +132,23 @@ class ServiceManagerUtil
      *      or appended after the method name defined with the accessorsAfter property if set
      * - accessorsAfter: string, the name of the method after which the accessors string shall be appended.
      * - afterProperty: string, the property after which to insert the new property. See the @page(class cooker's addProperty documentation) for more details.
+     * - onError: callable|null|false = null, how to react when an error occurs, or when we try to add something that already exists.
+     *      If callable, the signature is:
+     *      - fn ( errorMessage, errorType ): void
+     *      The errorType is one of:
+     *      - propertyAlreadyExists
+     *      - noConstructorFound
+     *      - constructorStringFound
+     *      - accessorMethodAlreadyExists
+     *      - useStatementAlreadyExists
+     *
+     *      If it's null, an exception will be thrown.
+     *      If it's false, this method will fail silently.
+     *
+     * - useStatements: array of (complete) use statements to add
+     * - process: WebWizardToolsProcess=null. If passed, the trace messages will be added directly to that process via the addLogMessage method of the process.
+     *
+     *
      *
      *
      * @param string $propertyName
@@ -127,17 +157,49 @@ class ServiceManagerUtil
      */
     public function addPropertyByTemplate(string $propertyName, string $templateContent, array $options = [])
     {
+        $onError = $options['onError'] ?? null;
+        $process = $options['process'] ?? null;
+        $processCallable = function () {
+        };
+
+        if ($process instanceof WebWizardToolsProcess) {
+            $processCallable = function (string $msg, string $type) use ($process) {
+                $process->addLogMessage($msg, $type);
+            };
+        }
 
         $cooker = $this->getCooker();
+
+
         //--------------------------------------------
         // property
         //--------------------------------------------
         if (false === $this->serviceHasProperty($propertyName)) {
             $cooker->addProperty($propertyName, $templateContent, $options);
+            call_user_func($processCallable, "Adding property \"$propertyName\" to the service class.", "trace");
         } else {
-            $this->error("The property \"$propertyName\" already exists in this service class.");
+            $this->specialError("The property \"$propertyName\" already exists in this service class.", "propertyAlreadyExists", $onError, $process);
         }
 
+
+        //--------------------------------------------
+        // use statements
+        //--------------------------------------------
+        if (array_key_exists('useStatements', $options)) {
+            $useStatements = $options['useStatements'];
+            foreach ($useStatements as $useStatement) {
+
+                $useStatementClass = ClassTool::getUseStatementClassByUseStatement($useStatement);
+
+
+                if (true === $this->serviceHasUseStatement($useStatementClass)) {
+                    $this->specialError("The use statement for \"$useStatementClass\" already exists in the service class.", "useStatementAlreadyExists", $onError, $process);
+                } else {
+                    call_user_func($processCallable, "Adding useStatement for \"$useStatementClass\" to the service class.", "trace");
+                    $this->addUseStatements($useStatement);
+                }
+            }
+        }
 
         //--------------------------------------------
         // initialization
@@ -145,15 +207,19 @@ class ServiceManagerUtil
         if (array_key_exists('constructorInit', $options)) {
             $methods = $cooker->getMethodsBasicInfo();
             if (false === array_key_exists("__construct", $methods)) {
-                $this->error("The __construct method was not found in this class.");
+                $this->specialError("The __construct method was not found in this class.", 'noConstructorFound', $onError, $process);
+            } else {
+                $s = $options['constructorInit'];
+                $cooker->updateMethodContent('__construct', function (string $innerContent) use ($s, $onError, $process, $processCallable) {
+                    if (false === strpos($innerContent, $s)) {
+                        $innerContent .= $s;
+                        call_user_func($processCallable, "Adding content \"$s\" to the __construct method's body.", "trace");
+                    } else {
+                        $this->specialError("The string \"$s\" was already found inside the constructor method.", 'constructorStringFound', $onError, $process);
+                    }
+                    return $innerContent;
+                });
             }
-            $s = $options['constructorInit'];
-            $cooker->updateMethodContent('__construct', function (string $innerContent) use ($s) {
-                if (false === strpos($innerContent, $s)) {
-                    $innerContent .= $s;
-                }
-                return $innerContent;
-            });
         }
 
 
@@ -167,11 +233,14 @@ class ServiceManagerUtil
             $methodsInfo = TokenFinderTool::getMethodsInfo($tokens);
             $methods = array_keys($cooker->getMethodsBasicInfo());
 
+
             // let the user fix his own mistakes
             foreach ($methodsInfo as $info) {
                 $methodName = $info['name'];
                 if (in_array($methodName, $methods, true)) {
-                    $this->error("The accessors string contains the \"$methodName\" method, which is already in the class.");
+                    $this->specialError("The accessors string contains the \"$methodName\" method, which is already in the class.", 'accessorMethodAlreadyExists', $onError, $process);
+                } else {
+                    call_user_func($processCallable, "Adding accessor for \"$methodName\" to the service class.", "trace");
                 }
             }
 
@@ -699,4 +768,29 @@ class ServiceManagerUtil
 # --------------------------------------
 EEE;
     }
+
+
+    /**
+     * Do something with the given error.
+     * See the addPropertyByTemplate method's source code for more details.
+     *
+     *
+     * @param string $msg
+     * @param string $msgType
+     * @param WebWizardToolsProcess|null $process
+     * @param $onError
+     */
+    private function specialError(string $msg, string $msgType, $onError = null, WebWizardToolsProcess $process = null)
+    {
+        if (null !== $process) {
+            $process->addLogMessage($msg, "trace");
+        }
+        if (null === $onError) {
+            $this->error($msg);
+        } elseif (is_callable($onError)) {
+            call_user_func($onError, $msg, $msgType);
+        }
+    }
+
+
 }

@@ -7,6 +7,7 @@ namespace Ling\Light_DeveloperWizard\Service;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\Util\serviceManagerUtil;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddServiceLingBreeze2GetFactoryMethodProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddServiceLogDebugMethodProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddStandardPermissionsProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\CreateServiceProcess;
@@ -138,6 +139,7 @@ class LightDeveloperWizardService
                 $ww->setProcess((new GenerateLkaPlanetProcess())->setCategory("class generation"));
                 $ww->setProcess((new CreateServiceProcess())->setCategory("service"));
                 $ww->setProcess((new AddServiceLogDebugMethodProcess())->setCategory("service"));
+                $ww->setProcess((new AddServiceLingBreeze2GetFactoryMethodProcess())->setCategory("service"));
 
 
                 $ww->setContext([
