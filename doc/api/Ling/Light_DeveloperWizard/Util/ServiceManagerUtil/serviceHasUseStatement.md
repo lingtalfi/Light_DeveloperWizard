@@ -49,7 +49,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::serviceHasUseStatement](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L444-L447)
+See the source code for method [ServiceManagerUtil::serviceHasUseStatement](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L442-L445)
 
 
 See Also

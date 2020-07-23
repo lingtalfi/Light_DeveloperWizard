@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-07-21
+2020-07-09 -> 2020-07-23
 
 
 
@@ -17,20 +17,20 @@ Task details
 
 Add logDebug method
 -----------
-2020-07-20
+2020-07-20 -> 2020-07-23
 
 
 This task implements the [logDebug method convention](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#logdebug-method).
 
 
-- add a **logDebug** method to the service class if it doesn't have it already.
+- in the **service class**, add a **logDebug** method if it doesn't have it already.
 
     The service class must be a [basic service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service)
-    otherwiser this task won't work properly. In particular, make sure the service has the options property and setOptions method before
+    otherwise this task won't work properly. In particular, make sure the service has the options property and setOptions method before
     you run this task.
     
-- add the **useDebug** option in the service config file if it's not already defined. It uses the service's setOptions method call to achieve that    
-- add the hook to the [logger service](https://github.com/lingtalfi/Light_Logger), with a channel of **$serviceName.debug**, 
+- in the **service config file**, add the **useDebug** option if it's not already defined. It uses the service's setOptions method call to achieve that    
+- in the **service config file**, add the hook, if it doesn't exist already, to the [logger service](https://github.com/lingtalfi/Light_Logger), with a channel of **$serviceName.debug**, 
     and which writes to the file **$appDir/log/$serviceName_debug.txt**    
 
 

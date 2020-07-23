@@ -7,7 +7,7 @@ ServiceManagerUtil::addMethod
 
 
 
-ServiceManagerUtil::addMethod — Adds a method to the service class.
+ServiceManagerUtil::addMethod — Adds a method to the service class, if it's not there already.
 
 
 
@@ -21,7 +21,7 @@ public [ServiceManagerUtil::addMethod](https://github.com/lingtalfi/Light_Develo
 
 
 
-Adds a method to the service class.
+Adds a method to the service class, if it's not there already.
 
 
 
@@ -58,7 +58,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::addMethod](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L103-L108)
+See the source code for method [ServiceManagerUtil::addMethod](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L100-L106)
 
 
 See Also

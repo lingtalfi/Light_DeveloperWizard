@@ -100,33 +100,36 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
             ], [
                 $serviceName,
             ], $content);
-
-
             $util->addMethod('logDebug', $content);
-            if (false === $util->serviceHasUseStatement('Ling\Light_Logger\LightLoggerService')) {
-                $this->traceMessage("Adding use statement for LightLoggerService.");
-                $useStatement = 'use Ling\Light_Logger\LightLoggerService;' . PHP_EOL;
-                $util->addUseStatements($useStatement);
-            } else {
-                $this->traceMessage("Use statement for LightLoggerService already exists, skipping.");
-            }
-            if (true === $util->serviceHasProperty("options")) {
-                $util->updatePropertyComment('options', function ($oldComment) {
-                    $newComment = $oldComment;
-                    if (false === strpos($newComment, '- useDebug:')) {
-                        $this->traceMessage("Adding useDebug in the options property's comments.");
-
-                        $newComment = str_replace('* Available options are:', '* Available options are:'
-                            . PHP_EOL
-                            . str_repeat(" ", 5) . "* - useDebug: bool, whether to enable the debug log", $newComment);
-                    } else {
-                        $this->traceMessage("useDebug already found in the options property's comments.");
-                    }
+        }
 
 
-                    return $newComment;
-                });
-            }
+        if (false === $util->serviceHasUseStatement('Ling\Light_Logger\LightLoggerService')) {
+            $this->traceMessage("Adding use statement for LightLoggerService.");
+            $useStatement = 'use Ling\Light_Logger\LightLoggerService;' . PHP_EOL;
+            $util->addUseStatements($useStatement);
+        } else {
+            $this->traceMessage("Use statement for LightLoggerService already exists, skipping.");
+        }
+
+        if (true === $util->serviceHasProperty("options")) {
+            $util->updatePropertyComment('options', function ($oldComment) {
+                $newComment = $oldComment;
+                if (false === strpos($newComment, '- useDebug:')) {
+                    $this->traceMessage("Adding useDebug in the options property's comments.");
+
+                    $newComment = str_replace('* Available options are:', '* Available options are:'
+                        . PHP_EOL
+                        . str_repeat(" ", 5) . "* - useDebug: bool, whether to enable the debug log", $newComment);
+                } else {
+                    $this->traceMessage("useDebug already found in the options property's comments.");
+                }
+
+
+                return $newComment;
+            });
+        } else {
+            $this->importantMessage("The service class isn't a <a href=\"https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service\">basic service</a> yet, please turn the class into a <b>basic service</b> first (you can use the basic service task for that).");
         }
 
 
@@ -172,7 +175,6 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
                 ],
             ]);
         }
-
 
 
     }

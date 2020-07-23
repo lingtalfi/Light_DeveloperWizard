@@ -59,7 +59,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::addConfigHook](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L623-L660)
+See the source code for method [ServiceManagerUtil::addConfigHook](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L621-L658)
 
 
 See Also

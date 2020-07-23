@@ -49,7 +49,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::serviceHasProperty](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L432-L435)
+See the source code for method [ServiceManagerUtil::serviceHasProperty](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L430-L433)
 
 
 See Also

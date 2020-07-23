@@ -1,6 +1,6 @@
 Conventions
 ===============
-2020-07-09 -> 2020-07-21
+2020-07-09 -> 2020-07-23
 
 
 
@@ -18,7 +18,7 @@ Here are some conventions used by the developer wizard.
 
 Basic service
 ------------
-2020-07-09
+2020-07-09 -> 2020-07-23
 
 
 
@@ -80,8 +80,8 @@ The generated class has the following:
 
 
 
+The **options** property's comment is a [ldw-standard-available-options-in-docblock](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#ldw-standard-available-options-in-docblock).
 
-See more details in the [Light](https://github.com/lingtalfi/Light) documentation.
 
 
 

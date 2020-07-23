@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::getBasicServiceExceptionPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L351-L355)
+See the source code for method [ServiceManagerUtil::getBasicServiceExceptionPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L349-L353)
 
 
 See Also

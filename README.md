@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.7.0 -- 2020-07-23
+
+    - update AddServiceLogDebugMethodProcess, now triggers warning if the service class is not a **basic service**  
+    
 - 1.6.0 -- 2020-07-23
 
     - add AddServiceLingBreeze2GetFactoryMethodProcess task class 

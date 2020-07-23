@@ -8,13 +8,10 @@ use Ling\BabyYaml\BabyYamlUtil;
 use Ling\Bat\BDotTool;
 use Ling\Bat\CaseTool;
 use Ling\Bat\ClassTool;
-use Ling\Bat\FileSystemTool;
-use Ling\Bat\StringTool;
 use Ling\ClassCooker\ClassCooker;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Exception\LightDeveloperWizardException;
 use Ling\TokenFun\TokenFinder\Tool\TokenFinderTool;
-use Ling\TokenFun\Tool\TokenTool;
 use Ling\UniverseTools\PlanetTool;
 use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 
@@ -94,7 +91,7 @@ class ServiceManagerUtil
     //
     //--------------------------------------------
     /**
-     * Adds a method to the service class.
+     * Adds a method to the service class, if it's not there already.
      *
      * @param string $methodName
      * @param string $content
@@ -103,8 +100,9 @@ class ServiceManagerUtil
     public function addMethod(string $methodName, string $content)
     {
         $cooker = $this->getCooker();
-        $content = StringTool::indent($content, 4);
-        $cooker->addMethod($methodName, $content);
+        if (false === $this->serviceHasMethod($methodName)) {
+            $cooker->addMethod($methodName, $content);
+        }
     }
 
 
