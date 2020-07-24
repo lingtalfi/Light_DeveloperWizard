@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [AddServiceLogDebugMethodProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/AddServiceLogDebugMethodProcess.php#L48-L51)
+See the source code for method [AddServiceLogDebugMethodProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/AddServiceLogDebugMethodProcess.php#L51-L54)
 
 
 See Also

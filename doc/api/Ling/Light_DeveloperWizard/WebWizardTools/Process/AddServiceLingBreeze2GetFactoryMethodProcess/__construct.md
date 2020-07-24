@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [AddServiceLingBreeze2GetFactoryMethodProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/AddServiceLingBreeze2GetFactoryMethodProcess.php#L35-L43)
+See the source code for method [AddServiceLingBreeze2GetFactoryMethodProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/AddServiceLingBreeze2GetFactoryMethodProcess.php#L39-L47)
 
 
 See Also

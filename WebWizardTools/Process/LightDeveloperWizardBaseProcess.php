@@ -5,8 +5,15 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
 
 
 use Ling\Bat\BDotTool;
+use Ling\ClassCooker\FryingPan\FryingPan;
+use Ling\ClassCooker\FryingPan\Ingredient\BasicConstructorVariableInitIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\PropertyIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
 use Ling\Light_DeveloperWizard\Exception\LightDeveloperWizardException;
+use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
+use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
 use Ling\SqlWizard\Util\MysqlStructureReader;
 use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 
@@ -40,11 +47,7 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
     protected function getSymbolicPath(string $path): string
     {
         $appDir = $this->getContextVar("container")->getApplicationDir();
-        $p = explode($appDir, $path, 2);
-        if (2 === count($p)) {
-            return '[app]' . array_pop($p);
-        }
-        return $path;
+        return DeveloperWizardGenericHelper::getSymbolicPath($path, $appDir);
     }
 
 
@@ -81,5 +84,157 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
             }
         }
         return $tablePrefix;
+    }
+
+
+    /**
+     * Returns a FryingPan instance configured to work with the given file.
+     * @param string $file
+     * @return FryingPan
+     */
+    protected function getFryingPanForService(string $file)
+    {
+        $pan = new FryingPan();
+        $pan->setFile($file);
+        $pan->setOptions([
+            "loggerCallable" => function (string $msg, string $type) {
+                switch ($type) {
+                    case "add":
+                        $this->infoMessage($msg);
+                        break;
+                    case "skip":
+                        $this->traceMessage($msg);
+                        break;
+                    case "error":
+                        $this->errorMessage($msg);
+                        break;
+                    default:
+                        $this->error("Unknown message type: $type.");
+                        break;
+                }
+            }
+        ]);
+
+        return $pan;
+    }
+
+
+    /**
+     * Adds incrementally the options property, the options variable init, and the setOptions method to the service container class.
+     *
+     * Add the moment, this only works properly if the setContainer method and the container property are already there.
+     * You can add those using the addServiceContainer method.
+     *
+     *
+     *
+     * @param FryingPan $pan
+     * @param string $planetName
+     */
+    protected function addServiceOptions(FryingPan $pan, string $planetName)
+    {
+        $pan->addIngredient(PropertyIngredient::create()->setValue("options", [
+            'template' => '
+    /**
+     * This property holds the options for this instance.
+     *
+     * Available options are:
+     *
+     *
+     *
+     * See the @page(' . $planetName . ' conception notes) for more details.
+     *
+     *
+     * @var array
+     */
+    protected $options;
+    
+',
+            'afterProperty' => 'container',
+        ]));
+
+
+        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('options', [
+            'template' => str_repeat(' ', 8) . '$this->options = [];        
+',
+        ]));
+
+        $pan->addIngredient(MethodIngredient::create()->setValue("setOptions", [
+            'template' => '
+    /**
+     * Sets the options.
+     *
+     * @param array $options
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
+    }
+    
+',
+            "afterMethod" => 'setContainer',
+        ]));
+
+
+    }
+
+    /**
+     * Adds incrementally the container property, the container variable init, the setContainer method, and the necessary use statements, to the service container class.
+     *
+     *
+     * @param FryingPan $pan
+     */
+    protected function addServiceContainer(FryingPan $pan)
+    {
+
+        $pan->addIngredient(UseStatementIngredient::create()->setValue('Ling\Light\ServiceContainer\LightServiceContainerInterface'));
+
+
+        $pan->addIngredient(PropertyIngredient::create()->setValue("container", [
+            'template' => '         
+    /**
+     * This property holds the container for this instance.
+     * @var LightServiceContainerInterface
+     */
+    protected $container;
+    
+',
+            'top' => true,
+        ]));
+
+
+        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('container', [
+            'template' => str_repeat(' ', 8) . '$this->container = null;        
+',
+        ]));
+
+
+        $pan->addIngredient(MethodIngredient::create()->setValue("setContainer", [
+            'template' => '
+    /**
+     * Sets the container.
+     *
+     * @param LightServiceContainerInterface $container
+     */
+    public function setContainer(LightServiceContainerInterface $container)
+    {
+        $this->container = $container;
+    }
+    
+',
+            "afterMethod" => '__construct',
+        ]));
+
+    }
+
+
+    /**
+     * Throws an exception.
+     *
+     * @param string $msg
+     * @throws LightDeveloperWizardException
+     */
+    protected function error(string $msg)
+    {
+        throw new LightDeveloperWizardException($msg);
     }
 }

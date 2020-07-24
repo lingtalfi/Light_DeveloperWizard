@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-23
+2020-06-30 -> 2020-07-24
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.8.0 -- 2020-07-24
+
+    - update api using the FryingPan class
+    
 - 1.7.0 -- 2020-07-23
 
     - update AddServiceLogDebugMethodProcess, now triggers warning if the service class is not a **basic service**  

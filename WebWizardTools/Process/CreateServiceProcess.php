@@ -5,6 +5,11 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
 
 
 use Ling\Bat\FileSystemTool;
+use Ling\ClassCooker\FryingPan\FryingPan;
+use Ling\ClassCooker\FryingPan\Ingredient\BasicConstructorVariableInitIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\PropertyIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
 use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
@@ -80,32 +85,47 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
         $hasClassFile = $util->hasBasicServiceClassFile();
         $hasExceptionFile = $util->hasBasicServiceExceptionFile();
         $hasServiceConfigFile = $util->hasBasicServiceConfigFile();
+        $galaxyName = $this->getContextVar("galaxy");
 
 
         //--------------------------------------------
         // SERVICE CLASS
         //--------------------------------------------
         if (true === $hasClassFile) {
-            $this->infoMessage("The planet $planetIdentifier already has a service class.");
+            $this->infoMessage("The service class for planet $planetIdentifier was already created.");
 
 
-            if (false === $util->serviceHasProperty("options")) {
+            $pan = $this->getFryingPanForService($util->getBasicServiceClassPath());
+            $planet = $util->getPlanetName();
+            $tightName = $util->getTightPlanetName();
+            $useStatementClass = "$galaxyName\\$planet\Exception\\${tightName}Exception";
+            $pan->addIngredient(UseStatementIngredient::create()->setValue($useStatementClass));
 
-                $this->infoMessage("Adding options property to the service class for The planet $planetIdentifier.");
 
-                $serviceName = $util->getServiceName();
-                $tpl = __DIR__ . "/../../assets/property-templates/service-options.txt";
-                $tpl2 = __DIR__ . "/../../assets/method-templates/ServiceClass/setOptions.txt";
-                $str = file_get_contents($tpl);
-                $str = str_replace('Light_XXX', $serviceName, $str);
-                $sGetter = file_get_contents($tpl2);
+            $this->addServiceContainer($pan);
+            $this->addServiceOptions($pan, $planet);
 
-                $util->addPropertyByTemplate("options", $str, [
-                    'constructorInit' => '        $this->options = [];' . PHP_EOL,
-                    'accessors' => $sGetter,
-                    'accessorsAfter' => '__construct',
-                ]);
-            }
+
+
+            $pan->addIngredient(MethodIngredient::create()->setValue("error", [
+                'template' => '
+    /**
+     * Throws an exception.
+     *
+     * @param string $msg
+     * @throws \Exception
+     */
+    private function error(string $msg)
+    {
+        throw new ' . $tightName . 'Exception($msg);
+    }
+    
+',
+                "afterMethod" => 'setOptions',
+            ]));
+
+
+            $pan->cook();
 
 
         } else {
@@ -118,8 +138,8 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
 
             $content = file_get_contents($tpl);
             $content = str_replace([
-                "Light_TaskScheduler",
-                "LightTaskScheduler",
+                "Light_XXX",
+                "LightXXX",
             ], [
                 $planet,
                 $tightName,

@@ -5,6 +5,10 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
 
 
 use Ling\Bat\CaseTool;
+use Ling\ClassCooker\FryingPan\Ingredient\BasicConstructorVariableInitIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\PropertyIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
 use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
@@ -76,54 +80,64 @@ class AddServiceLingBreeze2GetFactoryMethodProcess extends LightDeveloperWizardB
 
 
         $util = $this->util;
-
-
-        $planetIdentifier = $util->getPlanetIdentifier();
         $galaxyName = $this->getContextVar("galaxy");
-        $hasMethod = $util->serviceHasMethod("getFactory");
-//        $serviceName = $util->getServiceName();
         $planetName = $this->getContextVar("planet");
 
 
         //--------------------------------------------
         // UPDATE SERVICE CLASS
         //--------------------------------------------
-        if (true === $hasMethod) {
-            $this->infoMessage("The service class for planet $planetIdentifier already has getFactory method.");
+        $factoryName = 'Custom' . CaseTool::toFlexiblePascal($planetName) . 'ApiFactory';
+        $useStatementClass = $galaxyName . "\\" . $planetName . '\\Api\\Custom\\' . $factoryName;
 
-        } else {
-            $this->infoMessage("Adding the getFactory method for planet $planetIdentifier's service class.");
+        $pan = $this->getFryingPanForService($util->getBasicServiceClassPath());
 
-
-            $factoryName = 'Custom' . CaseTool::toFlexiblePascal($planetName) . 'ApiFactory';
-            $tpl = __DIR__ . "/../../assets/method-templates/ServiceClass/getFactory.php.txt";
-
-            $accessorMethod = file_get_contents($tpl);
-            $accessorMethod = str_replace([
-                "CustomLightTaskSchedulerApiFactory",
-            ], [
-                $factoryName,
-            ], $accessorMethod);
+        $this->addServiceContainer($pan);
 
 
-            $tpl = __DIR__ . "/../../assets/property-templates/service-factory.txt";
-            $factoryProp = file_get_contents($tpl);
-            $factoryProp = str_replace('CustomLightTaskSchedulerApiFactory', $factoryName, $factoryProp);
+        $pan->addIngredient(UseStatementIngredient::create()->setValue($useStatementClass));
 
 
-            $useStatementClass = $galaxyName . "\\" . $planetName . '\\Api\\Custom\\' . $factoryName;
+        $pan->addIngredient(PropertyIngredient::create()->setValue("factory", [
+            'template' => '
+    /**
+     * This property holds the factory for this instance.
+     * @var ' . $factoryName . '
+     */
+    protected $factory;
+    
+',
+        ]));
 
-            $util->addPropertyByTemplate("factory", $factoryProp, [
-                'accessors' => $accessorMethod,
-                'accessorsAfter' => '__construct',
-                'constructorInit' => '        $this->factory = null;' . PHP_EOL,
-                'useStatements' => [
-                    'use ' . $useStatementClass . ";" . PHP_EOL,
-                ],
-                'onError' => false,
-                'process' => $this,
-            ]);
+
+        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('factory', [
+            'template' => str_repeat(' ', 8) . '$this->factory = null;        
+',
+        ]));
+
+
+        $pan->addIngredient(MethodIngredient::create()->setValue("factory", [
+            'template' => '
+    /**
+     * Returns the factory for this plugin\'s api.
+     *
+     * @return ' . $factoryName . '
+     */
+    public function getFactory(): ' . $factoryName . '
+    {
+        if (null === $this->factory) {
+            $this->factory = new ' . $factoryName . '();
+            $this->factory->setContainer($this->container);
+            $this->factory->setPdoWrapper($this->container->get("database"));
         }
+        return $this->factory;
+    }
+    
+',
+        ]));
+
+
+        $pan->cook();
     }
 
 }

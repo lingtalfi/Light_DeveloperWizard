@@ -1,17 +1,17 @@
 <?php
 
 
-namespace Ling\Light_TaskScheduler\Service;
+namespace Ling\Light_XXX\Service;
 
 
-use Ling\Light_TaskScheduler\Exception\LightTaskSchedulerException;
+use Ling\Light_XXX\Exception\LightXXXException;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 
 
 /**
- * The LightTaskSchedulerService class.
+ * The LightXXXService class.
  */
-class LightTaskSchedulerService
+class LightXXXService
 {
 
     /**
@@ -27,7 +27,7 @@ class LightTaskSchedulerService
      *
      *
      *
-     * See the @page(Light_TaskScheduler conception notes) for more details.
+     * See the @page(Light_XXX conception notes) for more details.
      *
      *
      * @var array
@@ -36,7 +36,7 @@ class LightTaskSchedulerService
 
 
     /**
-     * Builds the LightTaskSchedulerService instance.
+     * Builds the LightXXXService instance.
      */
     public function __construct()
     {
@@ -73,7 +73,7 @@ class LightTaskSchedulerService
      */
     private function error(string $msg)
     {
-        throw new LightTaskSchedulerException($msg);
+        throw new LightXXXException($msg);
     }
 
 }

@@ -4,7 +4,10 @@
 namespace Ling\Light_DeveloperWizard\Service;
 
 
+use Ling\Bat\CaseTool;
+use Ling\Bat\ClassTool;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
+use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\Util\serviceManagerUtil;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddServiceLingBreeze2GetFactoryMethodProcess;
@@ -126,9 +129,14 @@ class LightDeveloperWizardService
                 $preferencesExist = DeveloperWizardFileTool::hasFile($planetDir);
                 $preferences = DeveloperWizardFileTool::getPreferences($planetDir);
                 list($galaxy, $planet) = PlanetTool::getGalaxyNamePlanetNameByDir($planetDir);
+                $tightName = PlanetTool::getTightPlanetName($planet);
+
 
                 $createFile = $planetDir . "/assets/fixtures/create-structure.sql";
                 $createFileExists = file_exists($createFile);
+                $serviceFile = $planetDir . "/Service/${tightName}Service.php";
+                $serviceFileExists = file_exists($serviceFile);
+
 
                 $ww = new LightDeveloperWizardWebWizard();
                 $ww->setContainer($container);
@@ -158,14 +166,35 @@ class LightDeveloperWizardService
                 $ww->setOnProcessSuccessMessage('
             <a href="?planetdir=' . htmlspecialchars($planetDir) . '">Click here to continue</a>');
 
-                $ww->setProcessFilter(function ($pName) use ($createFileExists) {
-                    if (in_array($pName, [
-                            "syncdb",
-                            "generate-breeze-api",
-                            "generate-lka-planet",
-                        ]) && false === $createFileExists) {
-                        return 'Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file.</a>';
+                $ww->setProcessFilter(function ($pName) use ($createFileExists, $serviceFileExists, $serviceFile, $galaxy, $planet) {
+                    switch ($pName) {
+                        case "syncdb":
+                        case "generate-breeze-api":
+                        case "generate-lka-planet":
+                            if (false === $createFileExists) {
+                                return 'Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file.</a>';
+                            }
+                            break;
+                        case "create-service-log-debug-method":
+                        case "create-service-get-factory-method":
+                            if (false === $serviceFileExists) {
+                                return 'Missing the service class file (' . $this->getSymbolicPath($serviceFile) . ').';
+                            }
+
+                            if ('create-service-get-factory-method' === $pName) {
+                                $factoryName = 'Custom' . CaseTool::toFlexiblePascal($planet) . 'ApiFactory';
+                                $factoryClass = $galaxy . "\\" . $planet . '\\Api\\Custom\\' . $factoryName;
+                                if (false === ClassTool::isLoaded($factoryClass)) {
+                                    return "Factory class not found ($factoryClass). You can add it using the <a href='https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#generate-breeze-api'>Generate Breeze api</a> task";
+                                }
+                            }
+
+
+                            break;
+                        default:
+                            break;
                     }
+
                     return true;
                 });
 
@@ -224,7 +253,7 @@ class LightDeveloperWizardService
             <title>Light Developer Wizard</title>
             <style>
                 .topmenu {
-                    background: #72c4ec;
+                    background: #2a2f75;
                     display: flex;
                     padding: 3px;
                     color: white;
@@ -343,4 +372,21 @@ class LightDeveloperWizardService
         </html>
         <?php
     }
+
+
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+    /**
+     * Returns the symbolic version of the given path.
+     *
+     * @param string $path
+     * @return string
+     */
+    protected function getSymbolicPath(string $path): string
+    {
+        return DeveloperWizardGenericHelper::getSymbolicPath($path, $this->container->getApplicationDir());
+    }
+
 }

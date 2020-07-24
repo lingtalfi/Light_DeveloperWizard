@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [AddServiceLogDebugMethodProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/AddServiceLogDebugMethodProcess.php#L56-L67)
+See the source code for method [AddServiceLogDebugMethodProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/AddServiceLogDebugMethodProcess.php#L59-L70)
 
 
 See Also

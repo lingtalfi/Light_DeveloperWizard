@@ -1,6 +1,6 @@
 Ling/Light_DeveloperWizard
 ================
-2020-06-30 --> 2020-07-23
+2020-06-30 --> 2020-07-24
 
 
 
@@ -11,6 +11,8 @@ Table of contents
 - [LightDeveloperWizardException](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Exception/LightDeveloperWizardException.md) &ndash; The LightDeveloperWizardException class.
 - [DeveloperWizardBreezeGeneratorHelper](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardBreezeGeneratorHelper.md) &ndash; The DeveloperWizardBreezeGeneratorHelper class.
     - [DeveloperWizardBreezeGeneratorHelper::spawnConfFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardBreezeGeneratorHelper/spawnConfFile.md) &ndash; Create a new breeze generator configuration file, based on an internal model.
+- [DeveloperWizardGenericHelper](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardGenericHelper.md) &ndash; The DeveloperWizardGenericHelper class.
+    - [DeveloperWizardGenericHelper::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardGenericHelper/getSymbolicPath.md) &ndash; Returns a symbolic path, where the given absolute path to the application directory is replaced by the symbol [app].
 - [LightDeveloperWizardService](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService.md) &ndash; The LightDeveloperWizardService class.
     - [LightDeveloperWizardService::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/__construct.md) &ndash; Builds the LightDeveloperWizardService instance.
     - [LightDeveloperWizardService::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/setContainer.md) &ndash; Sets the container.

@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [CreateServiceProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/CreateServiceProcess.php#L57-L66)
+See the source code for method [CreateServiceProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/CreateServiceProcess.php#L62-L71)
 
 
 See Also

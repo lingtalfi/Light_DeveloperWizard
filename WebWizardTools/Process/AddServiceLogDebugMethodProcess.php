@@ -4,6 +4,9 @@
 namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
 
 
+use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\PropertyIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
 use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
@@ -78,59 +81,66 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
 
 
         $planetIdentifier = $util->getPlanetIdentifier();
-        $hasLogDebugMethod = $util->serviceHasMethod("logDebug");
+        $planetName = $this->getContextVar("planet");
+        $serviceName = $util->getServiceName();
 
 
         //--------------------------------------------
         // UPDATE SERVICE CLASS
         //--------------------------------------------
-        if (true === $hasLogDebugMethod) {
-            $this->infoMessage("The service class for planet $planetIdentifier already has logDebug method.");
-
-        } else {
-            $this->infoMessage("Adding the <a href=\"https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#logdebug-method\">logDebug method</a> for planet $planetIdentifier's service.");
-            $tpl = __DIR__ . "/../../assets/method-templates/ServiceClass/logDebug.php.txt";
 
 
-            $serviceName = $util->getServiceName();
-
-            $content = file_get_contents($tpl);
-            $content = str_replace([
-                "task_scheduler",
-            ], [
-                $serviceName,
-            ], $content);
-            $util->addMethod('logDebug', $content);
+        $pan = $this->getFryingPanForService($util->getBasicServiceClassPath());
+        $pan->addIngredient(MethodIngredient::create()->setValue("logDebug", [
+            'template' => '
+    /**
+     * Sends a message to the debug log, only if the useDebug option is set to true.
+     * If useDebug is set to false, this method does nothing.
+     *
+     * @param string $msg
+     * @throws \Exception
+     */
+    public function logDebug(string $msg)
+    {
+        $useDebug = $this->options[\'useDebug\'] ?? false;
+        if (true === $useDebug) {
+            /**
+             * @var $logger LightLoggerService
+             */
+            $logger = $this->container->get("logger");
+            $logger->log($msg, "' . $serviceName . '.debug");
         }
+    }
+    
+',
+        ]));
+
+        $pan->addIngredient(UseStatementIngredient::create()->setValue("Ling\Light_Logger\LightLoggerService"));
 
 
-        if (false === $util->serviceHasUseStatement('Ling\Light_Logger\LightLoggerService')) {
-            $this->traceMessage("Adding use statement for LightLoggerService.");
-            $useStatement = 'use Ling\Light_Logger\LightLoggerService;' . PHP_EOL;
-            $util->addUseStatements($useStatement);
-        } else {
-            $this->traceMessage("Use statement for LightLoggerService already exists, skipping.");
-        }
 
-        if (true === $util->serviceHasProperty("options")) {
-            $util->updatePropertyComment('options', function ($oldComment) {
-                $newComment = $oldComment;
-                if (false === strpos($newComment, '- useDebug:')) {
-                    $this->traceMessage("Adding useDebug in the options property's comments.");
-
-                    $newComment = str_replace('* Available options are:', '* Available options are:'
-                        . PHP_EOL
-                        . str_repeat(" ", 5) . "* - useDebug: bool, whether to enable the debug log", $newComment);
-                } else {
-                    $this->traceMessage("useDebug already found in the options property's comments.");
-                }
+        $this->addServiceContainer($pan);
+        $this->addServiceOptions($pan, $planetName);
 
 
-                return $newComment;
-            });
-        } else {
-            $this->importantMessage("The service class isn't a <a href=\"https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service\">basic service</a> yet, please turn the class into a <b>basic service</b> first (you can use the basic service task for that).");
-        }
+        $pan->cook();
+
+
+        $util->updatePropertyComment('options', function ($oldComment) {
+            $newComment = $oldComment;
+            if (false === strpos($newComment, '- useDebug:')) {
+                $this->traceMessage("Adding useDebug in the options property's comments.");
+
+                $newComment = str_replace('* Available options are:', '* Available options are:'
+                    . PHP_EOL
+                    . str_repeat(" ", 5) . "* - useDebug: bool, whether to enable the debug log", $newComment);
+            } else {
+                $this->traceMessage("useDebug already found in the options property's comments.");
+            }
+
+
+            return $newComment;
+        });
 
 
         //--------------------------------------------

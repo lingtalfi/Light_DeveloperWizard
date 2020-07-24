@@ -51,7 +51,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [AddServiceLogDebugMethodProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/AddServiceLogDebugMethodProcess.php#L73-L180)
+See the source code for method [AddServiceLogDebugMethodProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/AddServiceLogDebugMethodProcess.php#L76-L190)
 
 
 See Also
