@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.8.2 -- 2020-07-24
+
+    - fix functional typo in AddServiceLogDebugMethodProcess
+    
 - 1.8.1 -- 2020-07-24
 
     - fix functional typo in AddServiceLingBreeze2GetFactoryMethodProcess

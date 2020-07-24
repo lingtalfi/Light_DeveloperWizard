@@ -621,6 +621,7 @@ class ServiceManagerUtil
     public function addConfigHook(string $serviceName, array $methodItem)
     {
 
+
         $addHooksBanner = false;
         if (false === $this->configHasBannerComment("hooks")) {
             $addHooksBanner = true;
@@ -631,7 +632,7 @@ class ServiceManagerUtil
         list($config, $nodeInfoMap) = BabyYamlUtil::parseNodeInfoByFile($serviceFile);
 
 
-        $path = '$' . $serviceName . ".methods_collection";
+        $path = '$' . $serviceName . "\.methods_collection";
         $curValue = BDotTool::getDotValue($path, $config, null);
         if (null === $curValue) {
             $curValue = [];

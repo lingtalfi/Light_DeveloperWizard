@@ -5,7 +5,6 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
 
 
 use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
-use Ling\ClassCooker\FryingPan\Ingredient\PropertyIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
 use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
@@ -159,7 +158,7 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
                 "with" => [
                     'method' => 'addListener',
                     'args' => [
-                        "channels" => "train.debug",
+                        "channels" => "$serviceName.debug",
                     ],
                 ],
             ])) {
