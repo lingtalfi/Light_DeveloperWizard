@@ -116,7 +116,7 @@ class AddServiceLingBreeze2GetFactoryMethodProcess extends LightDeveloperWizardB
         ]));
 
 
-        $pan->addIngredient(MethodIngredient::create()->setValue("factory", [
+        $pan->addIngredient(MethodIngredient::create()->setValue("getFactory", [
             'template' => '
     /**
      * Returns the factory for this plugin\'s api.

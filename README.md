@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.8.1 -- 2020-07-24
+
+    - fix functional typo in AddServiceLingBreeze2GetFactoryMethodProcess
+
 - 1.8.0 -- 2020-07-24
 
     - update api using the FryingPan class
