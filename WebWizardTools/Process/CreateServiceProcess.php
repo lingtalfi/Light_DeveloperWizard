@@ -5,10 +5,7 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
 
 
 use Ling\Bat\FileSystemTool;
-use Ling\ClassCooker\FryingPan\FryingPan;
-use Ling\ClassCooker\FryingPan\Ingredient\BasicConstructorVariableInitIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
-use Ling\ClassCooker\FryingPan\Ingredient\PropertyIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
 use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
@@ -121,7 +118,6 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
     }
     
 ',
-                "afterMethod" => 'setOptions',
             ]));
 
 
@@ -165,8 +161,8 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
 
             $content = file_get_contents($tpl);
             $content = str_replace([
-                "Light_TaskScheduler",
-                "LightTaskScheduler",
+                "Light_XXX",
+                "LightXXX",
             ], [
                 $planet,
                 $tightName,

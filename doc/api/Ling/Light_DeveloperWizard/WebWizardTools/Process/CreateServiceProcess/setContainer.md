@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [CreateServiceProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/CreateServiceProcess.php#L54-L57)
+See the source code for method [CreateServiceProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/CreateServiceProcess.php#L51-L54)
 
 
 See Also

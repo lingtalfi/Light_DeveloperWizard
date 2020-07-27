@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-24
+2020-06-30 -> 2020-07-27
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.8.3 -- 2020-07-27
+
+    - update CreateServiceProcess, the error method is now appended to the class instead of written after setOptions
+    
 - 1.8.2 -- 2020-07-24
 
     - fix functional typo in AddServiceLogDebugMethodProcess
