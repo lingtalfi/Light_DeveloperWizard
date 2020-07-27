@@ -154,6 +154,7 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
         }
 
 
+
         if (true === $util->configHasHook("logger", [
                 "with" => [
                     'method' => 'addListener',
@@ -164,6 +165,7 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
             ])) {
             $this->infoMessage("The service config file already has a hook to the logger service (for planet $planetIdentifier).");
         } else {
+
             $serviceConfigFile = $util->getBasicServiceConfigPath();
             $serviceName = $util->getServiceName();
             $this->infoMessage("Adding hook to the logger service in \"$serviceConfigFile\".");

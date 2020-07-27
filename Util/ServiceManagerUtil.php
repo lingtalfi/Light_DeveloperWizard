@@ -519,23 +519,22 @@ class ServiceManagerUtil
             if (null === $withMethod) {
                 return true;
             } else {
+
                 $methods = $conf[$hookKey];
                 foreach ($methods as $method) {
+
                     if ($withMethod === $method['method']) {
                         if (null === $withArgs) {
                             return true;
                         } else {
+
                             if (array_key_exists("args", $method)) {
                                 $args = $method['args'];
                                 foreach ($withArgs as $withKey => $withValue) {
-                                    if (false === array_key_exists($withKey, $args)) {
-                                        return false;
-                                    }
-                                    if ($withValue !== $args[$withKey]) {
-                                        return false;
+                                    if (true === array_key_exists($withKey, $args) && $withValue === $args[$withKey]) {
+                                        return true;
                                     }
                                 }
-                                return true;
                             }
                         }
                     }
