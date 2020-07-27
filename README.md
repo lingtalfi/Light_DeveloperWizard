@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.8.4 -- 2020-07-27
+
+    - fix CreateServiceProcess not generating exception class comment for service class
+    
 - 1.8.3 -- 2020-07-27
 
     - update CreateServiceProcess, the error method is now appended to the class instead of written after setOptions

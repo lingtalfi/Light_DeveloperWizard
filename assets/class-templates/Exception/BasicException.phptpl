@@ -4,6 +4,9 @@
 namespace Ling\Light_XXX\Exception;
 
 
+/**
+ * The LightXXXException class.
+ */
 class LightXXXException extends \Exception
 {
 
