@@ -87,56 +87,9 @@ class AddServiceLingBreeze2GetFactoryMethodProcess extends LightDeveloperWizardB
         //--------------------------------------------
         // UPDATE SERVICE CLASS
         //--------------------------------------------
-        $factoryName = 'Custom' . CaseTool::toFlexiblePascal($planetName) . 'ApiFactory';
-        $useStatementClass = $galaxyName . "\\" . $planetName . '\\Api\\Custom\\' . $factoryName;
-
         $pan = $this->getFryingPanForService($util->getBasicServiceClassPath());
-
         $this->addServiceContainer($pan);
-
-
-        $pan->addIngredient(UseStatementIngredient::create()->setValue($useStatementClass));
-
-
-        $pan->addIngredient(PropertyIngredient::create()->setValue("factory", [
-            'template' => '
-    /**
-     * This property holds the factory for this instance.
-     * @var ' . $factoryName . '
-     */
-    protected $factory;
-    
-',
-        ]));
-
-
-        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('factory', [
-            'template' => str_repeat(' ', 8) . '$this->factory = null;        
-',
-        ]));
-
-
-        $pan->addIngredient(MethodIngredient::create()->setValue("getFactory", [
-            'template' => '
-    /**
-     * Returns the factory for this plugin\'s api.
-     *
-     * @return ' . $factoryName . '
-     */
-    public function getFactory(): ' . $factoryName . '
-    {
-        if (null === $this->factory) {
-            $this->factory = new ' . $factoryName . '();
-            $this->factory->setContainer($this->container);
-            $this->factory->setPdoWrapper($this->container->get("database"));
-        }
-        return $this->factory;
-    }
-    
-',
-        ]));
-
-
+        $this->addServiceFactory($pan, $galaxyName, $planetName);
         $pan->cook();
     }
 

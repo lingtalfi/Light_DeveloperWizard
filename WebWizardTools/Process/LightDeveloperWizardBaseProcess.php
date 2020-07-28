@@ -5,6 +5,7 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
 
 
 use Ling\Bat\BDotTool;
+use Ling\Bat\CaseTool;
 use Ling\ClassCooker\FryingPan\FryingPan;
 use Ling\ClassCooker\FryingPan\Ingredient\BasicConstructorVariableInitIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
@@ -13,7 +14,6 @@ use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
 use Ling\Light_DeveloperWizard\Exception\LightDeveloperWizardException;
 use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
-use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
 use Ling\SqlWizard\Util\MysqlStructureReader;
 use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 
@@ -104,6 +104,9 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
                         break;
                     case "skip":
                         $this->traceMessage($msg);
+                        break;
+                    case "warning":
+                        $this->importantMessage($msg);
                         break;
                     case "error":
                         $this->errorMessage($msg);
@@ -222,6 +225,65 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
     
 ',
             "afterMethod" => '__construct',
+        ]));
+
+    }
+
+
+    /**
+     * Adds incrementally the factory property, the factory variable init, the getFactory method, and the necessary use statements.
+     *
+     *
+     * @param FryingPan $pan
+     * @param string $galaxyName
+     * @param string $planetName
+     */
+    protected function addServiceFactory(FryingPan $pan, string $galaxyName, string $planetName)
+    {
+
+        $factoryName = 'Custom' . CaseTool::toFlexiblePascal($planetName) . 'ApiFactory';
+        $useStatementClass = $galaxyName . "\\" . $planetName . '\\Api\\Custom\\' . $factoryName;
+
+
+        $pan->addIngredient(UseStatementIngredient::create()->setValue($useStatementClass));
+
+
+        $pan->addIngredient(PropertyIngredient::create()->setValue("factory", [
+            'template' => '
+    /**
+     * This property holds the factory for this instance.
+     * @var ' . $factoryName . '
+     */
+    protected $factory;
+    
+',
+        ]));
+
+
+        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('factory', [
+            'template' => str_repeat(' ', 8) . '$this->factory = null;        
+',
+        ]));
+
+
+        $pan->addIngredient(MethodIngredient::create()->setValue("getFactory", [
+            'template' => '
+    /**
+     * Returns the factory for this plugin\'s api.
+     *
+     * @return ' . $factoryName . '
+     */
+    public function getFactory(): ' . $factoryName . '
+    {
+        if (null === $this->factory) {
+            $this->factory = new ' . $factoryName . '();
+            $this->factory->setContainer($this->container);
+            $this->factory->setPdoWrapper($this->container->get("database"));
+        }
+        return $this->factory;
+    }
+    
+',
         ]));
 
     }

@@ -1,6 +1,6 @@
 Conventions
 ===============
-2020-07-09 -> 2020-07-23
+2020-07-09 -> 2020-07-27
 
 
 
@@ -9,6 +9,7 @@ Here are some conventions used by the developer wizard.
 
 
 - [Basic service](#basic-service)
+- [Ling Standard Service 01](#ling-standard-service-01)
 - [getFactory method](#getfactory-method)
 - [logDebug method](#logdebug-method)
 - [Standard service configuration file](#standard-service-configuration-file)
@@ -84,6 +85,14 @@ The **options** property's comment is a [ldw-standard-available-options-in-docbl
 
 
 
+
+Ling Standard Service 01
+--------------
+2020-07-27
+
+
+See the [conception notes of Ling Standard Service 01](https://github.com/lingtalfi/Light_LingStandardService/blob/master/doc/pages/conception-notes.md#ling-standard-service-01) for more details.  
+    
 
 
 
@@ -188,7 +197,7 @@ So for instance, the following class property is a valid **ldw standard availabl
      * Available options are:
      * - useDebug: bool, whether to enable the debug log
      *
-     * See the Light_Train conception notes for more details.
+     * See the [Light_Train conception notes](https://github.com/lingtalfi/Light) for more details.
      *
      *
      * @var array

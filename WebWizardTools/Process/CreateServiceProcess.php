@@ -80,8 +80,6 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
 
         $planetIdentifier = $util->getPlanetIdentifier();
         $hasClassFile = $util->hasBasicServiceClassFile();
-        $hasExceptionFile = $util->hasBasicServiceExceptionFile();
-        $hasServiceConfigFile = $util->hasBasicServiceConfigFile();
         $galaxyName = $this->getContextVar("galaxy");
 
 
@@ -101,7 +99,6 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
 
             $this->addServiceContainer($pan);
             $this->addServiceOptions($pan, $planet);
-
 
 
             $pan->addIngredient(MethodIngredient::create()->setValue("error", [
@@ -145,6 +142,23 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
         }
 
 
+
+        $this->createExceptionClass();
+        $this->createBasicConfigFile();
+
+
+    }
+
+
+    /**
+     * Creates the exception class (of the @page(basic service convention)) if necessary.
+     */
+    protected function createExceptionClass(){
+
+        $util = $this->util;
+        $hasExceptionFile = $util->hasBasicServiceExceptionFile();
+        $planetIdentifier = $util->getPlanetIdentifier();
+
         //--------------------------------------------
         // EXCEPTION CLASS
         //--------------------------------------------
@@ -171,6 +185,19 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
             FileSystemTool::mkfile($dstPath, $content);
         }
 
+    }
+
+
+    /**
+     * Creates @page(the basic service config file) if not there already.
+     */
+    protected function createBasicConfigFile()
+    {
+
+        $util = $this->util;
+        $hasServiceConfigFile = $util->hasBasicServiceConfigFile();
+        $planetIdentifier = $util->getPlanetIdentifier();
+
         //--------------------------------------------
         // SERVICE CONFIG FILE
         //--------------------------------------------
@@ -190,9 +217,9 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
 
             $content = file_get_contents($tpl);
             $content = str_replace([
-                "task_scheduler",
-                "Light_TaskScheduler",
-                "LightTaskScheduler",
+                "task_xxx",
+                "Light_XXX",
+                "LightXXX",
             ], [
                 $serviceName,
                 $planet,
@@ -200,8 +227,6 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
             ], $content);
             FileSystemTool::mkfile($dstPath, $content);
         }
-
-
     }
 
 }

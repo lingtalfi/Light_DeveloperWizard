@@ -6,9 +6,9 @@ namespace Ling\Light_DeveloperWizard\Util;
 
 use Ling\BabyYaml\BabyYamlUtil;
 use Ling\Bat\BDotTool;
-use Ling\Bat\CaseTool;
 use Ling\Bat\ClassTool;
 use Ling\ClassCooker\ClassCooker;
+use Ling\Light\Helper\LightNamesAndPathHelper;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Exception\LightDeveloperWizardException;
 use Ling\TokenFun\TokenFinder\Tool\TokenFinderTool;
@@ -322,13 +322,7 @@ class ServiceManagerUtil
      */
     public function getServiceName(): string
     {
-        if (0 !== strpos($this->planet, 'Light_')) {
-            $this->error("This method is only available for Light planets, $this->planet was given.");
-        }
-        $rest = substr($this->planet, 6);
-        $rest = CaseTool::toHumanFlatCase($rest);
-        $rest = CaseTool::toSnake($rest);
-        return $rest;
+        return LightNamesAndPathHelper::getServiceName($this->planet);
     }
 
 
@@ -717,9 +711,6 @@ class ServiceManagerUtil
 //
 //    }
 
-    //--------------------------------------------
-    //
-    //--------------------------------------------
     /**
      * Returns a cooker instance.
      * It's assuming the service class file exists.
@@ -727,7 +718,7 @@ class ServiceManagerUtil
      * @return ClassCooker
      * @throws \Exception
      */
-    private function getCooker(): ClassCooker
+    public function getCooker(): ClassCooker
     {
         if (null === $this->cooker) {
             $classFile = $this->getBasicServiceClassPath();
@@ -739,6 +730,12 @@ class ServiceManagerUtil
         }
         return $this->cooker;
     }
+
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
 
 
     /**

@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-27
+2020-06-30 -> 2020-07-28
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.9.0 -- 2020-07-28
+
+    - add CreateLss01ServiceProcess task
+    
 - 1.8.5 -- 2020-07-27
 
     - fix ServiceManagerUtil->configHasHook not always returning the expected result 

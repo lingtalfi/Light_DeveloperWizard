@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-07-23
+2020-07-09 -> 2020-07-28
 
 
 
@@ -8,6 +8,7 @@ Task details
 - [Add logDebug method](#add-logdebug-method)
 - [Add standard permissions](#add-standard-permissions)
 - [Create service process](#create-service-process)
+- [Create lss01 service process](#create-lss01-service-process)
 - [Generate breeze api](#generate-breeze-api)
 - [Generate Light_Kit_Admin plugin](#generate-light_kit_admin-plugin)
 - [Synchronize db](#synchronize-db)
@@ -63,6 +64,32 @@ Create service process
 
 
 We create a [basic service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service) structure.
+The files are only created if they don't exist.
+
+
+
+
+Create lss01 service process
+----------
+2020-07-28
+
+
+
+We create a [basic service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service) structure.
+
+We also extend the [LightLingStandardService01](https://github.com/lingtalfi/Light_LingStandardService/blob/master/doc/pages/conception-notes.md#ling-standard-service-01) class if possible (i.e. if your
+class doesn't already extend another class).
+
+Note that the lss01 class already implements the [logDebug method convention](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#logdebug-method) by itself.
+
+ 
+
+
+We also implement the [getFactory method convention](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#getfactory-method).
+
+
+
+
 The files are only created if they don't exist.
 
 

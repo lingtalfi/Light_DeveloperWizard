@@ -1,5 +1,5 @@
-task_scheduler:
-    instance: Ling\Light_TaskScheduler\Service\LightTaskSchedulerService
+task_xxx:
+    instance: Ling\Light_XXX\Service\LightXXXService
     methods:
         setContainer:
             container: @container()
