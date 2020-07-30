@@ -171,4 +171,4 @@ See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\WebWizard\Ligh
 
 SeeAlso
 ==============
-Previous class: [SynchronizeDbProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/SynchronizeDbProcess.md)<br>
+Previous class: [AddPluginInstallerHookProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess.md)<br>

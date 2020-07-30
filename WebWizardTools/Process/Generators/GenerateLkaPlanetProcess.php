@@ -1,13 +1,14 @@
 <?php
 
 
-namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
+namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators;
 
 
 use Ling\Bat\CaseTool;
 use Ling\Bat\FileSystemTool;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DatabaseInfo\Service\LightDatabaseInfoService;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
 use Ling\Light_UserDatabase\Service\LightUserDatabaseService;
 use Ling\SimplePdoWrapper\Util\Where;
 use Ling\SqlWizard\Util\MysqlStructureReader;

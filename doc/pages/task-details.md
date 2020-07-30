@@ -4,14 +4,22 @@ Task details
 
 
 
-- [Add getFactory method](#add-getfactory-method)
-- [Add logDebug method](#add-logdebug-method)
-- [Add standard permissions](#add-standard-permissions)
-- [Create service process](#create-service-process)
-- [Create lss01 service process](#create-lss01-service-process)
-- [Generate breeze api](#generate-breeze-api)
-- [Generate Light_Kit_Admin plugin](#generate-light_kit_admin-plugin)
-- [Synchronize db](#synchronize-db)
+
+
+
+- Database
+    - [Synchronize db](#synchronize-db)
+    - [Add standard permissions](#add-standard-permissions)
+- Generators
+    - [Generate breeze api](#generate-breeze-api)
+    - [Generate Light_Kit_Admin plugin](#generate-light_kit_admin-plugin)
+- ServiceClass
+    - [Add getFactory method](#add-getfactory-method)
+    - [Add logDebug method](#add-logdebug-method)
+    - [Create service process](#create-service-process)
+    - [Create lss01 service process](#create-lss01-service-process)
+- ServiceConfig
+    - [Add plugin_installer hook](#add-plugin_installer-hook)
 
 
 
@@ -42,6 +50,20 @@ Add getFactory method
 
 
 This task implements the [getFactory method convention](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#getfactory-method).
+
+
+
+Add plugin_installer hook
+-----------
+2020-07-30
+
+
+This task adds a hook to the [plugin_installer service](https://github.com/lingtalfi/Light_PluginInstaller) in the config file.
+
+Prerequisites: the service config file must exist.
+
+Note: you can use tasks such as [Create service process](#create-service-process) to create the config file if you don't have one already. 
+
 
 
 

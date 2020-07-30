@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
+namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass;
 
 
 use Ling\Bat\FileSystemTool;
@@ -10,6 +10,7 @@ use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
 use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
 
 
 /**

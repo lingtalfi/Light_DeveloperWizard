@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
+namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass;
 
 
 use Ling\Bat\FileSystemTool;

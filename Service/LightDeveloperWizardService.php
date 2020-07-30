@@ -6,18 +6,20 @@ namespace Ling\Light_DeveloperWizard\Service;
 
 use Ling\Bat\CaseTool;
 use Ling\Bat\ClassTool;
+use Ling\Light\Helper\LightNamesAndPathHelper;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\Util\serviceManagerUtil;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddServiceLingBreeze2GetFactoryMethodProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddServiceLogDebugMethodProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\AddStandardPermissionsProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\CreateLss01ServiceProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\CreateServiceProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateBreezeApiProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\GenerateLkaPlanetProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\SynchronizeDbProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Database\AddStandardPermissionsProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Database\SynchronizeDbProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateBreezeApiProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateLkaPlanetProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceConfig\AddPluginInstallerHookProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\AddServiceLingBreeze2GetFactoryMethodProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\AddServiceLogDebugMethodProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\CreateLss01ServiceProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\CreateServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\WebWizard\LightDeveloperWizardWebWizard;
 use Ling\Light_PluginInstaller\Service\LightPluginInstallerService;
 use Ling\UniverseTools\PlanetTool;
@@ -138,18 +140,24 @@ class LightDeveloperWizardService
                 $serviceFile = $planetDir . "/Service/${tightName}Service.php";
                 $serviceFileExists = file_exists($serviceFile);
 
+//                $serviceName = LightNamesAndPathHelper::getServiceName($planet);
+                $serviceConfigFile = $container->getApplicationDir() . "/config/services/$planet.byml";
+                $serviceConfigFileExists = file_exists($serviceConfigFile);
+
+
 
                 $ww = new LightDeveloperWizardWebWizard();
                 $ww->setContainer($container);
 
-                $ww->setProcess((new SynchronizeDbProcess())->setCategory("database"));
-                $ww->setProcess((new GenerateBreezeApiProcess())->setCategory("class generation"));
-                $ww->setProcess((new AddStandardPermissionsProcess())->setCategory("database"));
-                $ww->setProcess((new GenerateLkaPlanetProcess())->setCategory("class generation"));
-                $ww->setProcess((new CreateServiceProcess())->setCategory("service"));
-                $ww->setProcess((new AddServiceLogDebugMethodProcess())->setCategory("service"));
-                $ww->setProcess((new AddServiceLingBreeze2GetFactoryMethodProcess())->setCategory("service"));
-                $ww->setProcess((new CreateLss01ServiceProcess())->setCategory("service"));
+                $ww->setProcess((new SynchronizeDbProcess()));
+                $ww->setProcess((new GenerateBreezeApiProcess()));
+                $ww->setProcess((new AddStandardPermissionsProcess()));
+                $ww->setProcess((new GenerateLkaPlanetProcess()));
+                $ww->setProcess((new CreateServiceProcess()));
+                $ww->setProcess((new AddServiceLogDebugMethodProcess()));
+                $ww->setProcess((new AddServiceLingBreeze2GetFactoryMethodProcess()));
+                $ww->setProcess((new CreateLss01ServiceProcess()));
+                $ww->setProcess((new AddPluginInstallerHookProcess()));
 
 
                 $ww->setContext([
@@ -168,7 +176,7 @@ class LightDeveloperWizardService
                 $ww->setOnProcessSuccessMessage('
             <a href="?planetdir=' . htmlspecialchars($planetDir) . '">Click here to continue</a>');
 
-                $ww->setProcessFilter(function ($pName) use ($createFileExists, $serviceFileExists, $serviceFile, $galaxy, $planet) {
+                $ww->setProcessFilter(function ($pName) use ($createFileExists, $serviceFileExists, $serviceConfigFile, $serviceConfigFileExists, $serviceFile, $galaxy, $planet) {
                     switch ($pName) {
                         case "syncdb":
                         case "generate-breeze-api":
@@ -190,8 +198,11 @@ class LightDeveloperWizardService
                                     return "Factory class not found ($factoryClass). You can add it using the <a href='https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#generate-breeze-api'>Generate Breeze api</a> task";
                                 }
                             }
-
-
+                            break;
+                        case "add-plugin_installer-hook":
+                            if (false === $serviceConfigFileExists) {
+                                return 'Missing the service config file (' . $this->getSymbolicPath($serviceConfigFile) . ').';
+                            }
                             break;
                         default:
                             break;

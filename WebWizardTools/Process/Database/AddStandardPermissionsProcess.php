@@ -1,10 +1,11 @@
 <?php
 
 
-namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
+namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Database;
 
 
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
 use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 
 

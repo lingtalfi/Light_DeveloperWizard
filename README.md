@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.12.0 -- 2020-07-30
+
+    - add AddPluginInstallerHookProcess task
+    
 - 1.11.1 -- 2020-07-30
 
     - add Basic exception convention
