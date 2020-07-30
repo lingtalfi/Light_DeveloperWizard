@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-28
+2020-06-30 -> 2020-07-30
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.10.0 -- 2020-07-30
+
+    - update CreateLss01ServiceProcess, now register hook for plugin_installer service
+    
 - 1.9.0 -- 2020-07-28
 
     - add CreateLss01ServiceProcess task

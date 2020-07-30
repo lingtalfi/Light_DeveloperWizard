@@ -142,7 +142,6 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
         }
 
 
-
         $this->createExceptionClass();
         $this->createBasicConfigFile();
 
@@ -153,7 +152,8 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
     /**
      * Creates the exception class (of the @page(basic service convention)) if necessary.
      */
-    protected function createExceptionClass(){
+    protected function createExceptionClass()
+    {
 
         $util = $this->util;
         $hasExceptionFile = $util->hasBasicServiceExceptionFile();
@@ -228,5 +228,7 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
             FileSystemTool::mkfile($dstPath, $content);
         }
     }
+
+
 
 }

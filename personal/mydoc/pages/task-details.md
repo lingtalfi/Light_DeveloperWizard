@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-07-28
+2020-07-09 -> 2020-07-30
 
 
 
@@ -71,23 +71,20 @@ The files are only created if they don't exist.
 
 Create lss01 service process
 ----------
-2020-07-28
+2020-07-28 -> 2020-07-30
 
 
 
 We create a [basic service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service) structure.
 
-We also extend the [LightLingStandardService01](https://github.com/lingtalfi/Light_LingStandardService/blob/master/doc/pages/conception-notes.md#ling-standard-service-01) class if possible (i.e. if your
+We extend the [LightLingStandardService01](https://github.com/lingtalfi/Light_LingStandardService/blob/master/doc/pages/conception-notes.md#ling-standard-service-01) class if possible (i.e. if your
 class doesn't already extend another class).
 
 Note that the lss01 class already implements the [logDebug method convention](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#logdebug-method) by itself.
 
- 
+We implement the [getFactory method convention](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#getfactory-method).
 
-
-We also implement the [getFactory method convention](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#getfactory-method).
-
-
+In the config file, we register to the [plugin_installer service](https://github.com/lingtalfi/Light_PluginInstaller).
 
 
 The files are only created if they don't exist.

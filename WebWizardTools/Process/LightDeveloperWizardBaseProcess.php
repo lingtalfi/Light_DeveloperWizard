@@ -290,6 +290,49 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
 
 
     /**
+     * Adds a service config hook, only if it doesn't already exist.
+     * It also send message to the logs.
+     *
+     * If the ifArgs array is passed, it represents the args to use for testing whether the hook already exists.
+     * Otherwise, if not set, the args defined in the given methodItem will be used for the testing.
+     *
+     * Note, this method will only work if the calling class has defined the util property,
+     * which is a configured ServiceManagerUtil instance.
+     *
+     *
+     *
+     * @param string $serviceName
+     * @param array $methodItem
+     * @param array $ifArgs
+     */
+    protected function addServiceConfigHook(string $serviceName, array $methodItem, array $ifArgs = null)
+    {
+        $util = $this->util;
+        if (null === $util) {
+            $this->error("The addServiceConfigHook method is only available for processes which defined the util property.");
+        }
+
+        $args = (null !== $ifArgs) ? $ifArgs : $methodItem['args'] ?? [];
+
+
+        if (true === $util->configHasHook($serviceName, [
+                "with" => [
+                    'method' => $methodItem['method'],
+                    'args' => $args,
+                ],
+            ])) {
+            $planet = $util->getPlanetName();
+            $this->infoMessage("The service config file already has a hook to the \"$serviceName\" service (for planet \"$planet\").");
+        } else {
+
+            $serviceConfigFile = $util->getBasicServiceConfigPath();
+            $this->infoMessage("Adding hook to the \"$serviceName\" service in \"$serviceConfigFile\".");
+            $util->addConfigHook($serviceName, $methodItem);
+        }
+    }
+
+
+    /**
      * Throws an exception.
      *
      * @param string $msg

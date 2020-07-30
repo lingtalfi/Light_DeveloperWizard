@@ -87,6 +87,19 @@ class CreateLss01ServiceProcess extends CreateServiceProcess implements LightSer
         $this->createExceptionClass();
         $this->createBasicConfigFile();
 
+
+        $serviceName = $util->getServiceName();
+
+        $this->addServiceConfigHook('plugin_installer', [
+            'method' => 'registerPlugin',
+            'args' => [
+                'plugin' => $planet,
+                'installer' => '@service(' . $serviceName . ')',
+            ],
+        ], [
+            "plugin" => $planet,
+        ]);
+
     }
 
 }

@@ -117,7 +117,6 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
         $pan->addIngredient(UseStatementIngredient::create()->setValue("Ling\Light_Logger\LightLoggerService"));
 
 
-
         $this->addServiceContainer($pan);
         $this->addServiceOptions($pan, $planetName);
 
@@ -155,37 +154,26 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
 
 
 
-        if (true === $util->configHasHook("logger", [
-                "with" => [
-                    'method' => 'addListener',
-                    'args' => [
-                        "channels" => "$serviceName.debug",
-                    ],
-                ],
-            ])) {
-            $this->infoMessage("The service config file already has a hook to the logger service (for planet $planetIdentifier).");
-        } else {
 
-            $serviceConfigFile = $util->getBasicServiceConfigPath();
-            $serviceName = $util->getServiceName();
-            $this->infoMessage("Adding hook to the logger service in \"$serviceConfigFile\".");
-            $util->addConfigHook('logger', [
-                "method" => 'addListener',
-                "args" => [
-                    'channels' => $serviceName . '.debug',
-                    'listener' => [
-                        'instance' => 'Ling\Light_Logger\Listener\LightFileLoggerListener',
-                        'methods' => [
-                            'configure' => [
-                                'options' => [
-                                    "file" => '${app_dir}/log/' . $serviceName . '_debug.txt',
-                                ]
+        // add hook
+        $this->addServiceConfigHook('logger', [
+            "method" => 'addListener',
+            "args" => [
+                'channels' => $serviceName . '.debug',
+                'listener' => [
+                    'instance' => 'Ling\Light_Logger\Listener\LightFileLoggerListener',
+                    'methods' => [
+                        'configure' => [
+                            'options' => [
+                                "file" => '${app_dir}/log/' . $serviceName . '_debug.txt',
                             ]
-                        ],
+                        ]
                     ],
                 ],
-            ]);
-        }
+            ],
+        ], [
+            "channels" => "$serviceName.debug",
+        ]);
 
 
     }
