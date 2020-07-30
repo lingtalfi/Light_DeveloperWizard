@@ -6,19 +6,37 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators;
 
 use Ling\Bat\CaseTool;
 use Ling\Bat\FileSystemTool;
+use Ling\ClassCooker\FryingPan\Ingredient\ParentIngredient;
+use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DatabaseInfo\Service\LightDatabaseInfoService;
+use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
+use Ling\Light_LingStandardService\Helper\LightLingStandardServiceHelper;
 use Ling\Light_UserDatabase\Service\LightUserDatabaseService;
-use Ling\SimplePdoWrapper\Util\Where;
 use Ling\SqlWizard\Util\MysqlStructureReader;
+use Ling\UniverseTools\PlanetTool;
 
 
 /**
  * The GenerateLkaPlanetProcess class.
  */
-class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
+class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess implements LightServiceContainerAwareInterface
 {
+
+
+    /**
+     * This property holds the container for this instance.
+     * @var LightServiceContainerInterface
+     */
+    protected $container;
+
+
+    /**
+     * This property holds the util for this instance.
+     * @var ServiceManagerUtil
+     */
+    protected $util;
 
     /**
      * @overrides
@@ -28,7 +46,32 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
         parent::__construct();
         $this->setName("generate-lka-planet");
         $this->setLabel("Generates the Light_Kit_Admin planet plugin, to use your plugin in Light_Kit_Admin");
+        $this->container = null;
+        $this->util = null;
     }
+
+    /**
+     * @implementation
+     */
+    public function setContainer(LightServiceContainerInterface $container)
+    {
+        $this->container = $container;
+    }
+
+    /**
+     * @overrides
+     */
+    public function prepare()
+    {
+
+        $util = $this->container->get("developer_wizard")->getServiceManagerUtil();
+        $planetName = $this->getContextVar("planet");
+        $galaxyName = $this->getContextVar("galaxy");
+        $util->setPlanet($planetName, $galaxyName);
+        $util->setContainer($this->container);
+        $this->util = $util;
+    }
+
 
 
     /**
@@ -67,10 +110,13 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
             if (0 === strpos($planet, 'Light_')) {
 
 
-                $newPlanetName = "Light_Kit_Admin_" . substr($planet, 6);
+                $planetId = substr($planet, 6);
+                $tightPlanetId = str_replace('_', '', $planetId);
+                $newPlanetName = "Light_Kit_Admin_" . $planetId;
                 $serviceName = "kit_admin_" . CaseTool::toSnake(substr($planet, 6), true);
                 $newPlanetDir = $appDir . "/universe/$galaxy/$newPlanetName";
-                $tightNewPlanetName = str_replace('_', '', $newPlanetName);
+                $tightNewPlanetName = PlanetTool::getTightPlanetName($newPlanetName);
+
 
                 $reader = new MysqlStructureReader();
                 $infos = $reader->readFile($createFile);
@@ -96,7 +142,7 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
                     $this->infoMessage("Light_Kit_Admin_Generator config file already found in " . $this->getSymbolicPath($lkaGenConfigPath));
                 } else {
                     $this->infoMessage("Creating Light_Kit_Admin_Generator config file in " . $this->getSymbolicPath($lkaGenConfigPath));
-                    $tpl = __DIR__ . "/../../assets/conf-template/lka-gen-config.byml";
+                    $tpl = __DIR__ . "/../../../assets/conf-template/lka-gen-config.byml";
                     $humanMenuName = ucwords(CaseTool::toHumanFlatCase(substr($planet, 6)));
 
 
@@ -146,7 +192,7 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
                 } else {
                     $this->infoMessage("Creating ControllerHub class in " . $this->getSymbolicPath($controllerHubClassPath));
 
-                    $tpl = __DIR__ . "/../../assets/class-templates/ControllerHub/LightKitAdminTaskSchedulerControllerHubHandler.php";
+                    $tpl = __DIR__ . "/../../../assets/class-templates/ControllerHub/LightKitAdminTaskSchedulerControllerHubHandler.php";
                     $tplContent = file_get_contents($tpl);
                     $tplContent = str_replace([
                         'namespace Ling\Light_Kit_Admin_TaskScheduler\ControllerHub;',
@@ -169,7 +215,7 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
                 } else {
                     $this->infoMessage("Creating LkaPlugin class in " . $this->getSymbolicPath($lkaPluginClassPath));
 
-                    $tpl = __DIR__ . "/../../assets/class-templates/LightKitAdminPlugin/LightKitAdminTaskSchedulerLkaPlugin.php";
+                    $tpl = __DIR__ . "/../../../assets/class-templates/LightKitAdminPlugin/LightKitAdminTaskSchedulerLkaPlugin.php";
                     $tplContent = file_get_contents($tpl);
                     $tplContent = str_replace([
                         'namespace Ling\Light_Kit_Admin_TaskScheduler\LightKitAdminPlugin;',
@@ -192,7 +238,7 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
                 } else {
                     $this->infoMessage("Creating LkaPlugin config data in " . $this->getSymbolicPath($path));
 
-                    $tpl = __DIR__ . "/../../assets/conf-template/data/Light_Kit_Admin/lka-options.byml";
+                    $tpl = __DIR__ . "/../../../assets/conf-template/data/Light_Kit_Admin/lka-options.byml";
                     $tplContent = file_get_contents($tpl);
                     $tplContent = str_replace([
                         'lts',
@@ -213,7 +259,7 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
                 } else {
                     $this->infoMessage("Creating MicroPermission config data in " . $this->getSymbolicPath($path));
 
-                    $tpl = __DIR__ . "/../../assets/conf-template/data/Light_MicroPermission/lka_task_scheduler.profile.byml";
+                    $tpl = __DIR__ . "/../../../assets/conf-template/data/Light_MicroPermission/lka_task_scheduler.profile.byml";
                     $tplContent = file_get_contents($tpl);
                     $sTables = '';
                     foreach ($tables as $table) {
@@ -251,34 +297,13 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
                         if (true === $dbInfo->hasTable("lud_permission_group_has_permission")) {
 
 
-                            $this->infoMessage("Adding $planet permissions to the Light_Kit_Admin.admin permission group.");
+                            $this->infoMessage("Adding $planet permissions to the Light_Kit_Admin.admin and Light_Kit_Admin.user permission groups.");
 
                             /**
                              * @var $lud LightUserDatabaseService
                              */
-                            $lud = $container->get("user_database");
-                            $permApi = $lud->getFactory()->getPermissionApi();
-                            $permGroupApi = $lud->getFactory()->getPermissionGroupApi();
-                            $permGroupHasPermApi = $lud->getFactory()->getPermissionGroupHasPermissionApi();
-                            $permissionGroupId = $permGroupApi->getPermissionGroupIdByName("Light_Kit_Admin.admin");
-                            if (null !== $permissionGroupId) {
-
-                                $permIds = $permApi->getPermissionsColumn("id", Where::inst()->key("name")->startsWith("$planet."));
-                                if ($permIds) {
-                                    foreach ($permIds as $permId) {
-                                        $permGroupHasPermApi->insertPermissionGroupHasPermission([
-                                            "permission_group_id" => $permissionGroupId,
-                                            "permission_id" => $permId,
-                                        ]);
-                                    }
-                                } else {
-                                    $this->importantMessage("Aborting the \"hook permissions\" task: no permission found in the lud_permission for the $planet plugin. Did you generate the standard permissions for this planet?");
-                                }
-
-
-                            } else {
-                                $this->errorMessage("The Light_Kit_Admin.admin permission group was not found in the lud_permission_group table. Have you installed Light_Kit_Admin?");
-                            }
+                            $userDb = $container->get("user_database");
+                            LightLingStandardServiceHelper::bindStandardLightPermissionsToLkaPermissionGroups($userDb, $planet);
 
 
                         } else {
@@ -308,14 +333,14 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
                      */
                     $this->infoMessage("Service file found already, skipping.");
                 } else {
-                    $this->infoMessage("Creating service file at \"$configServicePath\", with service name \"$serviceName\"");
-                    $tpl = __DIR__ . "/../../assets/conf-template/configService.byml";
+                    $this->infoMessage("Creating service config file at \"" . $this->getSymbolicPath($configServicePath) . "\", with service name \"$serviceName\"");
+                    $tpl = __DIR__ . "/../../../assets/conf-template/configService.byml";
                     $tplContent = file_get_contents($tpl);
                     $tplContent = str_replace([
-                        'Ling\Light_Kit_Admin_TaskScheduler',
-                        'kit_admin_task_scheduler',
-                        'Light_Kit_Admin_TaskScheduler',
-                        'LightKitAdminTaskScheduler',
+                        'Ling\Light_Kit_Admin_XXX',
+                        'kit_admin_xxx',
+                        'Light_Kit_Admin_XXX',
+                        'LightKitAdminXXX',
                     ], [
                         $galaxy . "\\" . $newPlanetName,
                         $serviceName,
@@ -325,6 +350,44 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess
 
 
                     FileSystemTool::mkfile($configServicePath, $tplContent);
+                }
+
+
+                //--------------------------------------------
+                // SERVICE CLASS FILE
+                //--------------------------------------------
+                $serviceClassName = $tightNewPlanetName . "Service.php";
+                $serviceClassPath = $newPlanetDir . "/Service/$serviceClassName";
+                if (file_exists($serviceClassPath)) {
+
+                    $this->infoMessage("The service class for planet $newPlanetName was already created.");
+
+
+
+                    $pan = $this->getFryingPanForService($serviceClassPath);
+
+                    $useStatementClass = "Ling\Light_LingStandardService\Service\LightLingStandardServiceKitAdminPlugin";
+                    $pan->addIngredient(ParentIngredient::create()->setValue('LightLingStandardServiceKitAdminPlugin', [
+                        'useStatement' => $useStatementClass,
+                    ]));
+
+
+                    $this->addServiceContainer($pan);
+
+
+                    $pan->cook();
+
+
+                } else {
+                    $this->infoMessage("Creating service class file at \"" . $this->getSymbolicPath($serviceClassPath) . "\".");
+                    $tpl = __DIR__ . "/../../../assets/class-templates/Service/LkaPluginLss.phptpl";
+                    $tplContent = file_get_contents($tpl);
+                    $tplContent = str_replace([
+                        'XXX',
+                    ], [
+                        $tightPlanetId,
+                    ], $tplContent);
+                    FileSystemTool::mkfile($serviceClassPath, $tplContent);
                 }
 
 

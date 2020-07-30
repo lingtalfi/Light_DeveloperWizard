@@ -123,7 +123,8 @@ Table of contents
     - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [GenerateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/GenerateLkaPlanetProcess.md) &ndash; The GenerateLkaPlanetProcess class.
     - [GenerateLkaPlanetProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/GenerateLkaPlanetProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
-    - WebWizardToolsProcess::prepare &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
+    - [GenerateLkaPlanetProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/GenerateLkaPlanetProcess/setContainer.md) &ndash; Sets the light service container interface.
+    - [GenerateLkaPlanetProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/GenerateLkaPlanetProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
     - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
     - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
     - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
@@ -321,8 +322,8 @@ Dependencies
 - [WebWizardTools](https://github.com/lingtalfi/WebWizardTools)
 - [SqlWizard](https://github.com/lingtalfi/SqlWizard)
 - [Light_DatabaseInfo](https://github.com/lingtalfi/Light_DatabaseInfo)
+- [Light_LingStandardService](https://github.com/lingtalfi/Light_LingStandardService)
 - [Light_UserDatabase](https://github.com/lingtalfi/Light_UserDatabase)
-- [SimplePdoWrapper](https://github.com/lingtalfi/SimplePdoWrapper)
 - [Light_ControllerHub](https://github.com/lingtalfi/Light_ControllerHub)
 - [Light_Kit_Admin](https://github.com/lingtalfi/Light_Kit_Admin)
 - [Jquery](https://github.com/lingtalfi/Jquery)

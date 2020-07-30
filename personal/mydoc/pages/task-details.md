@@ -128,7 +128,7 @@ All the classes will be generated in the **Api** directory at the root of your p
 
 Generate Light_Kit_Admin plugin
 ----------
-2020-07-09
+2020-07-09 -> 2020-07-30
 
 
 We create a light kit admin plugin for your planet, using the [Light_Kit_Admin_Generator](https://github.com/lingtalfi/Light_Kit_Admin_Generator) and our own tools.
@@ -184,6 +184,19 @@ If your [planet identifier](https://github.com/lingtalfi/UniverseTools/blob/mast
 --------------------- Generated/
 ------------------------- LightKitAdminMyPlanetLkaPlugin.php
 ```
+
+
+We also create the service class file, if it's not already created, and make it extend the [Ling Standard Service Kit Admin Plugin](https://github.com/lingtalfi/Light_LingStandardService/blob/master/doc/pages/conception-notes.md#ling-standard-service-kit-admin-plugin) class
+if possible (i.e. if it doesn't extend another class already).
+
+
+In addition to that, we automatically register the plugin to the [PluginInstaller service](https://github.com/lingtalfi/Light_PluginInstaller).
+
+
+We also bind the [light standard permissions](https://github.com/lingtalfi/TheBar/blob/master/discussions/light-standard-permissions.md) of the plugin, if any, to the corresponding **lka permission groups**. 
+
+
+
 
 
 

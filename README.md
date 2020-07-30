@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.13.0 -- 2020-07-30
+
+    - update GenerateLkaPlanetProcess, now generated class extends LightLingStandardServiceKitAdminPlugin
+    
 - 1.12.0 -- 2020-07-30
 
     - add AddPluginInstallerHookProcess task
