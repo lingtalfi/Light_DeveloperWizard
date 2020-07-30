@@ -1,6 +1,6 @@
 Conventions
 ===============
-2020-07-09 -> 2020-07-27
+2020-07-09 -> 2020-07-30
 
 
 
@@ -9,6 +9,7 @@ Here are some conventions used by the developer wizard.
 
 
 - [Basic service](#basic-service)
+- [Basic Exception](#basic-exception)
 - [Ling Standard Service 01](#ling-standard-service-01)
 - [getFactory method](#getfactory-method)
 - [logDebug method](#logdebug-method)
@@ -82,6 +83,16 @@ The generated class has the following:
 
 
 The **options** property's comment is a [ldw-standard-available-options-in-docblock](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#ldw-standard-available-options-in-docblock).
+
+
+
+Basic exception
+----------
+2020-07-30
+
+
+A basic exception class, as defined in the [Basic service](#basic-service).
+
 
 
 

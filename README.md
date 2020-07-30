@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.11.1 -- 2020-07-30
+
+    - add Basic exception convention
+    
 - 1.11.0 -- 2020-07-30
 
     - update LightDeveloperWizardService, add "remove cache" button in plugin installer gui
