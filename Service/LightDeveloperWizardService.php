@@ -233,12 +233,26 @@ class LightDeveloperWizardService
                 case "install":
                     $service->install($plugin);
                     break;
+                case "removecache":
+                    $service->removeCacheEntry($plugin);
+                    break;
                 default:
                     break;
             }
 
 
             $pluginNames = $service->getRegisteredPluginNames();
+            $useCache = $service->getOption("useCache", false);
+
+
+            $pluginInfo = [];
+            foreach ($pluginNames as $pluginName) {
+                $pluginInfo[] = [
+                    $pluginName,
+                    $service->pluginHasCacheEntry($pluginName),
+                ];
+            }
+
 
 
         }
@@ -273,6 +287,11 @@ class LightDeveloperWizardService
                 .topmenu a {
                     color: white;
                 }
+
+                .disabled {
+                    color: #ccc;
+                }
+
             </style>
         </head>
 
@@ -320,17 +339,32 @@ class LightDeveloperWizardService
         <?php elseif (2 === $guiDisplay): ?>
             <h1>Light_PluginInstaller plugin</h1>
 
+
+            <p>
+                The <b>plugin_installer</b> service is currently
+                <?php echo (true === $useCache) ? '' : '<b>NOT</b>'; ?>
+                using cache.
+            </p>
             <ul>
                 <li><a href="?action=uninstallall">Uninstall all</a></li>
                 <li><a href="?action=installall">Install all</a></li>
             </ul>
 
             <table>
-                <?php foreach ($pluginNames as $name): ?>
+                <?php foreach ($pluginInfo as $info):
+                    list($name, $hasCache) = $info;
+                    $sClass = (true === $hasCache) ? '' : 'disabled';
+
+                    ?>
                     <tr>
                         <td><?php echo $name; ?></td>
                         <td><a href="?display=2&action=install&plugin=<?php echo $name; ?>">Install</a></td>
                         <td><a href="?display=2&action=uninstall&plugin=<?php echo $name; ?>">Uninstall</a></td>
+                        <td><a
+                                    class="<?php echo htmlspecialchars($sClass); ?>"
+                                    href="?display=2&action=removecache&plugin=<?php echo $name; ?>">Remove cache
+                                file</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>

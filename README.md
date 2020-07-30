@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.11.0 -- 2020-07-30
+
+    - update LightDeveloperWizardService, add "remove cache" button in plugin installer gui
+    
 - 1.10.0 -- 2020-07-30
 
     - update CreateLss01ServiceProcess, now register hook for plugin_installer service
