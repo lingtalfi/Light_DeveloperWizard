@@ -5,6 +5,8 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Database;
 
 
 use Ling\Bat\BDotTool;
+use Ling\Bat\CaseTool;
+use Ling\Bat\ClassTool;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
@@ -26,6 +28,19 @@ class SynchronizeDbProcess extends LightDeveloperWizardBaseProcess
         parent::__construct();
         $this->setName("syncdb");
         $this->setLabel("Synchronize the current db with the create file (using Light_DbSynchronizer)");
+    }
+
+    /**
+     * @overrides
+     */
+    public function prepare()
+    {
+        parent::prepare();
+        $createFileExists = $this->getContextVar("createFileExists");
+        if (false === $createFileExists) {
+            return 'Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file.</a>';
+        }
+
     }
 
 

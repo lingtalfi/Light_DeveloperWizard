@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-07-30
+2020-07-09 -> 2020-07-31
 
 
 
@@ -20,6 +20,12 @@ Task details
     - [Create lss01 service process](#create-lss01-service-process)
 - ServiceConfig
     - [Add plugin_installer hook](#add-plugin_installer-hook)
+
+- Service
+    - [Remove service](#remove-service)
+    - [Disable service](#disable-service)
+    - [Enable service](#enable-service)
+
 
 
 
@@ -207,6 +213,70 @@ Synchronize db
 
 We synchronize the current db with your [create file](https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md), using the
 [Light_DbSynchronizer](https://github.com/lingtalfi/Light_DbSynchronizer/) plugin under the hood.
+
+
+
+
+Remove service
+-------------
+2020-07-30 -> 2020-07-31
+
+
+Be careful, for this task can be very destructive.
+
+Well, to avoid accidents, this task always backs up whats deleted in a cache directory in **/tmp/Light_DeveloperWizard/RemoveServiceProcess-backup**, just in case.
+
+
+
+
+This task removes every file listed below (except for the $appDir):
+
+
+- $appDir/
+----- config/data/$pluginName/
+----- config/services/$pluginName.byml
+----- config/services/$pluginName.byml.dis
+----- templates/$pluginName/
+----- universe/$galaxy/$pluginName/
+----- www/plugins/$pluginName/
+
+
+
+
+
+Disable service
+-------------
+2020-07-31
+
+
+This task renames the service config file by adding the ".dis" extension to it, effectively disabling the service.
+
+So for instance:
+
+- $appDir/config/services/$pluginName.byml
+
+
+becomes
+
+- $appDir/config/services/$pluginName.byml.dis
+
+
+
+Enable service
+-------------
+2020-07-31
+
+
+This task renames the service config file by removing the ".dis" extension if any, effectively re-enabling the service.
+
+So for instance:
+
+- $appDir/config/services/$pluginName.byml.dis
+
+
+becomes
+
+- $appDir/config/services/$pluginName.byml
 
 
 

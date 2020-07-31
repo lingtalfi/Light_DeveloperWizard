@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [AddServiceLogDebugMethodProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/ServiceClass/AddServiceLogDebugMethodProcess.php#L37-L45)
+See the source code for method [AddServiceLogDebugMethodProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/ServiceClass/AddServiceLogDebugMethodProcess.php#L22-L28)
 
 
 See Also
@@ -54,5 +54,5 @@ See Also
 
 The [AddServiceLogDebugMethodProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceClass/AddServiceLogDebugMethodProcess.md) class.
 
-Next method: [setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceClass/AddServiceLogDebugMethodProcess/setContainer.md)<br>
+Next method: [prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceClass/AddServiceLogDebugMethodProcess/prepare.md)<br>
 

@@ -6,30 +6,15 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass;
 
 use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
-use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
-use Ling\Light\ServiceContainer\LightServiceContainerInterface;
-use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardCommonProcess;
 
 
 /**
  * The AddServiceLogDebugMethodProcess class.
  */
-class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess implements LightServiceContainerAwareInterface
+class AddServiceLogDebugMethodProcess extends LightDeveloperWizardCommonProcess
 {
 
-
-    /**
-     * This property holds the container for this instance.
-     * @var LightServiceContainerInterface
-     */
-    protected $container;
-
-    /**
-     * This property holds the util for this instance.
-     * @var ServiceManagerUtil
-     */
-    protected $util;
 
     /**
      * @overrides
@@ -40,33 +25,19 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
         $this->setName("create-service-log-debug-method");
         $this->setLabel("Adds a logDebug method to the service.");
         $this->setLearnMore('See the <a href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#logdebug-method">logDebug method convention</a> for more details.');
-        $this->container = null;
-        $this->util = null;
     }
 
-
-    /**
-     * @implementation
-     */
-    public function setContainer(LightServiceContainerInterface $container)
-    {
-        $this->container = $container;
-    }
 
     /**
      * @overrides
      */
     public function prepare()
     {
-
-
-        $util = $this->container->get("developer_wizard")->getServiceManagerUtil();
-        $planetName = $this->getContextVar("planet");
-        $galaxyName = $this->getContextVar("galaxy");
-        $util->setPlanet($planetName, $galaxyName);
-        $util->setContainer($this->container);
-        $this->util = $util;
-
+        parent::prepare();
+        $classPath = $this->util->getBasicServiceClassPath();
+        if (false === file_exists($classPath)) {
+            return 'Missing the service class file (' . $this->getSymbolicPath($classPath) . ').';
+        }
     }
 
 
@@ -78,8 +49,6 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
 
 
         $util = $this->util;
-
-
         $planetIdentifier = $util->getPlanetIdentifier();
         $planetName = $this->getContextVar("planet");
         $serviceName = $util->getServiceName();
@@ -152,8 +121,6 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardBaseProcess im
             $this->infoMessage("Adding useDebug option to the service config file \"$serviceConfigFile\".");
             $util->addConfigOption('useDebug', false, ['inlineComment' => '         # default is false']);
         }
-
-
 
 
         // add hook

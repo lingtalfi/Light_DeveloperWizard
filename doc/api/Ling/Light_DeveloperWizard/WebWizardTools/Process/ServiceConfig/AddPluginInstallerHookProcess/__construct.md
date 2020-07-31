@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [AddPluginInstallerHookProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess.php#L35-L43)
+See the source code for method [AddPluginInstallerHookProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess.php#L20-L26)
 
 
 See Also
@@ -54,5 +54,5 @@ See Also
 
 The [AddPluginInstallerHookProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess.md) class.
 
-Next method: [setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess/setContainer.md)<br>
+Next method: [prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess/prepare.md)<br>
 

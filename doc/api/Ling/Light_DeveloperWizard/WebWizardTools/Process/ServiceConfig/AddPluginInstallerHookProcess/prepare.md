@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [AddPluginInstallerHookProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess.php#L57-L66)
+See the source code for method [AddPluginInstallerHookProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess.php#L32-L41)
 
 
 See Also
@@ -54,5 +54,5 @@ See Also
 
 The [AddPluginInstallerHookProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess.md) class.
 
-Previous method: [setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess/setContainer.md)<br>Next method: [doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess/doExecute.md)<br>
+Previous method: [__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess/__construct.md)<br>Next method: [doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess/doExecute.md)<br>
 

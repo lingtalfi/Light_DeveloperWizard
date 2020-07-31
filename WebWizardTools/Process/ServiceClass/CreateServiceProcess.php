@@ -7,30 +7,15 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass;
 use Ling\Bat\FileSystemTool;
 use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
-use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
-use Ling\Light\ServiceContainer\LightServiceContainerInterface;
-use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardCommonProcess;
 
 
 /**
  * The CreateServiceProcess class.
  */
-class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements LightServiceContainerAwareInterface
+class CreateServiceProcess extends LightDeveloperWizardCommonProcess
 {
 
-
-    /**
-     * This property holds the container for this instance.
-     * @var LightServiceContainerInterface
-     */
-    protected $container;
-
-    /**
-     * This property holds the util for this instance.
-     * @var ServiceManagerUtil
-     */
-    protected $util;
 
     /**
      * @overrides
@@ -41,31 +26,6 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
         $this->setName("create-basic-service");
         $this->setLabel("Create a basic service.");
         $this->setLearnMore('See the <a href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service">basic service definition</a>.');
-        $this->container = null;
-        $this->util = null;
-    }
-
-
-    /**
-     * @implementation
-     */
-    public function setContainer(LightServiceContainerInterface $container)
-    {
-        $this->container = $container;
-    }
-
-    /**
-     * @overrides
-     */
-    public function prepare()
-    {
-
-        $util = $this->container->get("developer_wizard")->getServiceManagerUtil();
-        $planetName = $this->getContextVar("planet");
-        $galaxyName = $this->getContextVar("galaxy");
-        $util->setPlanet($planetName, $galaxyName);
-        $util->setContainer($this->container);
-        $this->util = $util;
     }
 
 
@@ -229,7 +189,6 @@ class CreateServiceProcess extends LightDeveloperWizardBaseProcess implements Li
             FileSystemTool::mkfile($dstPath, $content);
         }
     }
-
 
 
 }

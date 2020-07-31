@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-30
+2020-06-30 -> 2020-07-31
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.14.0 -- 2020-07-31
+
+    - add DisableServiceProcess, EnableServiceProcess and RemoveServiceProcess tasks
+    
 - 1.13.0 -- 2020-07-30
 
     - update GenerateLkaPlanetProcess, now generated class extends LightLingStandardServiceKitAdminPlugin

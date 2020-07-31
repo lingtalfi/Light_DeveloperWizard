@@ -358,6 +358,17 @@ class ServiceManagerUtil
 
 
     /**
+     * Returns the path to the create file for this service.
+     * See more about [create file](https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md).
+     *
+     * @return string
+     */
+    public function getCreateFilePath(): string
+    {
+        return $this->container->getApplicationDir() . "/universe/$this->galaxy/$this->planet/assets/fixtures/create-structure.sql";
+    }
+
+    /**
      * Returns the @page(tight planet name).
      *
      * @return string
@@ -735,7 +746,6 @@ class ServiceManagerUtil
     //--------------------------------------------
     //
     //--------------------------------------------
-
 
 
     /**

@@ -4,30 +4,17 @@
 namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass;
 
 
-use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
-use Ling\Light\ServiceContainer\LightServiceContainerInterface;
-use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
+use Ling\Bat\CaseTool;
+use Ling\Bat\ClassTool;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardCommonProcess;
 
 
 /**
  * The AddServiceLingBreeze2GetFactoryMethodProcess class.
  */
-class AddServiceLingBreeze2GetFactoryMethodProcess extends LightDeveloperWizardBaseProcess implements LightServiceContainerAwareInterface
+class AddServiceLingBreeze2GetFactoryMethodProcess extends LightDeveloperWizardCommonProcess
 {
 
-
-    /**
-     * This property holds the container for this instance.
-     * @var LightServiceContainerInterface
-     */
-    protected $container;
-
-    /**
-     * This property holds the util for this instance.
-     * @var ServiceManagerUtil
-     */
-    protected $util;
 
     /**
      * @overrides
@@ -38,32 +25,28 @@ class AddServiceLingBreeze2GetFactoryMethodProcess extends LightDeveloperWizardB
         $this->setName("create-service-get-factory-method");
         $this->setLabel("Adds a (LingBreeze 2) getFactory method to the service if it doesn't exist.");
         $this->setLearnMore('See the <a href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#getfactory-method">getFactory method convention</a> for more details.');
-        $this->container = null;
-        $this->util = null;
     }
 
-
-    /**
-     * @implementation
-     */
-    public function setContainer(LightServiceContainerInterface $container)
-    {
-        $this->container = $container;
-    }
 
     /**
      * @overrides
      */
     public function prepare()
     {
+        parent::prepare();
+        $classPath = $this->util->getBasicServiceClassPath();
+        if (false === file_exists($classPath)) {
+            return 'Missing the service class file (' . $this->getSymbolicPath($classPath) . ').';
+        }
 
 
-        $util = $this->container->get("developer_wizard")->getServiceManagerUtil();
-        $planetName = $this->getContextVar("planet");
-        $galaxyName = $this->getContextVar("galaxy");
-        $util->setPlanet($planetName, $galaxyName);
-        $util->setContainer($this->container);
-        $this->util = $util;
+        $planet = $this->util->getPlanetName();
+        $galaxy = $this->util->getGalaxyName();
+        $factoryName = 'Custom' . CaseTool::toFlexiblePascal($planet) . 'ApiFactory';
+        $factoryClass = $galaxy . "\\" . $planet . '\\Api\\Custom\\' . $factoryName;
+        if (false === ClassTool::isLoaded($factoryClass)) {
+            return "Factory class not found ($factoryClass). You can add it using the <a href='https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#generate-breeze-api'>Generate Breeze api</a> task";
+        }
 
     }
 

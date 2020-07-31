@@ -51,7 +51,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [GenerateLkaPlanetProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Generators/GenerateLkaPlanetProcess.php#L80-L408)
+See the source code for method [GenerateLkaPlanetProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Generators/GenerateLkaPlanetProcess.php#L53-L381)
 
 
 See Also

@@ -32,6 +32,19 @@ class GenerateBreezeApiProcess extends LightDeveloperWizardBaseProcess
 
 
     /**
+     * @overrides
+     */
+    public function prepare()
+    {
+        parent::prepare();
+        $createFileExists = $this->getContextVar("createFileExists");
+        if (false === $createFileExists) {
+            return 'Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file.</a>';
+        }
+
+    }
+
+    /**
      * @implementation
      */
     protected function doExecute(array $options = [])

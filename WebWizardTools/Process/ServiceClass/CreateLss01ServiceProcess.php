@@ -6,13 +6,12 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass;
 
 use Ling\Bat\FileSystemTool;
 use Ling\ClassCooker\FryingPan\Ingredient\ParentIngredient;
-use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 
 
 /**
  * The CreateLss01ServiceProcess class.
  */
-class CreateLss01ServiceProcess extends CreateServiceProcess implements LightServiceContainerAwareInterface
+class CreateLss01ServiceProcess extends CreateServiceProcess
 {
 
 

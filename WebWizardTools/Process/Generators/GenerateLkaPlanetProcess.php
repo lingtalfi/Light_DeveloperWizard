@@ -7,11 +7,9 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators;
 use Ling\Bat\CaseTool;
 use Ling\Bat\FileSystemTool;
 use Ling\ClassCooker\FryingPan\Ingredient\ParentIngredient;
-use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DatabaseInfo\Service\LightDatabaseInfoService;
-use Ling\Light_DeveloperWizard\Util\ServiceManagerUtil;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardCommonProcess;
 use Ling\Light_LingStandardService\Helper\LightLingStandardServiceHelper;
 use Ling\Light_UserDatabase\Service\LightUserDatabaseService;
 use Ling\SqlWizard\Util\MysqlStructureReader;
@@ -21,22 +19,10 @@ use Ling\UniverseTools\PlanetTool;
 /**
  * The GenerateLkaPlanetProcess class.
  */
-class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess implements LightServiceContainerAwareInterface
+class GenerateLkaPlanetProcess extends LightDeveloperWizardCommonProcess
 {
 
 
-    /**
-     * This property holds the container for this instance.
-     * @var LightServiceContainerInterface
-     */
-    protected $container;
-
-
-    /**
-     * This property holds the util for this instance.
-     * @var ServiceManagerUtil
-     */
-    protected $util;
 
     /**
      * @overrides
@@ -46,16 +32,6 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess implement
         parent::__construct();
         $this->setName("generate-lka-planet");
         $this->setLabel("Generates the Light_Kit_Admin planet plugin, to use your plugin in Light_Kit_Admin");
-        $this->container = null;
-        $this->util = null;
-    }
-
-    /**
-     * @implementation
-     */
-    public function setContainer(LightServiceContainerInterface $container)
-    {
-        $this->container = $container;
     }
 
     /**
@@ -63,16 +39,13 @@ class GenerateLkaPlanetProcess extends LightDeveloperWizardBaseProcess implement
      */
     public function prepare()
     {
+        parent::prepare();
+        $createFileExists = $this->getContextVar("createFileExists");
+        if (false === $createFileExists) {
+            return 'Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file.</a>';
+        }
 
-        $util = $this->container->get("developer_wizard")->getServiceManagerUtil();
-        $planetName = $this->getContextVar("planet");
-        $galaxyName = $this->getContextVar("galaxy");
-        $util->setPlanet($planetName, $galaxyName);
-        $util->setContainer($this->container);
-        $this->util = $util;
     }
-
-
 
     /**
      * @implementation
