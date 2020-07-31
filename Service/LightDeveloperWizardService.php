@@ -294,6 +294,7 @@ class LightDeveloperWizardService
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <script src="/libs/universe/Ling/Jquery/3.5.1/jquery.min.js"></script>
+            <script src="/libs/universe/Ling/JBee/bee.js"></script>
             <title>Light Developer Wizard</title>
             <style>
                 .topmenu {
@@ -446,10 +447,15 @@ class LightDeveloperWizardService
                     //----------------------------------------
                     $('#input-whitelist-toggle').on('change', function () {
                         var isChecked = $(this).prop("checked");
+                        var whitelist = "0";
                         if (true === isChecked) {
-                            window.location.href += "#";
-                            location.reload();
+                            whitelist = "1";
                         }
+                        var url = window.location.href;
+                        var newUrl = bee.url_merge_params(url, {
+                            whitelist: whitelist,
+                        });
+                        window.location.href = newUrl;
                     });
 
                 });

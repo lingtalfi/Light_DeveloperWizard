@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.16.0 -- 2020-07-31
+
+    - add whitelist system to filter planets
+
 - 1.15.1 -- 2020-07-31
 
     - fix RemoveServiceProcess not removing standard asset path
