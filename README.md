@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.15.0 -- 2020-07-31
+
+    - update RemoveServiceProcess, now also uninstalls the plugin if available
+    
 - 1.14.0 -- 2020-07-31
 
     - add DisableServiceProcess, EnableServiceProcess and RemoveServiceProcess tasks

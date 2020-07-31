@@ -241,6 +241,9 @@ This task removes every file listed below (except for the $appDir):
 ----- www/plugins/$pluginName/
 
 
+If the removed service class was registered to the [plugin_installer](https://github.com/lingtalfi/Light_PluginInstaller) service,
+then the uninstall method will be called before the class file is removed. 
+
 
 
 
