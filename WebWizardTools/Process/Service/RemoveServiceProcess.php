@@ -45,17 +45,17 @@ class RemoveServiceProcess extends LightDeveloperWizardCommonProcess
             $appDir . "/config/services/$planet.byml.dis",
             $appDir . "/templates/$planet",
             $appDir . "/universe/$galaxy/$planet",
+            $appDir . "/www/libs/universe/$galaxy/$planet",
             $appDir . "/www/plugins/$planet",
         ];
 
 
-
-        if(true === $this->container->has('plugin_installer')){
+        if (true === $this->container->has('plugin_installer')) {
             /**
              * @var $pluginInstaller LightPluginInstallerService
              */
             $pluginInstaller = $this->container->get('plugin_installer');
-            if(true===$pluginInstaller->isRegistered($planet)){
+            if (true === $pluginInstaller->isRegistered($planet)) {
                 $pluginInstaller->uninstall($planet);
             }
         }

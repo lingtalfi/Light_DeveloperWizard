@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.15.1 -- 2020-07-31
+
+    - fix RemoveServiceProcess not removing standard asset path
+
 - 1.15.0 -- 2020-07-31
 
     - update RemoveServiceProcess, now also uninstalls the plugin if available

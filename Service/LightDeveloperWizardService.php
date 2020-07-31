@@ -4,9 +4,7 @@
 namespace Ling\Light_DeveloperWizard\Service;
 
 
-use Ling\Bat\CaseTool;
-use Ling\Bat\ClassTool;
-use Ling\Light\Helper\LightNamesAndPathHelper;
+use Ling\Bat\SessionTool;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
@@ -18,11 +16,11 @@ use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateLkaPlan
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Service\DisableServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Service\EnableServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Service\RemoveServiceProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceConfig\AddPluginInstallerHookProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\AddServiceLingBreeze2GetFactoryMethodProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\AddServiceLogDebugMethodProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\CreateLss01ServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\CreateServiceProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceConfig\AddPluginInstallerHookProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\WebWizard\LightDeveloperWizardWebWizard;
 use Ling\Light_PluginInstaller\Service\LightPluginInstallerService;
 use Ling\UniverseTools\PlanetTool;
@@ -48,12 +46,29 @@ class LightDeveloperWizardService
 
 
     /**
+     * This property holds the options for this instance.
+     *
+     * Available options:
+     * - whitelist: array of @page(planetIds) to display
+     *
+     * Note that the gui should let you toggle between displaying only elements on the whitelist, and all elements, at least
+     * that's the intent.
+     *
+     *
+     *
+     * @var array
+     */
+    protected $options;
+
+
+    /**
      * Builds the LightDeveloperWizardService instance.
      */
     public function __construct()
     {
         $this->container = null;
         $this->serviceManagerUtil = null;
+        $this->options = [];
     }
 
     /**
@@ -64,6 +79,16 @@ class LightDeveloperWizardService
     public function setContainer(LightServiceContainerInterface $container)
     {
         $this->container = $container;
+    }
+
+    /**
+     * Sets the options.
+     *
+     * @param array $options
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
     }
 
 
@@ -125,7 +150,30 @@ class LightDeveloperWizardService
             1 === $guiDisplay
         ) {
             if (null === $selectedPlanetDir) {
+
+                $sessionKey = 'Light_Developer_Wizard.useWhitelist';
+                if (array_key_exists("whitelist", $_GET)) {
+                    $useWhiteList = (bool)$_GET['whitelist'];
+                    SessionTool::set($sessionKey, (string)$useWhiteList);
+                } else {
+                    $useWhiteList = (bool)SessionTool::get($sessionKey, "0");
+                }
+
+
                 $planetDirs = PlanetTool::getPlanetDirs($universeDir);
+                $whiteList = $this->options['whitelist'] ?? [];
+
+
+                if (true === $useWhiteList && (count($whiteList) > 0)) {
+                    $planetDirs = array_filter($planetDirs, function ($planetDir) use ($whiteList) {
+                        $p = explode('/', $planetDir);
+                        $planet = array_pop($p);
+                        $galaxy = array_pop($p);
+                        $planetId = $galaxy . "/" . $planet;
+                        return in_array($planetId, $whiteList, true);
+                    });
+                }
+
             } else {
 
 
@@ -146,7 +194,6 @@ class LightDeveloperWizardService
 //                $serviceName = LightNamesAndPathHelper::getServiceName($planet);
                 $serviceConfigFile = $container->getApplicationDir() . "/config/services/$planet.byml";
                 $serviceConfigFileExists = file_exists($serviceConfigFile);
-
 
 
                 $ww = new LightDeveloperWizardWebWizard();
@@ -181,7 +228,6 @@ class LightDeveloperWizardService
                 ]);
                 $ww->setOnProcessSuccessMessage('
             <a href="?planetdir=' . htmlspecialchars($planetDir) . '">Click here to continue</a>');
-
 
 
                 $ww->run();
@@ -237,7 +283,6 @@ class LightDeveloperWizardService
             }
 
 
-
         }
 
         ?>
@@ -275,6 +320,10 @@ class LightDeveloperWizardService
                     color: #ccc;
                 }
 
+                .form-elements input {
+
+                }
+
             </style>
         </head>
 
@@ -289,9 +338,17 @@ class LightDeveloperWizardService
 
         <?php if (0 === $guiDisplay): ?>
             <h1>Welcome to the Light_DeveloperWizard script</h1>
-            <p>
+            <div class="form-elements">
                 Please select a planet <input id="search-input" type="text" value=""/>
-            </p>
+                <label>
+                    <input id="input-whitelist-toggle" type="checkbox"
+                        <?php if (true === $useWhiteList): ?>
+                            checked
+                        <?php endif; ?>
+                    /> Use whitelist
+                </label>
+
+            </div>
 
             <ul id="planet-list">
                 <?php foreach ($planetDirs as $planetDir):
@@ -381,9 +438,20 @@ class LightDeveloperWizardService
                         }, 250);
                         $(this).data('timer', wait);
                     });
-
-
                     jSearch.focus();
+
+
+                    //----------------------------------------
+                    // WHITELIST TOGGLE
+                    //----------------------------------------
+                    $('#input-whitelist-toggle').on('change', function () {
+                        var isChecked = $(this).prop("checked");
+                        if (true === isChecked) {
+                            window.location.href += "#";
+                            location.reload();
+                        }
+                    });
+
                 });
             });
         </script>

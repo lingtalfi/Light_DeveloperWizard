@@ -3,3 +3,8 @@ developer_wizard:
     methods:
         setContainer:
             container: @container()
+        setOptions:
+            options:
+                whitelist:
+                    - Ling/Light_Kit_Admin_TaskScheduler
+                    - Ling/Light_Train

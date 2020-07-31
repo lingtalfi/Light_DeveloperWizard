@@ -238,6 +238,7 @@ This task removes every file listed below (except for the $appDir):
 ----- config/services/$pluginName.byml.dis
 ----- templates/$pluginName/
 ----- universe/$galaxy/$pluginName/
+----- www/libs/universe/$galaxy/$pluginName/
 ----- www/plugins/$pluginName/
 
 
