@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.17.0 -- 2020-07-31
+
+    - update AddPluginInstallerHookProcess, now disable the task if the hook is already added 
+    
 - 1.16.1 -- 2020-07-31
 
     - add target=_blank to links

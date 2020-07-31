@@ -38,6 +38,20 @@ class AddPluginInstallerHookProcess extends LightDeveloperWizardCommonProcess
             $x = $this->getSymbolicPath($confFile);
             $this->setDisabledReason("Service config file missing ($x not found).");
         }
+
+        $serviceName = $util->getServiceName();
+        $planet = $util->getPlanetName();
+
+        if (true === $util->configHasHook('plugin_installer', [
+                "with" => [
+                    'method' => 'registerPlugin',
+                    'args' => [
+                        'plugin' => $planet,
+                    ],
+                ],
+            ])) {
+            $this->setDisabledReason("The service config file already has a hook to the \"$serviceName\" service (for planet \"$planet\").");
+        }
     }
 
     /**
