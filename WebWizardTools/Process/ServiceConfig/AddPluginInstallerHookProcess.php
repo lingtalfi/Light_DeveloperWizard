@@ -22,7 +22,7 @@ class AddPluginInstallerHookProcess extends LightDeveloperWizardCommonProcess
         parent::__construct();
         $this->setName("add-plugin_installer-hook");
         $this->setLabel("Adds a hook to the plugin_installer service.");
-        $this->setLearnMore('See the <a href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#add-plugin_installer-hook">Add plugin_install hook task detail</a>.');
+        $this->setLearnMore('See the <a target="_blank" href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#add-plugin_installer-hook">Add plugin_install hook task detail</a>.');
     }
 
 

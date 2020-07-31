@@ -23,7 +23,7 @@ class RemoveServiceProcess extends LightDeveloperWizardCommonProcess
         parent::__construct();
         $this->setName("remove-service");
         $this->setLabel("Removes a service completely.");
-        $this->setLearnMore('See the <a href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#remove-service">Remove service task detail</a>.');
+        $this->setLearnMore('See the <a target="_blank" href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#remove-service">Remove service task detail</a>.');
     }
 
 

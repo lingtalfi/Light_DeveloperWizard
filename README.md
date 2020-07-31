@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.16.1 -- 2020-07-31
+
+    - add target=_blank to links
+
 - 1.16.0 -- 2020-07-31
 
     - add whitelist system to filter planets

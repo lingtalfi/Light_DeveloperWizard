@@ -8,3 +8,4 @@ developer_wizard:
                 whitelist:
                     - Ling/Light_Kit_Admin_TaskScheduler
                     - Ling/Light_Train
+                    - Ling/Light_UserPreferences
