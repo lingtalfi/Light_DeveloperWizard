@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-07-31
+2020-06-30 -> 2020-08-03
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.17.1 -- 2020-08-03
+
+    - fix ServiceManagerUtil->configHasHook throwing exception when service file doesn't exist
+    
 - 1.17.0 -- 2020-07-31
 
     - update AddPluginInstallerHookProcess, now disable the task if the hook is already added 

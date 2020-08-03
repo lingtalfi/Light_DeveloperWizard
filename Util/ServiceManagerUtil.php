@@ -518,26 +518,29 @@ class ServiceManagerUtil
 
 
         $serviceFile = $this->getBasicServiceConfigPath();
-        $conf = BabyYamlUtil::readFile($serviceFile);
-        $hookKey = '$' . $serviceName . ".methods_collection"; // assuming the hooks are using methods_collection technique (i.e. not setMethods)
-        if (array_key_exists($hookKey, $conf)) {
-            if (null === $withMethod) {
-                return true;
-            } else {
+        if (file_exists($serviceFile)) {
 
-                $methods = $conf[$hookKey];
-                foreach ($methods as $method) {
+            $conf = BabyYamlUtil::readFile($serviceFile);
+            $hookKey = '$' . $serviceName . ".methods_collection"; // assuming the hooks are using methods_collection technique (i.e. not setMethods)
+            if (array_key_exists($hookKey, $conf)) {
+                if (null === $withMethod) {
+                    return true;
+                } else {
 
-                    if ($withMethod === $method['method']) {
-                        if (null === $withArgs) {
-                            return true;
-                        } else {
+                    $methods = $conf[$hookKey];
+                    foreach ($methods as $method) {
 
-                            if (array_key_exists("args", $method)) {
-                                $args = $method['args'];
-                                foreach ($withArgs as $withKey => $withValue) {
-                                    if (true === array_key_exists($withKey, $args) && $withValue === $args[$withKey]) {
-                                        return true;
+                        if ($withMethod === $method['method']) {
+                            if (null === $withArgs) {
+                                return true;
+                            } else {
+
+                                if (array_key_exists("args", $method)) {
+                                    $args = $method['args'];
+                                    foreach ($withArgs as $withKey => $withValue) {
+                                        if (true === array_key_exists($withKey, $args) && $withValue === $args[$withKey]) {
+                                            return true;
+                                        }
                                     }
                                 }
                             }
