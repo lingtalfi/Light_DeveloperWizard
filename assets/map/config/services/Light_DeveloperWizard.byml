@@ -7,5 +7,6 @@ developer_wizard:
             options:
                 whitelist:
                     - Ling/Light_Kit_Admin_TaskScheduler
+                    - Ling/Light_Kit_Admin_Train
                     - Ling/Light_Train
                     - Ling/Light_UserPreferences

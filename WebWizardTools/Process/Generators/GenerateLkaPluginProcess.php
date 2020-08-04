@@ -486,7 +486,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
                 'Light_TaskScheduler',
                 '    - tables.lts_task_schedule.create',
             ], [
-                $planet,
+                $originPlanet,
                 $sTables,
             ], $tplContent);
             FileSystemTool::mkfile($path, $tplContent);
@@ -550,6 +550,29 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
                 'menu_type' => 'admin_main_menu',
             ]);
         }
+
+
+
+        if(true === $useController){
+            $this->addServiceConfigHook('controller_hub', [
+                'method' => 'registerHandler',
+                'args' => [
+                    'plugin' => $planet,
+                    'handler' => [
+                        'instance' => "Ling\\$planet\ControllerHub\Generated\\${tightName}ControllerHubHandler",
+                        'methods' => [
+                            'setContainer' => [
+                                'container' => '@container()',
+                            ],
+                        ],
+                    ],
+                ],
+            ], [
+                'plugin' => $planet,
+            ]);
+        }
+
+
 
 
         if (true === $useForm) {
@@ -651,6 +674,16 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
 
             $this->addServiceConfigHook('realist', [
                 'method' => 'registerActionHandler',
+                'args' => [
+                    'renderer' => [
+                        'instance' => "Ling\Light_Kit_Admin\Realist\ActionHandler\LightKitAdminRealistActionHandler",
+                    ],
+                ],
+            ]);
+
+
+            $this->addServiceConfigHook('realist', [
+                'method' => 'registerListActionHandler',
                 'args' => [
                     'plugin' => $planet,
                     'renderer' => [

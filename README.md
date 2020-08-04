@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.18.1 -- 2020-08-04
+
+    - fix various bugs in "create lka planet" and "execute lka generator config file" tasks
+    
 - 1.18.0 -- 2020-08-04
 
     - add "Create lka planet" and "Execute the lka generator config file" tasks
