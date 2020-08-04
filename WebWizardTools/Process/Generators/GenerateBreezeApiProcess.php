@@ -28,6 +28,7 @@ class GenerateBreezeApiProcess extends LightDeveloperWizardBaseProcess
         parent::__construct();
         $this->setName("generate-breeze-api");
         $this->setLabel("Generate the api from the create file (using Ling Breeze Generator 2)");
+        $this->setLearnMoreByHash('generate-breeze-api');
     }
 
 

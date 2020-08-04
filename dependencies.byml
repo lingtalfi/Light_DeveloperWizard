@@ -10,6 +10,7 @@ dependencies:
         - WebWizardTools
         - SqlWizard
         - Light_DatabaseInfo
+        - Light_Kit_Admin_Generator
         - Light_LingStandardService
         - Light_UserDatabase
         - Light_ControllerHub

@@ -23,7 +23,7 @@ class CreateLss01ServiceProcess extends CreateServiceProcess
         parent::__construct();
         $this->setName("create-lss01-service");
         $this->setLabel("Create a lss01 service.");
-        $this->setLearnMore('See the <a target="_blank" href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#ling-standard-service-01">lss01 definition</a>.');
+        $this->setLearnMoreByHash('create-lss01-service-process');
     }
 
 

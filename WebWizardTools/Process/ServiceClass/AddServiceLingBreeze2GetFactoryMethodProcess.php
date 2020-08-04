@@ -24,7 +24,7 @@ class AddServiceLingBreeze2GetFactoryMethodProcess extends LightDeveloperWizardC
         parent::__construct();
         $this->setName("create-service-get-factory-method");
         $this->setLabel("Adds a (LingBreeze 2) getFactory method to the service if it doesn't exist.");
-        $this->setLearnMore('See the <a target="_blank" href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#getfactory-method">getFactory method convention</a> for more details.');
+        $this->setLearnMoreByHash('add-getfactory-method');
     }
 
 

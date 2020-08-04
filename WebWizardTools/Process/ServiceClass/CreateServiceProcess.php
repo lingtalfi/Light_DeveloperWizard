@@ -25,7 +25,7 @@ class CreateServiceProcess extends LightDeveloperWizardCommonProcess
         parent::__construct();
         $this->setName("create-basic-service");
         $this->setLabel("Create a basic service.");
-        $this->setLearnMore('See the <a target="_blank" href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service">basic service definition</a>.');
+        $this->setLearnMoreByHash('create-service-process');
     }
 
 

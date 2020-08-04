@@ -46,7 +46,7 @@ Returns [ServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/
 
 Source Code
 ===========
-See the source code for method [LightDeveloperWizardService::getServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Service/LightDeveloperWizardService.php#L100-L106)
+See the source code for method [LightDeveloperWizardService::getServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Service/LightDeveloperWizardService.php#L101-L107)
 
 
 See Also

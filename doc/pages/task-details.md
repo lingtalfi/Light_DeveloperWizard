@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-07-31
+2020-07-09 -> 2020-08-04
 
 
 
@@ -13,6 +13,10 @@ Task details
 - Generators
     - [Generate breeze api](#generate-breeze-api)
     - [Generate Light_Kit_Admin plugin](#generate-light_kit_admin-plugin)
+    - [Execute the lka generator config file](#execute-the-lka-generator-config-file)
+- Planet
+    - [Remove planet](#remove-planet)
+    - [Create lka planet](#create-lka-planet)
 - ServiceClass
     - [Add getFactory method](#add-getfactory-method)
     - [Add logDebug method](#add-logdebug-method)
@@ -22,7 +26,6 @@ Task details
     - [Add plugin_installer hook](#add-plugin_installer-hook)
 
 - Service
-    - [Remove service](#remove-service)
     - [Disable service](#disable-service)
     - [Enable service](#enable-service)
 
@@ -85,6 +88,66 @@ Adds [light standard permissions](https://github.com/lingtalfi/TheBar/blob/maste
 
 
 
+Create lka planet
+----------
+2020-08-04
+
+Creates the corresponding [Light_Kit_Admin](https://github.com/lingtalfi/Light_Kit_Admin) planet.
+
+Pre-requisites:
+
+- your planet name must start with the **Light_** prefix
+- your planet should contain a [create file](https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md);
+    this is used to generate the **lka generator config file** (the Light_Kit_Admin plugin doesn't have a **create file** of its own, but uses the one from
+    the planet it originates from instead)
+
+
+
+For instance, if your planet name is Light_XXX, the Light_Kit_Admin_XXX planet will be created.
+
+We generate the service class file, the service config file, and the lka generator config file.
+
+
+Note that this task generates only a basic shell, but usually you want to launch the [execute lka generator](#execute-the-lka-generator-config-file) task after, in order
+to make the plugin useful.
+
+
+
+The generated files are:
+
+```txt
+- $appDir/
+----- config/
+--------- data/
+------------- Light_Kit_Admin_MyPlanet/
+----------------- Light_Kit_Admin_Generator/
+--------------------- kit_admin_my_planet.generated.byml
+--------- services/
+------------- Light_Kit_Admin_MyPlanet.byml
+----- universe/
+--------- Ling/
+------------- Light_Kit_Admin_MyPlanet/
+----------------- Service/
+--------------------- LightKitAdminMyPlanetService.php
+```
+
+
+
+The service configuration file will contain a hook to the [plugin_installer service](https://github.com/lingtalfi/Light_PluginInstaller), like this:
+
+
+```yaml
+$plugin_installer.methods_collection:
+    -
+        method: registerPlugin
+        args:
+            plugin: Light_Kit_Admin_XXX
+            installer: @service(kit_admin_xxx)
+```
+
+
+
+
 Create service process
 ----------
 2020-07-09
@@ -120,29 +183,49 @@ The files are only created if they don't exist.
 
 
 
-Generate breeze api
+Execute the lka generator config file
 ----------
-2020-07-09
+2020-08-03 -> 2020-08-04
 
 
-We create the breeze api for the given planet.
-The generator used is the [LingBreezeGenerator 2](https://github.com/lingtalfi/Light_BreezeGenerator/blob/master/doc/pages/ling-breeze-generator-2.md).
+Pre-requisites:
 
-All the classes will be generated in the **Api** directory at the root of your planet directory.
-
+- the planet name must start with the **Light_Kit_Admin_** prefix
 
 
-Generate Light_Kit_Admin plugin
-----------
-2020-07-09 -> 2020-07-30
+
+Executes the lka generator config file for the planet, using the [Light_Kit_Admin_Generator plugin](https://github.com/lingtalfi/Light_Kit_Admin_Generator).
 
 
-We create a light kit admin plugin for your planet, using the [Light_Kit_Admin_Generator](https://github.com/lingtalfi/Light_Kit_Admin_Generator) and our own tools.
+We also create the extra files required to make the plugin work.
+We also bind (if possible) the origin planet permissions to the Light_Kit_Admin.admin/user permission groups, as recommended in the [lka permissions documentation](https://github.com/lingtalfi/Light_Kit_Admin/blob/master/doc/pages/permissions.md#plugin-authors-the-light_kit_admin-permission-philosophy).
 
-This only works if you have a [create file](https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md).
+
+We also add the necessary hooks in the service config file, depending on the lka generator config.
 
 
-If your [planet identifier](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/nomenclature.md#planet-identifier) is **Ling/Light_MyPlanet**, and you have only one table named **mpl_bottles**, then the following will be created:
+
+
+The executed config file's is the first one found in the following locations:
+
+
+- $appDir/config/data/$planetName/Light_Kit_Admin_Generator/$serviceName.byml 
+- $appDir/config/data/$planetName/Light_Kit_Admin_Generator/$serviceName.generated.byml
+
+
+Note: to create the generated config file version, you can use the [Generate Light_Kit_Admin generator config file](#generate-light_kit_admin-generator-config-file) task.
+
+ 
+
+Depending on the lka generator config, we create/remove the necessary classes and files.
+
+Note that we only remove generated class, and never a class written by a human. 
+
+
+
+
+Details about the generation process.
+Executing the lka generator alone can generate at most those files:
 
 
 ```txt
@@ -161,28 +244,46 @@ If your [planet identifier](https://github.com/lingtalfi/UniverseTools/blob/mast
 ----------------- Light_ChloroformExtension/
 --------------------- generated/
 ------------------------- kit_admin_my_planet.table_list.byml
------------------ Light_Kit_Admin/
---------------------- lka-options.generated.byml
------------------ Light_Kit_Admin_Generator/
---------------------- kit_admin_my_planet.generated.byml
------------------ Light_MicroPermission/
---------------------- kit_admin_my_planet.profile.generated.byml
 ----------------- Light_RealForm/
 --------------------- generated/
 ------------------------- mpl_bottles.byml
 ----------------- Light_Realist/
 --------------------- generated/
 ------------------------- mpl_bottles.byml
---------- services/
-------------- Light_Kit_Admin_MyPlanet.byml
 ----- universe/
 --------- Ling/
 ------------- Light_Kit_Admin_MyPlanet/
------------------ Controller/
+----------------- Controller/                                
 --------------------- Generated/
 ------------------------- Base/
 ----------------------------- RealGenController.php
 ------------------------- MplBottlesController.php
+``` 
+
+Which files are generated precisely depends on your **lka generator config**, especially the following options:
+
+- use_list  
+- use_form  
+- use_menu  
+- use_controller
+
+
+At this point, half the work is done, but we still need to generate some files.
+So our task will create at most all the following, depending on the **lka generator config**:
+
+
+```txt
+- $appDir/
+----- config/
+--------- data/
+------------- Light_Kit_Admin_MyPlanet/
+----------------- Light_Kit_Admin/
+--------------------- lka-options.generated.byml
+----------------- Light_MicroPermission/
+--------------------- kit_admin_my_planet.profile.generated.byml
+----- universe/
+--------- Ling/
+------------- Light_Kit_Admin_MyPlanet/
 ----------------- ControllerHub/
 --------------------- Generated/
 ------------------------- LightKitAdminMyPlanetControllerHub.php
@@ -190,16 +291,178 @@ If your [planet identifier](https://github.com/lingtalfi/UniverseTools/blob/mast
 --------------------- Generated/
 ------------------------- LightKitAdminMyPlanetLkaPlugin.php
 ```
+  
+
+In details:
+
+- the **lka-options.generated.byml** file is generated if **use_form** is true:
+- the **Light_MicroPermission** is always generated
+- the **ControllerHub** is generated if **use_controller** is true
+- the **LightKitAdminPlugin** is always generated
 
 
-We also create the service class file, if it's not already created, and make it extend the [Ling Standard Service Kit Admin Plugin](https://github.com/lingtalfi/Light_LingStandardService/blob/master/doc/pages/conception-notes.md#ling-standard-service-kit-admin-plugin) class
-if possible (i.e. if it doesn't extend another class already).
+
+Assumptions (@developer):
+
+This task assumes that a few properties exist in the lka generator config file, in order to work properly:
+
+- variables.tables should be defined
+- variables.galaxyName must be defined
+- create_file must be defined
 
 
-In addition to that, we automatically register the plugin to the [PluginInstaller service](https://github.com/lingtalfi/Light_PluginInstaller).
 
 
-We also bind the [light standard permissions](https://github.com/lingtalfi/TheBar/blob/master/discussions/light-standard-permissions.md) of the plugin, if any, to the corresponding **lka permission groups**. 
+For the service hooks details, the following hooks are potentially added:
+
+```yaml
+$bmenu.methods_collection:
+    -
+        method: addDefaultItemByFile
+        args:
+            menu_type: admin_main_menu
+            file: ${app_dir}/config/data/Light_Kit_Admin_XXX/bmenu/generated/kit_admin_xxx.admin_mainmenu_1.byml
+
+$chloroform_extension.methods_collection:
+    -
+        method: registerTableListConfigurationHandler
+        args:
+            plugin: Light_Kit_Admin_XXX
+            handler:
+                instance: Ling\Light_Kit_Admin\ChloroformExtension\LightKitAdminTableListConfigurationHandler
+                methods:
+                    setConfigurationFile:
+                        files:
+                            - ${app_dir}/config/data/Light_Kit_Admin_XXX/Light_ChloroformExtension/generated/kit_admin_xxx.table_list.byml
+
+
+
+$controller_hub.methods_collection:
+    -
+        method: registerHandler
+        args:
+            plugin: Light_Kit_Admin_XXX
+            handler:
+                instance: Ling\Light_Kit_Admin_XXX\ControllerHub\Generated\LightKitAdminXXXControllerHubHandler
+                methods:
+                    setContainer:
+                        container: @container()
+
+$crud.methods_collection:
+    -
+        method: registerHandler
+        args:
+            pluginId: Light_Kit_Admin_XXX
+            handler:
+                instance: Ling\Light_Kit_Admin\Crud\CrudRequestHandler\LightKitAdminCrudRequestHandler
+
+$kit_admin.methods_collection:
+    -
+        method: registerPlugin
+        args:
+            pluginName: Light_Kit_Admin_XXX
+            plugin:
+                instance: Ling\Light_Kit_Admin_XXX\LightKitAdminPlugin\Generated\LightKitAdminXXXLkaPlugin
+                methods:
+                    setOptionsFile:
+                        file: ${app_dir}/config/data/Light_Kit_Admin_XXX/Light_Kit_Admin/lka-options.generated.byml
+
+$micro_permission.methods_collection:
+    -
+        method: registerMicroPermissionsByProfile
+        args:
+            file: ${app_dir}/config/data/Light_Kit_Admin_XXX/Light_MicroPermission/kit_admin_xxx.profile.generated.byml
+
+
+
+$realform.methods_collection:
+    -
+        method: registerFormHandler
+        args:
+            plugin: Light_Kit_Admin_XXX
+            handler:
+                instance: Ling\Light_Kit_Admin\Realform\Handler\LightKitAdminRealformHandler
+                methods:
+                    setConfDir:
+                        dir: ${app_dir}/config/data/Light_Kit_Admin_XXX/Light_Realform
+
+$realist.methods_collection:
+    -
+        method: registerListRenderer
+        args:
+            identifier: Light_Kit_Admin_XXX
+            renderer:
+                instance: Ling\Light_Kit_Admin\Realist\Rendering\LightKitAdminRealistListRenderer
+    -
+        method: registerRealistRowsRenderer
+        args:
+            identifier: Light_Kit_Admin_XXX
+            renderer:
+                instance: Ling\Light_Kit_Admin\Realist\Rendering\LightKitAdminRealistRowsRenderer
+    -
+        method: registerActionHandler
+        args:
+            renderer:
+                instance: Ling\Light_Kit_Admin\Realist\ActionHandler\LightKitAdminRealistActionHandler
+    -
+        method: registerListActionHandler
+        args:
+            plugin: Light_Kit_Admin_XXX
+            renderer:
+                instance: Ling\Light_Kit_Admin\Realist\ListActionHandler\LightKitAdminListActionHandler
+    -
+        method: registerListGeneralActionHandler
+        args:
+            plugin: Light_Kit_Admin_XXX
+            renderer:
+                instance: Ling\Light_Kit_Admin\Realist\ListGeneralActionHandler\LightKitAdminListGeneralActionHandler
+                
+                
+```
+
+
+Those hooks are added depending on the **lka generator config** properties:
+
+- bmenu hook is added if **use_menu** is true 
+- chloroform_extension hook is added if **use_form** is true 
+- controller_hub hook is added if **use_controller** is true 
+- crud hook is added if **use_form** is true
+- kit_admin hook is added if **use_form** is true
+- micro_permission hook is always added  
+- realform hook is added if **use_form** is true
+- realist hook is added if **use_list** is true
+
+
+
+
+
+
+
+
+Generate breeze api
+----------
+2020-07-09
+
+
+We create the breeze api for the given planet.
+The generator used is the [LingBreezeGenerator 2](https://github.com/lingtalfi/Light_BreezeGenerator/blob/master/doc/pages/ling-breeze-generator-2.md).
+
+All the classes will be generated in the **Api** directory at the root of your planet directory.
+
+
+
+Generate Light_Kit_Admin plugin
+----------
+2020-07-09 -> 2020-08-04
+
+
+This task has been divided into two sub-tasks, to make the workflow more flexible.
+You can execute them in order to get the desired effect.
+
+
+
+- [Create lka planet](#create-lka-planet)
+- [Executes the lka generator config file](#execute-the-lka-generator-config-file)
 
 
 
@@ -217,14 +480,16 @@ We synchronize the current db with your [create file](https://github.com/lingtal
 
 
 
-Remove service
+Remove planet
 -------------
-2020-07-30 -> 2020-07-31
+2020-08-04
 
+
+Removes a light planet and all related files.
 
 Be careful, for this task can be very destructive.
 
-Well, to avoid accidents, this task always backs up whats deleted in a cache directory in **/tmp/Light_DeveloperWizard/RemoveServiceProcess-backup**, just in case.
+Well, to avoid accidents, this task always backs up what is deleted in a cache directory in **/tmp/Light_DeveloperWizard/RemovePlanetProcess-backup**, just in case.
 
 
 
@@ -232,6 +497,8 @@ Well, to avoid accidents, this task always backs up whats deleted in a cache dir
 This task removes every file listed below (except for the $appDir):
 
 
+
+```txt
 - $appDir/
 ----- config/data/$pluginName/
 ----- config/services/$pluginName.byml
@@ -240,11 +507,20 @@ This task removes every file listed below (except for the $appDir):
 ----- universe/$galaxy/$pluginName/
 ----- www/libs/universe/$galaxy/$pluginName/
 ----- www/plugins/$pluginName/
+```
 
 
 If the removed service class was registered to the [plugin_installer](https://github.com/lingtalfi/Light_PluginInstaller) service,
 then the uninstall method will be called before the class file is removed. 
 
+
+
+
+Remove service
+-------------
+2020-07-30 -> 2020-08-04
+
+Alias for [remove planet](#remove-planet)
 
 
 

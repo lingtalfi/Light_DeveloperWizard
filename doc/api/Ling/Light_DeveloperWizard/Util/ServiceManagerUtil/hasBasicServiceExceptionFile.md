@@ -46,7 +46,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::hasBasicServiceExceptionFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L396-L400)
+See the source code for method [ServiceManagerUtil::hasBasicServiceExceptionFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L398-L402)
 
 
 See Also

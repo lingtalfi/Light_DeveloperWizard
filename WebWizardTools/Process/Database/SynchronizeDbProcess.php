@@ -28,6 +28,7 @@ class SynchronizeDbProcess extends LightDeveloperWizardBaseProcess
         parent::__construct();
         $this->setName("syncdb");
         $this->setLabel("Synchronize the current db with the create file (using Light_DbSynchronizer)");
+        $this->setLearnMoreByHash('synchronize-db');
     }
 
     /**

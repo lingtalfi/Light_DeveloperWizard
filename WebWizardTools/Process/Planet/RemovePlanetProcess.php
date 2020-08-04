@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Service;
+namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet;
 
 
 use Ling\Bat\FileSystemTool;
@@ -9,9 +9,9 @@ use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardCommon
 use Ling\Light_PluginInstaller\Service\LightPluginInstallerService;
 
 /**
- * The RemoveServiceProcess class.
+ * The RemovePlanetProcess class.
  */
-class RemoveServiceProcess extends LightDeveloperWizardCommonProcess
+class RemovePlanetProcess extends LightDeveloperWizardCommonProcess
 {
 
 
@@ -21,9 +21,9 @@ class RemoveServiceProcess extends LightDeveloperWizardCommonProcess
     public function __construct()
     {
         parent::__construct();
-        $this->setName("remove-service");
-        $this->setLabel("Removes a service completely.");
-        $this->setLearnMore('See the <a target="_blank" href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#remove-service">Remove service task detail</a>.');
+        $this->setName("remove-planet");
+        $this->setLabel("Removes a light planet completely.");
+        $this->setLearnMoreByHash('remove-planet');
     }
 
 
@@ -35,7 +35,7 @@ class RemoveServiceProcess extends LightDeveloperWizardCommonProcess
         $util = $this->util;
         $planet = $util->getPlanetName();
         $galaxy = $util->getGalaxyName();
-        $cacheDir = '/tmp/Light_DeveloperWizard/RemoveServiceProcess-backup';
+        $cacheDir = '/tmp/Light_DeveloperWizard/RemovePlanetProcess-backup';
         FileSystemTool::mkdir($cacheDir);
 
         $appDir = $this->container->getApplicationDir();

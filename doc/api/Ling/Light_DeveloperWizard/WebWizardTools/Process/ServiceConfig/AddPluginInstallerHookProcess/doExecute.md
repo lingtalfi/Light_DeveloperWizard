@@ -51,7 +51,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [AddPluginInstallerHookProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess.php#L60-L76)
+See the source code for method [AddPluginInstallerHookProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/ServiceConfig/AddPluginInstallerHookProcess.php#L65-L81)
 
 
 See Also

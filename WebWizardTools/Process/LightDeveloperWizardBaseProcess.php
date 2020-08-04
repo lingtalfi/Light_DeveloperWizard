@@ -52,6 +52,16 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
 
 
     /**
+     * Returns whether the given planet is a light planet.
+     * @param string $planet
+     * @return bool
+     */
+    protected function isLightPlanet(string $planet): bool
+    {
+        return (0 === strpos($planet, "Light_"));
+    }
+
+    /**
      * Returns the table prefix from either the preferences (if found), or guessed from the given createFile otherwise.
      *
      * @param string $planetDir
@@ -329,6 +339,22 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
             $this->infoMessage("Adding hook to the \"$serviceName\" service in \"$serviceConfigFile\".");
             $util->addConfigHook($serviceName, $methodItem);
         }
+    }
+
+
+    /**
+     * Sets the learnMore property based on the given hash.
+     *
+     * Note: the label must be set before you can use this method, otherwise results are unpredictable.
+     *
+     * @param string $hash
+     */
+    protected function setLearnMoreByHash(string $hash)
+    {
+        $label = trim($this->getLabel());
+        $label = rtrim($label, ".");
+
+        $this->setLearnMore('See the <a target="_blank" href="https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#' . $hash . '">' . $label . ' task detail</a>.');
     }
 
 

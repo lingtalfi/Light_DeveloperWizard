@@ -11,11 +11,12 @@ use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\Util\serviceManagerUtil;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Database\AddStandardPermissionsProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Database\SynchronizeDbProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\ExecuteLkaGeneratorProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateBreezeApiProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateLkaPlanetProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\CreateLkaPlanetProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\RemovePlanetProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Service\DisableServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Service\EnableServiceProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\Service\RemoveServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\AddServiceLingBreeze2GetFactoryMethodProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\AddServiceLogDebugMethodProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\CreateLss01ServiceProcess;
@@ -186,6 +187,21 @@ class LightDeveloperWizardService
                 $tightName = PlanetTool::getTightPlanetName($planet);
 
 
+                // show lka sibling link?
+                $lkaSiblingPlanet = null; // if not null, show it
+
+                $isLkaPlugin = (0 === strpos($planet, 'Light_Kit_Admin_'));
+                if (true === $isLkaPlugin) {
+                    $lkaSiblingPlanet = 'Light_' . substr($planet, 16);
+                } else {
+                    $lkaSiblingPlanet = 'Light_Kit_Admin_' . substr($planet, 6);
+                }
+                $lkaSiblingPlanetDir = $container->getApplicationDir() . "/universe/$galaxy/$lkaSiblingPlanet";
+                if (false === is_dir($lkaSiblingPlanetDir)) {
+                    $lkaSiblingPlanet = null;
+                }
+
+
                 $createFile = $planetDir . "/assets/fixtures/create-structure.sql";
                 $createFileExists = file_exists($createFile);
                 $serviceFile = $planetDir . "/Service/${tightName}Service.php";
@@ -202,15 +218,16 @@ class LightDeveloperWizardService
                 $ww->setProcess((new SynchronizeDbProcess()));
                 $ww->setProcess((new GenerateBreezeApiProcess()));
                 $ww->setProcess((new AddStandardPermissionsProcess()));
-                $ww->setProcess((new GenerateLkaPlanetProcess()));
+                $ww->setProcess((new CreateLkaPlanetProcess()));
                 $ww->setProcess((new CreateServiceProcess()));
                 $ww->setProcess((new AddServiceLogDebugMethodProcess()));
                 $ww->setProcess((new AddServiceLingBreeze2GetFactoryMethodProcess()));
                 $ww->setProcess((new CreateLss01ServiceProcess()));
                 $ww->setProcess((new AddPluginInstallerHookProcess()));
-                $ww->setProcess((new RemoveServiceProcess()));
+                $ww->setProcess((new RemovePlanetProcess()));
                 $ww->setProcess((new DisableServiceProcess()));
                 $ww->setProcess((new EnableServiceProcess()));
+                $ww->setProcess((new ExecuteLkaGeneratorProcess()));
 
 
                 $ww->setContext([
@@ -334,6 +351,11 @@ class LightDeveloperWizardService
         <div class="topmenu">
             <div class="item"><a href="?display=0">Wizard</a></div>
             <div class="item"><a href="?display=2">Plugin installer</a></div>
+            <?php if (1 === $guiDisplay && null !== $lkaSiblingPlanet): ?>
+                <div class="item"><a
+                            href="?planetdir=<?php echo htmlspecialchars($lkaSiblingPlanetDir); ?>"><?php echo $galaxy . "/" . $lkaSiblingPlanet; ?></a>
+                </div>
+            <?php endif; ?>
         </div>
 
 
