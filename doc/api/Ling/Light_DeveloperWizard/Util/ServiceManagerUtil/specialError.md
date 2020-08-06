@@ -62,7 +62,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::specialError](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L793-L803)
+See the source code for method [ServiceManagerUtil::specialError](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L785-L795)
 
 
 See Also

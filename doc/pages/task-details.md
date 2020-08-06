@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-08-04
+2020-07-09 -> 2020-08-06
 
 
 
@@ -24,6 +24,7 @@ Task details
     - [Create lss01 service process](#create-lss01-service-process)
 - ServiceConfig
     - [Add plugin_installer hook](#add-plugin_installer-hook)
+    - [Sort hooks alphabetically](#sort-hooks-alphabetically)
 
 - Service
     - [Disable service](#disable-service)
@@ -557,6 +558,24 @@ So for instance:
 becomes
 
 - $appDir/config/services/$pluginName.byml
+
+
+
+
+Sort hooks alphabetically
+------------
+2020-08-06
+
+
+
+Prerequisites:
+
+- the service config file must exist
+
+
+This tasks sorts the hooks found of the config file, in an alphabetical ascending order. 
+
+
 
 
 

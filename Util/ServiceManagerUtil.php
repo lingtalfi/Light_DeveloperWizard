@@ -11,6 +11,7 @@ use Ling\ClassCooker\ClassCooker;
 use Ling\Light\Helper\LightNamesAndPathHelper;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Exception\LightDeveloperWizardException;
+use Ling\Light_DeveloperWizard\Helper\ConfigSectionCommentHelper;
 use Ling\TokenFun\TokenFinder\Tool\TokenFinderTool;
 use Ling\UniverseTools\PlanetTool;
 use Ling\WebWizardTools\Process\WebWizardToolsProcess;
@@ -326,8 +327,6 @@ class ServiceManagerUtil
     }
 
 
-
-
     /**
      * Returns the absolute path to the @page(basic service) class path.
      * @return string
@@ -567,10 +566,7 @@ class ServiceManagerUtil
     public function configHasBannerComment($bannerName): bool
     {
         $serviceFile = $this->getBasicServiceConfigPath();
-        $s = file_get_contents($serviceFile);
-        $x = $this->getBannerContent($bannerName);
-        // assuming there is no text property containing the banner comment...
-        return (false !== strpos($s, $x));
+        return ConfigSectionCommentHelper::hasSectionComment($serviceFile, $bannerName);
     }
 
 
@@ -772,11 +768,7 @@ class ServiceManagerUtil
      */
     private function getBannerContent(string $bannerName): string
     {
-        return <<<EEE
-# --------------------------------------
-# $bannerName
-# --------------------------------------
-EEE;
+        return ConfigSectionCommentHelper::getBannerContent($bannerName);
     }
 
 

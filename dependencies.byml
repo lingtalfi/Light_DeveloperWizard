@@ -1,10 +1,10 @@
 dependencies: 
     Ling: 
+        - BabyYaml
         - Bat
         - Light
         - Light_PluginInstaller
         - UniverseTools
-        - BabyYaml
         - ClassCooker
         - TokenFun
         - WebWizardTools

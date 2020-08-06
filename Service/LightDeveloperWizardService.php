@@ -22,6 +22,7 @@ use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\AddServiceLog
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\CreateLss01ServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceClass\CreateServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceConfig\AddPluginInstallerHookProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\ServiceConfig\SortHooksAlphabeticallyProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\WebWizard\LightDeveloperWizardWebWizard;
 use Ling\Light_PluginInstaller\Service\LightPluginInstallerService;
 use Ling\UniverseTools\PlanetTool;
@@ -228,6 +229,7 @@ class LightDeveloperWizardService
                 $ww->setProcess((new DisableServiceProcess()));
                 $ww->setProcess((new EnableServiceProcess()));
                 $ww->setProcess((new ExecuteLkaGeneratorProcess()));
+                $ww->setProcess((new SortHooksAlphabeticallyProcess()));
 
 
                 $ww->setContext([
