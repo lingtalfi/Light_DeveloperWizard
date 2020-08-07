@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-08-06
+2020-06-30 -> 2020-08-07
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.20.0 -- 2020-08-07
+
+    - update GenerateLkaPluginProcess task, can now execute a limited version, without the "create file"
+    
 - 1.19.0 -- 2020-08-06
 
     - add SortHooksAlphabeticallyProcess task

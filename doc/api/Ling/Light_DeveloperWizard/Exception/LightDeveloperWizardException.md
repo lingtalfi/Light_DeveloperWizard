@@ -4,7 +4,7 @@
 
 The LightDeveloperWizardException class
 ================
-2020-06-30 --> 2020-08-06
+2020-06-30 --> 2020-08-07
 
 
 

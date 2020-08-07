@@ -356,14 +356,17 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
         $lkaGenerator = $this->container->get("kit_admin_generator");
         $config = $lkaGenerator->generate($path); // assuming identifier=main
         if (false === array_key_exists('create_file', $config)) {
-            $this->error("Sorry, we expected the create_file entry in the lka generator config file, but it was not found, aborting.");
+            // if no create file, our work is done
+            $this->importantMessage("Note that the create file was not found, therefore only the lka generator was executed, but no extra work. Check the task details for more info.");
+            return;
         }
+
+
         $createFile = $config['create_file'];
 
         $useForm = $config['use_form'] ?? false;
         $useMenu = $config['use_menu'] ?? false;
         $useController = $config['use_controller'] ?? false;
-        $useList = $config['use_list'] ?? false;
 
 
         $planet = $config['plugin_name'];
@@ -537,7 +540,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
         // ADDING SERVICE CONFIG FILE HOOKS
         //--------------------------------------------
         $serviceConfigFile = $appDir . "/config/services/$planet.byml";
-        $symbolicServiceConfigFile = $this->getSymbolicPath($serviceConfigFile);
 
         if (true === $useMenu) {
             $this->addServiceConfigHook('bmenu', [
@@ -646,67 +648,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
         }
 
 
-        if (true === $useList) {
-            $this->addServiceConfigHook('realist', [
-                'method' => 'registerListRenderer',
-                'args' => [
-                    'identifier' => $planet,
-                    'renderer' => [
-                        'instance' => "Ling\Light_Kit_Admin\Realist\Rendering\LightKitAdminRealistListRenderer",
-                    ],
-                ],
-            ], [
-                'identifier' => $planet,
-            ]);
-
-            $this->addServiceConfigHook('realist', [
-                'method' => 'registerRealistRowsRenderer',
-                'args' => [
-                    'identifier' => $planet,
-                    'renderer' => [
-                        'instance' => "Ling\Light_Kit_Admin\Realist\Rendering\LightKitAdminRealistRowsRenderer",
-                    ],
-                ],
-            ], [
-                'identifier' => $planet,
-            ]);
-
-
-            $this->addServiceConfigHook('realist', [
-                'method' => 'registerActionHandler',
-                'args' => [
-                    'renderer' => [
-                        'instance' => "Ling\Light_Kit_Admin\Realist\ActionHandler\LightKitAdminRealistActionHandler",
-                    ],
-                ],
-            ]);
-
-
-            $this->addServiceConfigHook('realist', [
-                'method' => 'registerListActionHandler',
-                'args' => [
-                    'plugin' => $planet,
-                    'renderer' => [
-                        'instance' => "Ling\Light_Kit_Admin\Realist\ListActionHandler\LightKitAdminListActionHandler",
-                    ],
-                ],
-            ], [
-                'plugin' => $planet,
-            ]);
-
-
-            $this->addServiceConfigHook('realist', [
-                'method' => 'registerListGeneralActionHandler',
-                'args' => [
-                    'plugin' => $planet,
-                    'renderer' => [
-                        'instance' => "Ling\Light_Kit_Admin\Realist\ListGeneralActionHandler\LightKitAdminListGeneralActionHandler",
-                    ],
-                ],
-            ], [
-                'plugin' => $planet,
-            ]);
-        }
 
 
         $this->addServiceConfigHook('micro_permission', [

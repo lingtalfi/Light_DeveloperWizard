@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-08-06
+2020-07-09 -> 2020-08-07
 
 
 
@@ -186,7 +186,7 @@ The files are only created if they don't exist.
 
 Execute the lka generator config file
 ----------
-2020-08-03 -> 2020-08-04
+2020-08-03 -> 2020-08-07
 
 
 Pre-requisites:
@@ -198,11 +198,13 @@ Pre-requisites:
 Executes the lka generator config file for the planet, using the [Light_Kit_Admin_Generator plugin](https://github.com/lingtalfi/Light_Kit_Admin_Generator).
 
 
-We also create the extra files required to make the plugin work.
-We also bind (if possible) the origin planet permissions to the Light_Kit_Admin.admin/user permission groups, as recommended in the [lka permissions documentation](https://github.com/lingtalfi/Light_Kit_Admin/blob/master/doc/pages/permissions.md#plugin-authors-the-light_kit_admin-permission-philosophy).
+
+If the [create file](https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md) was found, the following actions will also be performed:
 
 
-We also add the necessary hooks in the service config file, depending on the lka generator config.
+- create the extra files (i.e. not created already by the lka generator) required to make the plugin work
+- bind (if possible) the origin planet permissions to the Light_Kit_Admin.admin/user permission groups, as recommended in the [lka permissions documentation](https://github.com/lingtalfi/Light_Kit_Admin/blob/master/doc/pages/permissions.md#plugin-authors-the-light_kit_admin-permission-philosophy)
+- add the necessary hooks in the service config file, depending on the lka generator config
 
 
 
@@ -217,12 +219,6 @@ The executed config file's is the first one found in the following locations:
 Note: to create the generated config file version, you can use the [Generate Light_Kit_Admin generator config file](#generate-light_kit_admin-generator-config-file) task.
 
  
-
-Depending on the lka generator config, we create/remove the necessary classes and files.
-
-Note that we only remove generated class, and never a class written by a human. 
-
-
 
 
 Details about the generation process.
@@ -309,7 +305,7 @@ This task assumes that a few properties exist in the lka generator config file, 
 
 - variables.tables should be defined
 - variables.galaxyName must be defined
-- create_file must be defined
+- create_file must be defined, otherwise only the lka generator will be executed, but none of the aforementioned extra work will be done
 
 
 
@@ -387,36 +383,6 @@ $realform.methods_collection:
                     setConfDir:
                         dir: ${app_dir}/config/data/Light_Kit_Admin_XXX/Light_Realform
 
-$realist.methods_collection:
-    -
-        method: registerListRenderer
-        args:
-            identifier: Light_Kit_Admin_XXX
-            renderer:
-                instance: Ling\Light_Kit_Admin\Realist\Rendering\LightKitAdminRealistListRenderer
-    -
-        method: registerRealistRowsRenderer
-        args:
-            identifier: Light_Kit_Admin_XXX
-            renderer:
-                instance: Ling\Light_Kit_Admin\Realist\Rendering\LightKitAdminRealistRowsRenderer
-    -
-        method: registerActionHandler
-        args:
-            renderer:
-                instance: Ling\Light_Kit_Admin\Realist\ActionHandler\LightKitAdminRealistActionHandler
-    -
-        method: registerListActionHandler
-        args:
-            plugin: Light_Kit_Admin_XXX
-            renderer:
-                instance: Ling\Light_Kit_Admin\Realist\ListActionHandler\LightKitAdminListActionHandler
-    -
-        method: registerListGeneralActionHandler
-        args:
-            plugin: Light_Kit_Admin_XXX
-            renderer:
-                instance: Ling\Light_Kit_Admin\Realist\ListGeneralActionHandler\LightKitAdminListGeneralActionHandler
                 
                 
 ```
@@ -431,7 +397,6 @@ Those hooks are added depending on the **lka generator config** properties:
 - kit_admin hook is added if **use_form** is true
 - micro_permission hook is always added  
 - realform hook is added if **use_form** is true
-- realist hook is added if **use_list** is true
 
 
 
