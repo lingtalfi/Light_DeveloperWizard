@@ -482,7 +482,7 @@ main:
         #
         # The possible values are: default|plugin (default=default)
         #
-        mode: plugin
+        mode: default
 
 
 

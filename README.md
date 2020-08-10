@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.21.0 -- 2020-08-10
+
+    - update api, now the executeGeneratorConfigFile method uses the addDirectItemsByFileAndParentPath method for bmenu
+
 - 1.20.2 -- 2020-08-10
 
     - fix ServiceManagerUtil using references to the older version of ConfigHelper

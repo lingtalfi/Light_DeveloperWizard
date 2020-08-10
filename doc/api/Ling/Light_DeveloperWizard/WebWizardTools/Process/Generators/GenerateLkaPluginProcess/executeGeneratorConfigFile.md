@@ -57,7 +57,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [GenerateLkaPluginProcess::executeGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Generators/GenerateLkaPluginProcess.php#L347-L663)
+See the source code for method [GenerateLkaPluginProcess::executeGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Generators/GenerateLkaPluginProcess.php#L347-L659)
 
 
 See Also

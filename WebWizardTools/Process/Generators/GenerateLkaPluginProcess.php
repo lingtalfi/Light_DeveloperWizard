@@ -543,10 +543,11 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
 
         if (true === $useMenu) {
             $this->addServiceConfigHook('bmenu', [
-                'method' => 'addDefaultItemByFile',
+                'method' => 'addDirectItemsByFileAndParentPath',
                 'args' => [
                     'menu_type' => 'admin_main_menu',
                     'file' => "\${app_dir}/config/data/$planet/bmenu/generated/$serviceName.admin_mainmenu_1.byml",
+                    'path' => "lka-admin",
                 ],
             ], [
                 'menu_type' => 'admin_main_menu',
@@ -554,8 +555,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
         }
 
 
-
-        if(true === $useController){
+        if (true === $useController) {
             $this->addServiceConfigHook('controller_hub', [
                 'method' => 'registerHandler',
                 'args' => [
@@ -573,8 +573,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
                 'plugin' => $planet,
             ]);
         }
-
-
 
 
         if (true === $useForm) {
@@ -646,8 +644,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
             ]);
 
         }
-
-
 
 
         $this->addServiceConfigHook('micro_permission', [
