@@ -10,3 +10,4 @@ developer_wizard:
                     - Ling/Light_Kit_Admin_Train
                     - Ling/Light_Train
                     - Ling/Light_UserPreferences
+                    - Ling/Light_Kit_Admin_UserPreferences

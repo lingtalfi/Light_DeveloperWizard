@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.20.2 -- 2020-08-10
+
+    - fix ServiceManagerUtil using references to the older version of ConfigHelper
+    
 - 1.20.1 -- 2020-08-10
 
     - fix generated lka planet using old light ling standard service reference instead of new lka standard service plugin
