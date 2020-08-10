@@ -48,6 +48,7 @@ Table of contents
     - [ServiceManagerUtil::getBasicServiceConfigPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getBasicServiceConfigPath.md) &ndash; Returns the absolute path to the [basic service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service) config path.
     - [ServiceManagerUtil::getCreateFilePath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getCreateFilePath.md) &ndash; Returns the path to the create file for this service.
     - [ServiceManagerUtil::getTightPlanetName](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getTightPlanetName.md) &ndash; Returns the [tight planet name](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/nomenclature.md#tight-planet-name).
+    - [ServiceManagerUtil::getHumanPlanetName](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/getHumanPlanetName.md) &ndash; Returns a human version of the planet name.
     - [ServiceManagerUtil::hasBasicServiceClassFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/hasBasicServiceClassFile.md) &ndash; Returns whether there is a [basic service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service) class file for the planet.
     - [ServiceManagerUtil::hasBasicServiceExceptionFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/hasBasicServiceExceptionFile.md) &ndash; Returns whether there is a [basic service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service) exception file for the planet.
     - [ServiceManagerUtil::hasBasicServiceConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Util/ServiceManagerUtil/hasBasicServiceConfigFile.md) &ndash; Returns whether there is a [basic service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service) config file for the planet.
@@ -86,30 +87,6 @@ Table of contents
 - [SynchronizeDbProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Database/SynchronizeDbProcess.md) &ndash; The SynchronizeDbProcess class.
     - [SynchronizeDbProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Database/SynchronizeDbProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - [SynchronizeDbProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Database/SynchronizeDbProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
-    - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
-    - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
-    - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
-    - WebWizardToolsProcess::setControl &ndash; Adds a control to this process.
-    - WebWizardToolsProcess::getName &ndash; Returns the name of this instance.
-    - WebWizardToolsProcess::setName &ndash; Sets the name.
-    - WebWizardToolsProcess::getLabel &ndash; Returns the label of this instance.
-    - WebWizardToolsProcess::setLabel &ndash; Sets the label.
-    - WebWizardToolsProcess::getParams &ndash; Returns the params of this instance.
-    - WebWizardToolsProcess::setParams &ndash; Sets the params.
-    - WebWizardToolsProcess::getLearnMore &ndash; Returns the learnMore of this instance.
-    - WebWizardToolsProcess::setLearnMore &ndash; Sets the learnMore.
-    - WebWizardToolsProcess::isEnabled &ndash; Returns the enabled of this instance.
-    - WebWizardToolsProcess::setEnabled &ndash; Sets the enabled.
-    - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
-    - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
-    - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
-    - WebWizardToolsProcess::setCategory &ndash; Sets the category.
-    - WebWizardToolsProcess::execute &ndash; Executes the process.
-    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
-- [ExecuteLkaGeneratorProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/ExecuteLkaGeneratorProcess.md) &ndash; The ExecuteLkaGeneratorProcess class.
-    - [ExecuteLkaGeneratorProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/ExecuteLkaGeneratorProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
-    - [ExecuteLkaGeneratorProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/ExecuteLkaGeneratorProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
-    - [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md) &ndash; Sets the light service container interface.
     - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
     - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
     - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
@@ -224,9 +201,57 @@ Table of contents
     - WebWizardToolsProcess::setCategory &ndash; Sets the category.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
     - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
-- [CreateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateLkaPlanetProcess.md) &ndash; The CreateLkaPlanetProcess class.
-    - [CreateLkaPlanetProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateLkaPlanetProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+- [CreateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/CreateLkaPlanetProcess.md) &ndash; The CreateLkaPlanetProcess class.
+    - [CreateLkaPlanetProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/CreateLkaPlanetProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - [GenerateLkaPluginProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/GenerateLkaPluginProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
+    - [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md) &ndash; Sets the light service container interface.
+    - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
+    - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
+    - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
+    - WebWizardToolsProcess::setControl &ndash; Adds a control to this process.
+    - WebWizardToolsProcess::getName &ndash; Returns the name of this instance.
+    - WebWizardToolsProcess::setName &ndash; Sets the name.
+    - WebWizardToolsProcess::getLabel &ndash; Returns the label of this instance.
+    - WebWizardToolsProcess::setLabel &ndash; Sets the label.
+    - WebWizardToolsProcess::getParams &ndash; Returns the params of this instance.
+    - WebWizardToolsProcess::setParams &ndash; Sets the params.
+    - WebWizardToolsProcess::getLearnMore &ndash; Returns the learnMore of this instance.
+    - WebWizardToolsProcess::setLearnMore &ndash; Sets the learnMore.
+    - WebWizardToolsProcess::isEnabled &ndash; Returns the enabled of this instance.
+    - WebWizardToolsProcess::setEnabled &ndash; Sets the enabled.
+    - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
+    - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
+    - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
+    - WebWizardToolsProcess::setCategory &ndash; Sets the category.
+    - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
+- [CreateLkaUserMainPage](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/CreateLkaUserMainPage.md) &ndash; The CreateLkaUserMainPage class.
+    - [CreateLkaUserMainPage::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/CreateLkaUserMainPage/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+    - [CreateLkaUserMainPage::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/CreateLkaUserMainPage/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
+    - [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md) &ndash; Sets the light service container interface.
+    - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
+    - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
+    - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
+    - WebWizardToolsProcess::setControl &ndash; Adds a control to this process.
+    - WebWizardToolsProcess::getName &ndash; Returns the name of this instance.
+    - WebWizardToolsProcess::setName &ndash; Sets the name.
+    - WebWizardToolsProcess::getLabel &ndash; Returns the label of this instance.
+    - WebWizardToolsProcess::setLabel &ndash; Sets the label.
+    - WebWizardToolsProcess::getParams &ndash; Returns the params of this instance.
+    - WebWizardToolsProcess::setParams &ndash; Sets the params.
+    - WebWizardToolsProcess::getLearnMore &ndash; Returns the learnMore of this instance.
+    - WebWizardToolsProcess::setLearnMore &ndash; Sets the learnMore.
+    - WebWizardToolsProcess::isEnabled &ndash; Returns the enabled of this instance.
+    - WebWizardToolsProcess::setEnabled &ndash; Sets the enabled.
+    - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
+    - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
+    - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
+    - WebWizardToolsProcess::setCategory &ndash; Sets the category.
+    - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
+- [ExecuteLkaGeneratorProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/ExecuteLkaGeneratorProcess.md) &ndash; The ExecuteLkaGeneratorProcess class.
+    - [ExecuteLkaGeneratorProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/ExecuteLkaGeneratorProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+    - [ExecuteLkaGeneratorProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/ExecuteLkaGeneratorProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
     - [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md) &ndash; Sets the light service container interface.
     - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
     - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.

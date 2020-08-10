@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-08-07
+2020-07-09 -> 2020-08-10
 
 
 
@@ -12,11 +12,13 @@ Task details
     - [Add standard permissions](#add-standard-permissions)
 - Generators
     - [Generate breeze api](#generate-breeze-api)
-    - [Generate Light_Kit_Admin plugin](#generate-light_kit_admin-plugin)
     - [Execute the lka generator config file](#execute-the-lka-generator-config-file)
+- Light_Kit_Admin
+    - [Create lka planet](#create-lka-planet)
+    - [Generate Light_Kit_Admin plugin](#generate-light_kit_admin-plugin)
+    - [Create the lka user main page](#create-the-lka-user-main-page)
 - Planet
     - [Remove planet](#remove-planet)
-    - [Create lka planet](#create-lka-planet)
 - ServiceClass
     - [Add getFactory method](#add-getfactory-method)
     - [Add logDebug method](#add-logdebug-method)
@@ -29,6 +31,9 @@ Task details
 - Service
     - [Disable service](#disable-service)
     - [Enable service](#enable-service)
+
+
+
 
 
 
@@ -541,6 +546,58 @@ Prerequisites:
 This tasks sorts the hooks found of the config file, in an alphabetical ascending order. 
 
 
+
+
+
+Create the lka user main page
+-----------
+2020-08-10
+
+
+Prerequisites:
+- the plugin name must start with the **Light_Kit_Admin_** prefix.
+
+
+
+This task will create a controller in (only if the file doesn't exist yet):
+
+- {app}/universe/{galaxy}/{pluginName}/Controller/Custom/{tightName}UserMainPageController.php
+
+
+Will create a kit widget config nugget in (using a HelloWorldWidget):
+
+- {app}/config/data/{pluginName}/kit/zeroadmin/generated/{serviceName}_mainpage.byml
+
+
+Will create a bmenu config nugget in:
+
+- {app}/config/data/{pluginName}/bmenu/generated/{serviceName}.admin_mainmenu-usermainpage.byml
+
+
+Will update the service config file to update the bmenu, in:
+
+- {app}/config/services/{pluginName}.byml
+
+
+
+
+
+
+With:
+
+- app: the path to the application directory 
+- galaxy: the name of the galaxy containing the plugin 
+- pluginName: the name of the plugin 
+- tightName: the [tightName](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/nomenclature.md#tight-planet-name) of the plugin
+- serviceName: the name of the service
+ 
+ 
+ 
+Note: it's assumed that the zeroadmin theme of lka will be used, with a parent layout variable
+of: **Light_Kit_Admin/kit/zeroadmin/dev/mainlayout_base**.
+ 
+ 
+ 
 
 
 

@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L55-L61)
+See the source code for method [ServiceManagerUtil::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L56-L62)
 
 
 See Also

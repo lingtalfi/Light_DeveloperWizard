@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightDeveloperWizardService::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Service/LightDeveloperWizardService.php#L69-L74)
+See the source code for method [LightDeveloperWizardService::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Service/LightDeveloperWizardService.php#L70-L75)
 
 
 See Also

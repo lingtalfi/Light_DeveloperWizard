@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet;
+namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin;
 
 
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateLkaPluginProcess;

@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.22.0 -- 2020-08-10
+
+    - add CreateLkaUserMainPage task
+    
 - 1.21.0 -- 2020-08-10
 
     - update api, now the executeGeneratorConfigFile method uses the addDirectItemsByFileAndParentPath method for bmenu

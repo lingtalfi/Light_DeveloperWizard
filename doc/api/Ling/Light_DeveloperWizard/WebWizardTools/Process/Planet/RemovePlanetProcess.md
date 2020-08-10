@@ -148,4 +148,4 @@ See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet
 
 SeeAlso
 ==============
-Previous class: [CreateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateLkaPlanetProcess.md)<br>Next class: [DisableServiceProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Service/DisableServiceProcess.md)<br>
+Previous class: [ExecuteLkaGeneratorProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/ExecuteLkaGeneratorProcess.md)<br>Next class: [DisableServiceProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Service/DisableServiceProcess.md)<br>

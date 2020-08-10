@@ -228,4 +228,4 @@ See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\LightD
 
 SeeAlso
 ==============
-Previous class: [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md)<br>Next class: [CreateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateLkaPlanetProcess.md)<br>
+Previous class: [LightDeveloperWizardBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess.md)<br>Next class: [CreateLkaPlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/CreateLkaPlanetProcess.md)<br>

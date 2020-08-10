@@ -144,4 +144,4 @@ See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\Genera
 
 SeeAlso
 ==============
-Previous class: [ExecuteLkaGeneratorProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/ExecuteLkaGeneratorProcess.md)<br>Next class: [GenerateLkaPluginProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/GenerateLkaPluginProcess.md)<br>
+Previous class: [SynchronizeDbProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Database/SynchronizeDbProcess.md)<br>Next class: [GenerateLkaPluginProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/GenerateLkaPluginProcess.md)<br>

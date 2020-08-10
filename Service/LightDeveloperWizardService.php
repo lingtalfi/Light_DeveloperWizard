@@ -11,9 +11,10 @@ use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\Util\serviceManagerUtil;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Database\AddStandardPermissionsProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Database\SynchronizeDbProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\ExecuteLkaGeneratorProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateBreezeApiProcess;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\CreateLkaPlanetProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaPlanetProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaUserMainPage;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\ExecuteLkaGeneratorProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\RemovePlanetProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Service\DisableServiceProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Service\EnableServiceProcess;
@@ -230,6 +231,7 @@ class LightDeveloperWizardService
                 $ww->setProcess((new EnableServiceProcess()));
                 $ww->setProcess((new ExecuteLkaGeneratorProcess()));
                 $ww->setProcess((new SortHooksAlphabeticallyProcess()));
+                $ww->setProcess((new CreateLkaUserMainPage()));
 
 
                 $ww->setContext([

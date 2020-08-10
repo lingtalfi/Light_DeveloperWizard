@@ -6,6 +6,7 @@ namespace Ling\Light_DeveloperWizard\Util;
 
 use Ling\BabyYaml\BabyYamlUtil;
 use Ling\Bat\BDotTool;
+use Ling\Bat\CaseTool;
 use Ling\Bat\ClassTool;
 use Ling\ClassCooker\ClassCooker;
 use Ling\Light\Helper\LightNamesAndPathHelper;
@@ -377,6 +378,23 @@ class ServiceManagerUtil
     public function getTightPlanetName(): string
     {
         return PlanetTool::getTightPlanetName($this->planet);
+    }
+
+    /**
+     * Returns a human version of the planet name.
+     *
+     * @return string
+     */
+    public function getHumanPlanetName(): string
+    {
+        $planet = $this->getPlanetName();
+        if (0 === strpos($planet, 'Light_Kit_Admin_')) {
+            $planet = substr($planet, 16);
+        } elseif (0 === strpos($planet, 'Light_')) {
+            $planet = substr($planet, 6);
+        }
+        $planet = ucwords(CaseTool::toHumanFlatCase($planet));
+        return $planet;
     }
 
 

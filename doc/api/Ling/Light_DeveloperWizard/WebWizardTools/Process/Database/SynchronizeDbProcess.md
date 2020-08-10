@@ -144,4 +144,4 @@ See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\Databa
 
 SeeAlso
 ==============
-Previous class: [AddStandardPermissionsProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Database/AddStandardPermissionsProcess.md)<br>Next class: [ExecuteLkaGeneratorProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/ExecuteLkaGeneratorProcess.md)<br>
+Previous class: [AddStandardPermissionsProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Database/AddStandardPermissionsProcess.md)<br>Next class: [GenerateBreezeApiProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Generators/GenerateBreezeApiProcess.md)<br>

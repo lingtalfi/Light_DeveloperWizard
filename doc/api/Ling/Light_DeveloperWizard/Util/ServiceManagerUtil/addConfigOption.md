@@ -60,7 +60,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [ServiceManagerUtil::addConfigOption](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L584-L609)
+See the source code for method [ServiceManagerUtil::addConfigOption](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Util/ServiceManagerUtil.php#L602-L627)
 
 
 See Also
