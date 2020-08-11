@@ -5,13 +5,11 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Database;
 
 
 use Ling\Bat\BDotTool;
-use Ling\Bat\CaseTool;
-use Ling\Bat\ClassTool;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
+use Ling\Light_DbSynchronizer\Service\LightDbSynchronizerService;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
 use Ling\SqlWizard\Util\MysqlStructureReader;
-use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 
 
 /**
@@ -65,7 +63,6 @@ class SynchronizeDbProcess extends LightDeveloperWizardBaseProcess
 
 
         if (true === $createFileExists) {
-            $options = [];
             if (false === $preferencesExist) {
                 /**
                  * Let's gather the created tables and memorize them as scope for the next time
@@ -91,7 +88,17 @@ class SynchronizeDbProcess extends LightDeveloperWizardBaseProcess
                 $sScope = 'scope: ' . implode(', ', $scope);
             }
             $this->infoMessage("Synchronizing db for planet $planet, with $sScope.");
-            $container->get("db_synchronizer")->synchronize($createFile, $options);
+            /**
+             * @var $synchronizer LightDbSynchronizerService
+             */
+            $synchronizer = $container->get("db_synchronizer");
+            $synchronizer->synchronize($createFile, [
+                'scope' => $scope,
+            ]);
+            $debugMsgs = $synchronizer->getLogDebugMessages();
+            foreach ($debugMsgs as $msg) {
+                $this->traceMessage($msg);
+            }
 
         } else {
             $this->errorMessage("Create file not found, cannot synchronize the database.");

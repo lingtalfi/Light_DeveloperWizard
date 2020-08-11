@@ -1,6 +1,6 @@
 Ling/Light_DeveloperWizard
 ================
-2020-06-30 --> 2020-08-10
+2020-06-30 --> 2020-08-11
 
 
 
@@ -521,6 +521,7 @@ Dependencies
 - [ClassCooker](https://github.com/lingtalfi/ClassCooker)
 - [TokenFun](https://github.com/lingtalfi/TokenFun)
 - [WebWizardTools](https://github.com/lingtalfi/WebWizardTools)
+- [Light_DbSynchronizer](https://github.com/lingtalfi/Light_DbSynchronizer)
 - [SqlWizard](https://github.com/lingtalfi/SqlWizard)
 - [Light_DatabaseInfo](https://github.com/lingtalfi/Light_DatabaseInfo)
 - [Light_Kit_Admin_Generator](https://github.com/lingtalfi/Light_Kit_Admin_Generator)

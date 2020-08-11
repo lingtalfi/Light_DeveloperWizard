@@ -8,6 +8,7 @@ dependencies:
         - ClassCooker
         - TokenFun
         - WebWizardTools
+        - Light_DbSynchronizer
         - SqlWizard
         - Light_DatabaseInfo
         - Light_Kit_Admin_Generator

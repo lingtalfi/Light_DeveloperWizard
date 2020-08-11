@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-08-10
+2020-06-30 -> 2020-08-11
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.22.1 -- 2020-08-11
+
+    - fix SynchronizeDbProcess not using db_synchronizer service properly
+    
 - 1.22.0 -- 2020-08-10
 
     - add CreateLkaUserMainPage task
