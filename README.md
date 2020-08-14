@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-08-11
+2020-06-30 -> 2020-08-14
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.23.0 -- 2020-08-14
+
+    - update RemovePlanetProcess, now also remove templates from templates/Light_Mailer if any
+    
 - 1.22.1 -- 2020-08-11
 
     - fix SynchronizeDbProcess not using db_synchronizer service properly

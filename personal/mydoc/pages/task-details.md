@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-08-10
+2020-07-09 -> 2020-08-14
 
 
 
@@ -453,7 +453,7 @@ We synchronize the current db with your [create file](https://github.com/lingtal
 
 Remove planet
 -------------
-2020-08-04
+2020-08-04 -> 2020-08-14
 
 
 Removes a light planet and all related files.
@@ -475,6 +475,7 @@ This task removes every file listed below (except for the $appDir):
 ----- config/services/$pluginName.byml
 ----- config/services/$pluginName.byml.dis
 ----- templates/$pluginName/
+----- templates/Light_Mailer/$pluginName/
 ----- universe/$galaxy/$pluginName/
 ----- www/libs/universe/$galaxy/$pluginName/
 ----- www/plugins/$pluginName/

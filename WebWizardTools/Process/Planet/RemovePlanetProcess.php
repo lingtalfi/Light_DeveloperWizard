@@ -44,6 +44,7 @@ class RemovePlanetProcess extends LightDeveloperWizardCommonProcess
             $appDir . "/config/services/$planet.byml",
             $appDir . "/config/services/$planet.byml.dis",
             $appDir . "/templates/$planet",
+            $appDir . "/templates/Light_Mailer/$planet",
             $appDir . "/universe/$galaxy/$planet",
             $appDir . "/www/libs/universe/$galaxy/$planet",
             $appDir . "/www/plugins/$planet",
