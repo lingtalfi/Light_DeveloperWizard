@@ -96,6 +96,17 @@ class LightDeveloperWizardService
 
 
     /**
+     * Sets an individual option.
+     *
+     * @param string $key
+     * @param $value
+     */
+    public function setOption(string $key, $value)
+    {
+        $this->options[$key] = $value;
+    }
+
+    /**
      * Returns a ServiceManagerUtil instance.
      *
      * @return ServiceManagerUtil

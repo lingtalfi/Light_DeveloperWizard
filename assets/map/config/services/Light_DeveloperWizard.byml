@@ -6,6 +6,8 @@ developer_wizard:
         setOptions:
             options:
                 whitelist:
+                    - Ling/Light_LingHooks
+
                     - Ling/Light_QuickMailAlert
 
                     - Ling/Light_TaskScheduler

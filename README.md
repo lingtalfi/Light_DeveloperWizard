@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-08-14
+2020-06-30 -> 2020-08-18
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.23.1 -- 2020-08-18
+
+    - add LightDeveloperWizardService->setOption method 
+    
 - 1.23.0 -- 2020-08-14
 
     - update RemovePlanetProcess, now also remove templates from templates/Light_Mailer if any

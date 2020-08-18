@@ -46,7 +46,7 @@ Returns [ServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/
 
 Source Code
 ===========
-See the source code for method [LightDeveloperWizardService::getServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Service/LightDeveloperWizardService.php#L103-L109)
+See the source code for method [LightDeveloperWizardService::getServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Service/LightDeveloperWizardService.php#L114-L120)
 
 
 See Also
@@ -54,5 +54,5 @@ See Also
 
 The [LightDeveloperWizardService](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService.md) class.
 
-Previous method: [setOptions](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/setOptions.md)<br>Next method: [runWizard](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/runWizard.md)<br>
+Previous method: [setOption](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/setOption.md)<br>Next method: [runWizard](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/runWizard.md)<br>
 

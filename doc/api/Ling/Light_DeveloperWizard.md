@@ -1,6 +1,6 @@
 Ling/Light_DeveloperWizard
 ================
-2020-06-30 --> 2020-08-14
+2020-06-30 --> 2020-08-18
 
 
 
@@ -23,6 +23,7 @@ Table of contents
     - [LightDeveloperWizardService::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/__construct.md) &ndash; Builds the LightDeveloperWizardService instance.
     - [LightDeveloperWizardService::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/setContainer.md) &ndash; Sets the container.
     - [LightDeveloperWizardService::setOptions](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/setOptions.md) &ndash; Sets the options.
+    - [LightDeveloperWizardService::setOption](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/setOption.md) &ndash; Sets an individual option.
     - [LightDeveloperWizardService::getServiceManagerUtil](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/getServiceManagerUtil.md) &ndash; Returns a ServiceManagerUtil instance.
     - [LightDeveloperWizardService::runWizard](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Service/LightDeveloperWizardService/runWizard.md) &ndash; Runs the wizard.
 - [DeveloperWizardFileTool](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Tool/DeveloperWizardFileTool.md) &ndash; The DeveloperWizardFileTool class.
