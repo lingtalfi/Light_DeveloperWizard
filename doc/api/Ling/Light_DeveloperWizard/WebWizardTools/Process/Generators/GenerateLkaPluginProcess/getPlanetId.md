@@ -49,7 +49,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [GenerateLkaPluginProcess::getPlanetId](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Generators/GenerateLkaPluginProcess.php#L318-L321)
+See the source code for method [GenerateLkaPluginProcess::getPlanetId](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Generators/GenerateLkaPluginProcess.php#L253-L256)
 
 
 See Also

@@ -61,40 +61,6 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
         return (0 === strpos($planet, "Light_"));
     }
 
-    /**
-     * Returns the table prefix from either the preferences (if found), or guessed from the given createFile otherwise.
-     *
-     * @param string $planetDir
-     * @param string $createFile
-     * @return string
-     * @throws \Exception
-     */
-    protected function getTablePrefix(string $planetDir, string $createFile): string
-    {
-        $preferences = DeveloperWizardFileTool::getPreferences($planetDir);
-        $tablePrefix = BDotTool::getDotValue("general.table_prefix", $preferences, null);
-
-        // guessing the table prefix
-        //--------------------------------------------
-        if (null === $tablePrefix) {
-            $reader = new MysqlStructureReader();
-            $infos = $reader->readFile($createFile);
-            $firstTable = key($infos);
-            $p = explode('_', $firstTable, 2);
-            if (1 === count($p)) {
-                throw new LightDeveloperWizardException("I wasn't able to guess the prefix for table $firstTable.");
-            } else {
-                $tablePrefix = array_shift($p);
-                // memorizing...
-                DeveloperWizardFileTool::updateFile($planetDir, [
-                    "general" => [
-                        "table_prefix" => $tablePrefix,
-                    ],
-                ]);
-            }
-        }
-        return $tablePrefix;
-    }
 
 
     /**
@@ -102,7 +68,7 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
      * @param string $file
      * @return FryingPan
      */
-    protected function getFryingPanForService(string $file)
+    protected function getFryingPanByFile(string $file)
     {
         $pan = new FryingPan();
         $pan->setFile($file);

@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [CreateLkaUserMainPage::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Light_Kit_Admin/CreateLkaUserMainPage.php#L21-L27)
+See the source code for method [CreateLkaUserMainPage::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Light_Kit_Admin/CreateLkaUserMainPage.php#L23-L29)
 
 
 See Also

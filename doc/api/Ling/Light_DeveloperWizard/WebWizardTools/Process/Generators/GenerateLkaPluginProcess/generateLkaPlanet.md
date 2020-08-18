@@ -62,7 +62,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [GenerateLkaPluginProcess::generateLkaPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Generators/GenerateLkaPluginProcess.php#L82-L184)
+See the source code for method [GenerateLkaPluginProcess::generateLkaPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Generators/GenerateLkaPluginProcess.php#L83-L185)
 
 
 See Also

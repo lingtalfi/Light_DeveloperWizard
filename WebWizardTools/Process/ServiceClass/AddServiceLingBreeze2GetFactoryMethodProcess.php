@@ -66,7 +66,7 @@ class AddServiceLingBreeze2GetFactoryMethodProcess extends LightDeveloperWizardC
         //--------------------------------------------
         // UPDATE SERVICE CLASS
         //--------------------------------------------
-        $pan = $this->getFryingPanForService($util->getBasicServiceClassPath());
+        $pan = $this->getFryingPanByFile($util->getBasicServiceClassPath());
         $this->addServiceContainer($pan);
         $this->addServiceFactory($pan, $galaxyName, $planetName);
         $pan->cook();

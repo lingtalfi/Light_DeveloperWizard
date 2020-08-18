@@ -8,6 +8,7 @@ use Ling\BabyYaml\BabyYamlUtil;
 use Ling\Bat\BDotTool;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Helper\DeveloperWizardBreezeGeneratorHelper;
+use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
 use Ling\SqlWizard\Util\MysqlStructureReader;
@@ -65,7 +66,7 @@ class GenerateBreezeApiProcess extends LightDeveloperWizardBaseProcess
 
         if (true === $createFileExists) {
 
-            $tablePrefix = $this->getTablePrefix($planetDir, $createFile);
+            $tablePrefix = DeveloperWizardGenericHelper::getTablePrefix($planetDir, $createFile);
             $this->infoMessage("Using the table prefix: $tablePrefix.");
 
 

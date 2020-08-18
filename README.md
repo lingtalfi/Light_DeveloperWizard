@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.24.0 -- 2020-08-18
+
+    - add "create-lka-user-mainpage-with-list" task 
+    
 - 1.23.1 -- 2020-08-18
 
     - add LightDeveloperWizardService->setOption method 

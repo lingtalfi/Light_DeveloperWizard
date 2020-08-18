@@ -4,20 +4,4 @@ developer_wizard:
         setContainer:
             container: @container()
         setOptions:
-            options:
-                whitelist:
-                    - Ling/Light_LingHooks
-
-                    - Ling/Light_QuickMailAlert
-
-                    - Ling/Light_TaskScheduler
-                    - Ling/Light_Kit_Admin_TaskScheduler
-
-                    - Ling/Light_Train
-                    - Ling/Light_Kit_Admin_Train
-
-                    - Ling/Light_UserPreferences
-                    - Ling/Light_Kit_Admin_UserPreferences
-
-                    - Ling/Light_UserNotifications
-                    - Ling/Light_Kit_Admin_UserNotifications
+            options: []

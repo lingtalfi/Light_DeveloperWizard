@@ -9,11 +9,12 @@ use Ling\Bat\FileSystemTool;
 use Ling\ClassCooker\FryingPan\Ingredient\ParentIngredient;
 use Ling\Light\Helper\LightNamesAndPathHelper;
 use Ling\Light_DatabaseInfo\Service\LightDatabaseInfoService;
+use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
+use Ling\Light_DeveloperWizard\Helper\DeveloperWizardLkaHelper;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardCommonProcess;
 use Ling\Light_Kit_Admin_Generator\Service\LightKitAdminGeneratorService;
 use Ling\Light_LingStandardService\Helper\LightLingStandardServiceHelper;
 use Ling\Light_UserDatabase\Service\LightUserDatabaseService;
-use Ling\SqlWizard\Util\MysqlStructureReader;
 use Ling\UniverseTools\PlanetTool;
 
 
@@ -109,7 +110,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
              */
             $this->infoMessage("Service file found already, skipping.");
         } else {
-            $this->infoMessage("Creating service config file at \"" . $this->getSymbolicPath($configServicePath) . "\", with service name \"$serviceName\"");
+            $this->infoMessage("Creating service config file at \"" . DeveloperWizardGenericHelper::getSymbolicPath($configServicePath, $appDir) . "\", with service name \"$serviceName\"");
 //            $tpl = __DIR__ . "/../../../assets/conf-template/configService.byml";
             $tpl = __DIR__ . "/../../../assets/conf-template/configServiceBasic.byml";
             $tplContent = file_get_contents($tpl);
@@ -140,7 +141,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
             $this->infoMessage("The service class for planet $planet was already created.");
 
 
-            $pan = $this->getFryingPanForService($serviceClassPath);
+            $pan = $this->getFryingPanByFile($serviceClassPath);
 
             $useStatementClass = "Ling\Light_LingStandardService\Service\LightLingStandardServiceKitAdminPlugin";
             $pan->addIngredient(ParentIngredient::create()->setValue('LightLingStandardServiceKitAdminPlugin', [
@@ -155,7 +156,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
 
 
         } else {
-            $this->infoMessage("Creating service class file at \"" . $this->getSymbolicPath($serviceClassPath) . "\".");
+            $this->infoMessage("Creating service class file at \"" . DeveloperWizardGenericHelper::getSymbolicPath($serviceClassPath, $appDir) . "\".");
             $tpl = __DIR__ . "/../../../assets/class-templates/Service/LkaPluginLss.phptpl";
             $tplContent = file_get_contents($tpl);
             $tplContent = str_replace([
@@ -193,10 +194,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
      *
      *
      * Available options are:
-     *
-     * - recreateEverything: bool=false, whether to force the creation of this file
-     *
-     * Available options are:
      * - recreateEverything: bool=false, whether to force re-creating things even if they already exist
      *
      *
@@ -209,59 +206,24 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
     {
 
 
-        $galaxy = $params['galaxy'];
         $planet = $params['planet'];
-        $recreateEverything = $options['recreateEverything'] ?? false;
-
-
-        $appDir = $this->container->getApplicationDir();
-        $lkaOriginPlanet = $this->getLkaOriginPlanet($planet);
-        $createFile = $appDir . "/universe/$galaxy/$lkaOriginPlanet/assets/fixtures/create-structure.sql";
-        $planetDir = $appDir . "/universe/$galaxy/$lkaOriginPlanet";
-        $tables = $this->getTablesByCreateFile($createFile);
-
-
         $serviceName = LightNamesAndPathHelper::getServiceName($planet);
-        $tablePrefix = $this->getTablePrefix($planetDir, $createFile);
-
-
+        $appDir = $this->container->getApplicationDir();
         $lkaGenConfigPath = $appDir . "/config/data/$planet/Light_Kit_Admin_Generator/$serviceName.generated.byml";
 
 
-        if (false === $recreateEverything && file_exists($lkaGenConfigPath)) {
-            $this->infoMessage("Light_Kit_Admin_Generator config file already found in " . $this->getSymbolicPath($lkaGenConfigPath));
-        } else {
-            $this->infoMessage("Creating Light_Kit_Admin_Generator config file in " . $this->getSymbolicPath($lkaGenConfigPath));
-            $tpl = __DIR__ . "/../../../assets/conf-template/lka-gen-config.byml";
-            $humanMenuName = ucwords(CaseTool::toHumanFlatCase(substr($lkaOriginPlanet, 6)));
-            $sTables = '';
-            foreach ($tables as $table) {
-                $sTables .= '            - ' . $table . PHP_EOL;
-            }
-
-
-            $tplContent = file_get_contents($tpl);
-            $tplContent = str_replace([
-                'Light_Kit_Admin_TaskScheduler',
-                'Task scheduler',
-                'galaxyName: Ling',
-                'kit_admin_task_scheduler',
-                'prefix: lts',
-                '            - lts_task_schedule',
-                'createFile: {app_dir}/universe/Ling/Light_TaskScheduler/assets/fixtures/create-structure.sql',
-            ], [
-                $planet,
-                $humanMenuName,
-                'galaxyName: ' . $galaxy,
-                $serviceName,
-                'prefix: ' . $tablePrefix,
-                $sTables,
-                "createFile: {app_dir}/universe/$galaxy/$lkaOriginPlanet/assets/fixtures/create-structure.sql",
-            ], $tplContent);
-
-            FileSystemTool::mkfile($lkaGenConfigPath, $tplContent);
-        }
-        return $lkaGenConfigPath;
+        return DeveloperWizardLkaHelper::createLkaGeneratorConfigFile([
+            "galaxy" => $params['galaxy'],
+            "planet" => $planet,
+            "path" => $lkaGenConfigPath,
+            "container" => $this->container,
+            "onAlreadyExists" => function ($lkaGenConfigPath) {
+                $this->infoMessage("Light_Kit_Admin_Generator config file already found in " . $this->getSymbolicPath($lkaGenConfigPath));
+            },
+            "onCreateBefore" => function ($lkaGenConfigPath) {
+                $this->infoMessage("Creating Light_Kit_Admin_Generator config file in " . $this->getSymbolicPath($lkaGenConfigPath));
+            },
+        ], $options);
     }
 
 
@@ -269,33 +231,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
     //--------------------------------------------
     //
     //--------------------------------------------
-    /**
-     * Returns the name of the tables found in the given create file.
-     *
-     * @param string $createFile
-     * @return array
-     */
-    protected function getTablesByCreateFile(string $createFile): array
-    {
-        $reader = new MysqlStructureReader();
-        $infos = $reader->readFile($createFile);
-        return array_keys($infos);
-    }
-
-
-    /**
-     * Returns the name of the planet from which the given lka planet originates from.
-     *
-     * For instance, if you pass Light_Kit_Admin_XXX, it will return Light_XXX.
-     *
-     * @param string $lkaPlanetName
-     * @return string
-     */
-    protected function getLkaOriginPlanet(string $lkaPlanetName): string
-    {
-        return 'Light_' . substr($lkaPlanetName, 16);
-    }
-
 
     /**
      * Returns the lka service name corresponding to the given planet name.
@@ -347,7 +282,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
     protected function executeGeneratorConfigFile(string $path, array $options = [])
     {
         $recreateEverything = $options['recreateEverything'] ?? false;
-
+        $appDir = $this->container->getApplicationDir();
 
         $this->infoMessage("Launching Light_Kit_Admin_Generator with config file " . $this->getSymbolicPath($path));
         /**
@@ -378,7 +313,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
 
 
         $galaxy = $variables['galaxyName'];
-        $appDir = $this->container->getApplicationDir();
 
 
         $serviceName = LightNamesAndPathHelper::getServiceName($planet);
@@ -386,7 +320,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
 
         $tightName = PlanetTool::getTightPlanetName($planet);
         $planetDir = $appDir . "/universe/$galaxy/$planet";
-        $originPlanet = $this->getLkaOriginPlanet($planet);
+        $originPlanet = DeveloperWizardLkaHelper::getLkaOriginPlanet($planet);
         $originPlanetDir = $appDir . "/universe/$galaxy/$originPlanet";
 
 
@@ -444,7 +378,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
         if (true === $useForm) {
 
             $path = $appDir . "/config/data/$planet/Light_Kit_Admin/lka-options.generated.byml";
-            $tablePrefix = $this->getTablePrefix($originPlanetDir, $createFile);
+            $tablePrefix = DeveloperWizardGenericHelper::getTablePrefix($originPlanetDir, $createFile);
 
 
             if (false === $recreateEverything && true === file_exists($path)) {
@@ -539,8 +473,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
         //--------------------------------------------
         // ADDING SERVICE CONFIG FILE HOOKS
         //--------------------------------------------
-        $serviceConfigFile = $appDir . "/config/services/$planet.byml";
-
         if (true === $useMenu) {
             $this->addServiceConfigHook('bmenu', [
                 'method' => 'addDirectItemsByFileAndParentPath',

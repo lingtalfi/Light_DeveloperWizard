@@ -2,6 +2,7 @@ dependencies:
     Ling: 
         - BabyYaml
         - Bat
+        - SqlWizard
         - Light
         - Light_PluginInstaller
         - UniverseTools
@@ -9,7 +10,6 @@ dependencies:
         - TokenFun
         - WebWizardTools
         - Light_DbSynchronizer
-        - SqlWizard
         - Light_DatabaseInfo
         - Light_Kit_Admin_Generator
         - Light_LingStandardService

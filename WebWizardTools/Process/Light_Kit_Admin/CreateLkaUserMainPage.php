@@ -5,6 +5,8 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin;
 
 
 use Ling\Bat\FileSystemTool;
+use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
+use Ling\ClassCooker\FryingPan\Ingredient\ParentIngredient;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardCommonProcess;
 
 /**
@@ -22,7 +24,7 @@ class CreateLkaUserMainPage extends LightDeveloperWizardCommonProcess
     {
         parent::__construct();
         $this->setName("create-lka-user-mainpage");
-        $this->setLabel("Creates the lka user main page.");
+        $this->setLabel("Creates the lka user main page with helloWorld.");
         $this->setLearnMoreByHash('create-the-lka-user-main-page');
     }
 
@@ -46,6 +48,8 @@ class CreateLkaUserMainPage extends LightDeveloperWizardCommonProcess
      */
     protected function doExecute(array $options = [])
     {
+        $createController = $options['createController'] ?? true;
+
 
         //--------------------------------------------
         // CONTROLLER
@@ -57,35 +61,70 @@ class CreateLkaUserMainPage extends LightDeveloperWizardCommonProcess
         $humanName = $this->util->getHumanPlanetName();
 
 
-        $dst = $this->container->getApplicationDir() . "/universe/$galaxy/$planet/Controller/Custom/${tight}UserMainPageController.php";
-        $symbol = $this->getSymbolicPath($dst);
-        if (true === file_exists($dst)) {
-            $this->importantMessage("The controller file already exist in $symbol, cannot create the controller class.");
-        } else {
+        if (true === $createController) {
+            $dst = $this->container->getApplicationDir() . "/universe/$galaxy/$planet/Controller/Custom/${tight}UserMainPageController.php";
+            $symbol = $this->getSymbolicPath($dst);
+            if (true === file_exists($dst)) {
 
-            $this->infoMessage("Creating the controller in \"$symbol\".");
 
-            $tpl = __DIR__ . "/../../../assets/class-templates/Controller/UserMainPageController.phptpl";
-            $content = file_get_contents($tpl);
-            $content = str_replace([
-                'Light_Kit_Admin_XXX',
-                'LightKitAdminXXX',
-                'kit_admin_xxx',
-                'pluginHuman',
-            ], [
-                $planet,
-                $tight,
-                $serviceName,
-                $humanName,
-            ], $content);
-            FileSystemTool::mkfile($dst, $content);
+                $this->infoMessage("The controller file already exist in $symbol.");
+                $pan = $this->getFryingPanByFile($dst);
+                $useStatementClass = 'Ling\Light_Kit_Admin\Controller\AdminPageController';
+                $pan->addIngredient(ParentIngredient::create()->setValue('AdminPageController', [
+                    'useStatement' => $useStatementClass,
+                ]));
+
+                $pan->addIngredient(MethodIngredient::create()->setValue("render", [
+                    'addAsComment' => true,
+                    'template' => '
+    /**
+     * Renders the user main page.
+     *
+     * @return \Ling\Light\Http\HttpResponseInterface
+     * @throws \Exception
+     */
+    public function render()
+    {
+        $parentLayout = "Light_Kit_Admin/kit/zeroadmin/dev/mainlayout_base";
+        $page = "' . $planet . '/kit/zeroadmin/generated/' . $serviceName . '_mainpage";
+
+        return $this->renderAdminPage($page, [
+            "text" => "' . $humanName . ' hello world",
+            "parent_layout" => $parentLayout,
+        ]);
+    }
+',
+                ]));
+                $pan->cook();
+
+
+            } else {
+
+                $this->infoMessage("Creating the controller in \"$symbol\".");
+
+                $tpl = __DIR__ . "/../../../assets/class-templates/Controller/UserMainPageController.phptpl";
+                $content = file_get_contents($tpl);
+                $content = str_replace([
+                    'Light_Kit_Admin_XXX',
+                    'LightKitAdminXXX',
+                    'kit_admin_xxx',
+                    'pluginHuman',
+                ], [
+                    $planet,
+                    $tight,
+                    $serviceName,
+                    $humanName,
+                ], $content);
+                FileSystemTool::mkfile($dst, $content);
+            }
         }
 
 
         //--------------------------------------------
         // KIT PAGE CONFIG
         //--------------------------------------------
-        $tpl = __DIR__ . "/../../../assets/conf-template/data/kit/usermainpage.byml";
+
+        $tpl = $options["kit_page_tpl"] ?? __DIR__ . "/../../../assets/conf-template/data/kit/usermainpage.byml";
         $content = file_get_contents($tpl);
         $content = str_replace([
             'pluginHuman',

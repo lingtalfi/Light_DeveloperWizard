@@ -51,7 +51,7 @@ class CreateServiceProcess extends LightDeveloperWizardCommonProcess
             $this->infoMessage("The service class for planet $planetIdentifier was already created.");
 
 
-            $pan = $this->getFryingPanForService($util->getBasicServiceClassPath());
+            $pan = $this->getFryingPanByFile($util->getBasicServiceClassPath());
             $planet = $util->getPlanetName();
             $tightName = $util->getTightPlanetName();
             $useStatementClass = "$galaxyName\\$planet\Exception\\${tightName}Exception";

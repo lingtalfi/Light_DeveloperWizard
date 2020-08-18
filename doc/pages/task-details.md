@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-08-14
+2020-07-09 -> 2020-08-18
 
 
 
@@ -16,7 +16,8 @@ Task details
 - Light_Kit_Admin
     - [Create lka planet](#create-lka-planet)
     - [Generate Light_Kit_Admin plugin](#generate-light_kit_admin-plugin)
-    - [Create the lka user main page](#create-the-lka-user-main-page)
+    - [Create the lka user main page with helloWorld](#create-the-lka-user-main-page)
+    - [Create the lka user main page with basicList](#create-the-lka-user-main-page-with-basiclist)
 - Planet
     - [Remove planet](#remove-planet)
 - ServiceClass
@@ -31,8 +32,6 @@ Task details
 - Service
     - [Disable service](#disable-service)
     - [Enable service](#enable-service)
-
-
 
 
 
@@ -552,11 +551,11 @@ This tasks sorts the hooks found of the config file, in an alphabetical ascendin
 
 Create the lka user main page
 -----------
-2020-08-10
+2020-08-10 -> 2020-08-18
 
 
 Prerequisites:
-- the plugin name must start with the **Light_Kit_Admin_** prefix.
+- the plugin name must start with the **Light_Kit_Admin_** prefix
 
 
 
@@ -600,5 +599,29 @@ of: **Light_Kit_Admin/kit/zeroadmin/dev/mainlayout_base**.
  
  
 
+Create the lka user main page with basicList
+-----------
+2020-08-18
+
+
+
+Prerequisites:
+- the plugin name must start with the **Light_Kit_Admin_** prefix
+- the origin planet (i.e. remove _Kit_Admin from the lka planet name) must contain a [create file](https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md)
+
+
+
+Basically the same as the [Create the lka user main page](#create-the-lka-user-main-page) task, but with a couple of differences:
+
+- in the created controller, the render method content is different
+    Note: if a render method already exists, this task will add the new render method below it, and commented (i.e.
+    you will have to manually uncomment it to make it effective).
+    
+
+In addition to that, the following steps are also executed:
+
+- create [Light_Realist](https://github.com/lingtalfi/Light_Realist/) config nugget in:
+    - {app}/config/data/{pluginName}/Light_Realist/custom/{serviceName}_mainpage.byml
+    This nugget will contain the realist nugget for the first table defined in the create file. 
 
 

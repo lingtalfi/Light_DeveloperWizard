@@ -14,6 +14,7 @@ use Ling\Light_DeveloperWizard\WebWizardTools\Process\Database\SynchronizeDbProc
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateBreezeApiProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaPlanetProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaUserMainPage;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaUserMainPageList;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\ExecuteLkaGeneratorProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\RemovePlanetProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Service\DisableServiceProcess;
@@ -243,6 +244,7 @@ class LightDeveloperWizardService
                 $ww->setProcess((new ExecuteLkaGeneratorProcess()));
                 $ww->setProcess((new SortHooksAlphabeticallyProcess()));
                 $ww->setProcess((new CreateLkaUserMainPage()));
+                $ww->setProcess((new CreateLkaUserMainPageList()));
 
 
                 $ww->setContext([

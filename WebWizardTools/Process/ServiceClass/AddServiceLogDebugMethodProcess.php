@@ -59,7 +59,7 @@ class AddServiceLogDebugMethodProcess extends LightDeveloperWizardCommonProcess
         //--------------------------------------------
 
 
-        $pan = $this->getFryingPanForService($util->getBasicServiceClassPath());
+        $pan = $this->getFryingPanByFile($util->getBasicServiceClassPath());
         $pan->addIngredient(MethodIngredient::create()->setValue("logDebug", [
             'template' => '
     /**

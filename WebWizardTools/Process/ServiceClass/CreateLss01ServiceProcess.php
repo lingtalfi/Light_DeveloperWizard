@@ -49,7 +49,7 @@ class CreateLss01ServiceProcess extends CreateServiceProcess
             $this->infoMessage("The service class for planet $planetIdentifier was already created.");
 
 
-            $pan = $this->getFryingPanForService($util->getBasicServiceClassPath());
+            $pan = $this->getFryingPanByFile($util->getBasicServiceClassPath());
             $planet = $util->getPlanetName();
             $tightName = $util->getTightPlanetName();
             $useStatementClass = "Ling\Light_LingStandardService\Service\LightLingStandardService01";
