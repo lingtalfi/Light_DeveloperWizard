@@ -412,10 +412,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
             $tplContent = file_get_contents($tpl);
             $sTables = '';
             foreach ($tables as $table) {
-                $sTables .= "    - tables.$table.create" . PHP_EOL;
-                $sTables .= "    - tables.$table.read" . PHP_EOL;
-                $sTables .= "    - tables.$table.update" . PHP_EOL;
-                $sTables .= "    - tables.$table.delete" . PHP_EOL;
+                $sTables .= "    - store.$table" . PHP_EOL;
             }
 
 
