@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-08-21
+2020-06-30 -> 2020-08-28
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.26.0 -- 2020-08-28
+
+    - acknowledge new Light_Crud api  
+    
 - 1.25.0 -- 2020-08-21
 
     - update GenerateLkaPluginProcess, now takes into account micro-permission3 recommendation 

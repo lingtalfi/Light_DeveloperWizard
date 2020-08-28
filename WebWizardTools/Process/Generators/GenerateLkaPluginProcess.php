@@ -523,18 +523,18 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
             ], [
                 'plugin' => $planet,
             ]);
-
-            $this->addServiceConfigHook('crud', [
-                'method' => 'registerHandler',
-                'args' => [
-                    'pluginId' => $planet,
-                    'handler' => [
-                        'instance' => "Ling\Light_Kit_Admin\Crud\CrudRequestHandler\LightKitAdminCrudRequestHandler",
-                    ],
-                ],
-            ], [
-                'pluginId' => $planet,
-            ]);
+//
+//            $this->addServiceConfigHook('crud', [
+//                'method' => 'registerHandler',
+//                'args' => [
+//                    'pluginId' => $planet,
+//                    'handler' => [
+//                        'instance' => "Ling\Light_Kit_Admin\Crud\CrudRequestHandler\LightKitAdminCrudRequestHandler",
+//                    ],
+//                ],
+//            ], [
+//                'pluginId' => $planet,
+//            ]);
 
 
             $this->addServiceConfigHook('kit_admin', [
