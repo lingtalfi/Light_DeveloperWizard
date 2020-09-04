@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-08-18
+2020-07-09 -> 2020-09-04
 
 
 
@@ -190,7 +190,7 @@ The files are only created if they don't exist.
 
 Execute the lka generator config file
 ----------
-2020-08-03 -> 2020-08-07
+2020-08-03 -> 2020-09-04
 
 
 Pre-requisites:
@@ -246,11 +246,13 @@ Executing the lka generator alone can generate at most those files:
 --------------------- generated/
 ------------------------- kit_admin_my_planet.table_list.byml
 ----------------- Light_RealForm/
---------------------- generated/
-------------------------- mpl_bottles.byml
+--------------------- form/
+------------------------- generated/
+----------------------------- mpl_bottles.byml
 ----------------- Light_Realist/
---------------------- generated/
-------------------------- mpl_bottles.byml
+--------------------- list/
+------------------------- generated/
+----------------------------- mpl_bottles.byml
 ----- universe/
 --------- Ling/
 ------------- Light_Kit_Admin_MyPlanet/

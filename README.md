@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-08-28
+2020-06-30 -> 2020-09-04
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.27.0 -- 2020-09-04
+
+    - update service to work with realist2 api  
+    
 - 1.26.0 -- 2020-08-28
 
     - acknowledge new Light_Crud api  

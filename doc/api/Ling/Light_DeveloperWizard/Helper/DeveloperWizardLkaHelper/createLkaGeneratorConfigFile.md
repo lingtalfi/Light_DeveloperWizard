@@ -70,7 +70,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [DeveloperWizardLkaHelper::createLkaGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Helper/DeveloperWizardLkaHelper.php#L53-L138)
+See the source code for method [DeveloperWizardLkaHelper::createLkaGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Helper/DeveloperWizardLkaHelper.php#L53-L140)
 
 
 See Also

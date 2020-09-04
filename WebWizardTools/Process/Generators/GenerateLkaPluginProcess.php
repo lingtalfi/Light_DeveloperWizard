@@ -289,7 +289,9 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
          * @var $lkaGenerator LightKitAdminGeneratorService
          */
         $lkaGenerator = $this->container->get("kit_admin_generator");
-        $config = $lkaGenerator->generate($path); // assuming identifier=main
+        $config = $lkaGenerator->generate($path);
+
+
         if (false === array_key_exists('create_file', $config)) {
             // if no create file, our work is done
             $this->importantMessage("Note that the create file was not found, therefore only the lka generator was executed, but no extra work. Check the task details for more info.");

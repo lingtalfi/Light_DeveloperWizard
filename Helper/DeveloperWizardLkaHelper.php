@@ -109,18 +109,20 @@ class DeveloperWizardLkaHelper
             $humanMenuName = ucwords(CaseTool::toHumanFlatCase(substr($lkaOriginPlanet, 6)));
             $sTables = '';
             foreach ($tables as $table) {
-                $sTables .= '            - ' . $table . PHP_EOL;
+                $sTables .= '        - ' . $table . PHP_EOL;
             }
 
 
             $tplContent = file_get_contents($tpl);
+
+
             $tplContent = str_replace([
                 'Light_Kit_Admin_TaskScheduler',
                 'Task scheduler',
                 'galaxyName: Ling',
                 'kit_admin_task_scheduler',
                 'prefix: lts',
-                '            - lts_task_schedule',
+                '        - lts_task_schedule',
                 'createFile: {app_dir}/universe/Ling/Light_TaskScheduler/assets/fixtures/create-structure.sql',
             ], [
                 $planet,
