@@ -507,24 +507,7 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
 
 
         if (true === $useForm) {
-            $this->addServiceConfigHook('chloroform_extension', [
-                'method' => 'registerTableListConfigurationHandler',
-                'args' => [
-                    'plugin' => $planet,
-                    'handler' => [
-                        'instance' => "Ling\Light_Kit_Admin\ChloroformExtension\LightKitAdminTableListConfigurationHandler",
-                        'methods' => [
-                            'setConfigurationFile' => [
-                                'files' => [
-                                    "\${app_dir}/config/data/$planet/Light_ChloroformExtension/generated/$serviceName.table_list.byml",
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-            ], [
-                'plugin' => $planet,
-            ]);
+
 //
 //            $this->addServiceConfigHook('crud', [
 //                'method' => 'registerHandler',
@@ -554,24 +537,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
                 ],
             ], [
                 'pluginName' => $planet,
-            ]);
-
-
-            $this->addServiceConfigHook('realform', [
-                'method' => 'registerFormHandler',
-                'args' => [
-                    'plugin' => $planet,
-                    'handler' => [
-                        'instance' => "Ling\Light_Kit_Admin\Realform\Handler\LightKitAdminRealformHandler",
-                        'methods' => [
-                            'setConfDir' => [
-                                'dir' => "\${app_dir}/config/data/$planet/Light_Realform",
-                            ],
-                        ],
-                    ],
-                ],
-            ], [
-                'plugin' => $planet,
             ]);
 
         }

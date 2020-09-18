@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-09-04
+2020-06-30 -> 2020-09-18
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.0 -- 2020-09-18
+
+    - update service to work with new realform and realist apis  
+    
 - 1.27.0 -- 2020-09-04
 
     - update service to work with realist2 api  

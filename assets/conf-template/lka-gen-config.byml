@@ -420,14 +420,12 @@ form:
             # The default value is true.
             # When true, if a field is a foreign key we will generate the configuration for a table list field (https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#tablelistfield).
             use_table_list: true
-            # Beside from generating those configuration items, we can also generate the table list fields specific configuration items (https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item).
-            # This is done by setting the table_list_config_file property below.
-            # If null (by default), we will not generate those table list configuration items.
-            # If set to a path, the table list configuration items will be generated/written inside this file.
-            # Each entry's key will have the following format:
-            #       - {referencedTable}.{referencedField}
-            # For the values, please refer to the actual implementation.
-            table_list_config_file: {app_dir}/config/data/{$plugin}/Light_ChloroformExtension/generated/{$shortName}.table_list.byml
+
+            # Array, the security directive to use with the table list(s).
+            # See the [Light_Nugget baked in security system](https://github.com/lingtalfi/Light_Nugget/blob/master/doc/pages/conception-notes.md#a-baked-in-security-system-for-nugget-users) for more details.
+            table_list_security:
+                any:
+                    permission: Light_Kit_Admin.admin
 
 
     # An array of table => notRequiredFields, with notRequiredFields being an array of the fields for which you don't
@@ -628,7 +626,7 @@ controller: []
         # The form identifier to call to process the form when the form page is rendered
         # The default value is:
         #   Light_Kit_Admin.generated/{table}
-        form_identifier_format: '{$plugin}.generated/{table}'
+        form_identifier_format: '{$plugin}:generated/{table}'
 
         # The kit page to call when rendering the form
         # The default value is:
@@ -676,7 +674,7 @@ controller: []
     ?custom_controller_classname: {$galaxyName}\{$plugin}\Controller\Generated\Custom\Custom{Table}Controller
 
     # The class name of the base controller to generate.
-    base_controller_classname: {$galaxyName}\{$plugin}\Controller\Generated\Base\RealGenController
+    base_controller_classname: Ling\Light_Kit_Admin\Controller\RealAdminPageController
 
     # The class name of the parent controller, which all other classes derive from.
     parent_controller: {$galaxyName}\Light_Kit_Admin\Controller\AdminPageController
