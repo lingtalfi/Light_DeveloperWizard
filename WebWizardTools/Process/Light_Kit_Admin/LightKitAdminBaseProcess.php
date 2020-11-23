@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators;
+namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin;
 
 
 use Ling\Bat\CaseTool;
@@ -9,6 +9,7 @@ use Ling\Bat\FileSystemTool;
 use Ling\ClassCooker\FryingPan\Ingredient\ParentIngredient;
 use Ling\Light\Helper\LightNamesAndPathHelper;
 use Ling\Light_DatabaseInfo\Service\LightDatabaseInfoService;
+use Ling\Light_DeveloperWizard\Helper\CreateFileHelper;
 use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
 use Ling\Light_DeveloperWizard\Helper\DeveloperWizardLkaHelper;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardCommonProcess;
@@ -19,9 +20,9 @@ use Ling\UniverseTools\PlanetTool;
 
 
 /**
- * The GenerateLkaPluginProcess class.
+ * The LightKitAdminBaseProcess class.
  */
-abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProcess
+abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProcess
 {
 
     /**
@@ -50,8 +51,55 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
     public function prepare()
     {
         parent::prepare();
+    }
 
 
+    /**
+     * This method should be called inside the prepare method call.
+     * It checks that the target planet is a lka planet starting with Light_Kit_Admin_ prefix, and will add a prepare error message if that's not the case.
+     *
+     *
+     */
+    protected function mustBeLkaPlanet()
+    {
+        if (true === empty($this->getDisabledReason())) {
+            $planet = $this->getContextVar("planet");
+            if (0 !== strpos($planet, "Light_Kit_Admin_")) {
+                $this->setDisabledReason("The planet name must start with Light_Kit_Admin_");
+            }
+        }
+    }
+
+
+    /**
+     * Checks that the create file exists for the host planet (see nomenclature document for more details),
+     * and adds a disabled reason error if that's not the case.
+     *
+     * Unfortunately for now this method only works if the host planet comes from the same galaxy as the current planet.
+     *
+     */
+    protected function hostPlanetHasCreateFile()
+    {
+        $this->mustBeLkaPlanet();
+        if (true === empty($this->getDisabledReason())) {
+            $galaxy = $this->getContextVar("galaxy");
+            $planet = $this->getContextVar("planet");
+            $container = $this->getContextVar("container");
+            $hostPlanet = DeveloperWizardLkaHelper::getLkaOriginPlanet($planet);
+            $createFile = CreateFileHelper::getCreateFilePath($galaxy, $hostPlanet, $container);
+            if (false === file_exists($createFile)) {
+                $this->setDisabledReason('Missing <a target="_blank" href="https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md">create file for the host planet (' . $hostPlanet . ').</a>');
+            }
+
+        }
+    }
+
+
+    /**
+     * Checks that the create file exists for the current planet, and adds a disabled reason error if that's not the case.
+     */
+    protected function hasCreateFile()
+    {
         if (true === empty($this->getDisabledReason())) {
             if (true === $this->checkCreateFileExists) {
                 $createFileExists = $this->getContextVar("createFileExists");
@@ -60,7 +108,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
                 }
             }
         }
-
     }
 
 
@@ -245,30 +292,6 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
 
 
     /**
-     * Returns the planetId corresponding to the given planet name.
-     *
-     * @param $planet
-     * @return string
-     */
-    protected function getPlanetId($planet): string
-    {
-        return substr($planet, 6);
-    }
-
-
-    /**
-     * Returns the lka planet name for the given planet.
-     *
-     * @param string $planet
-     * @return string
-     */
-    protected function getLkaPlanetNameByPlanet(string $planet): string
-    {
-        $planetId = $this->getPlanetId($planet);
-        return "Light_Kit_Admin_" . $planetId;
-    }
-
-    /**
      * Executes the given generator config file path, using the @page(Light_Kit_Admin_Generator) plugin.
      *
      * Available options are:
@@ -291,10 +314,10 @@ abstract class GenerateLkaPluginProcess extends LightDeveloperWizardCommonProces
         $lkaGenerator = $this->container->get("kit_admin_generator");
         $config = $lkaGenerator->generate($path);
 
-
         if (false === array_key_exists('create_file', $config)) {
             // if no create file, our work is done
-            $this->importantMessage("Note that the create file was not found, therefore only the lka generator was executed, but no extra work. Check the task details for more info.");
+            $sPath = $this->getSymbolicPath($path);
+            $this->importantMessage("Note that the create file was not defined in the configuration (in $sPath), therefore only the lka generator was executed, but no extra work. Check the task details for more info.");
             return;
         }
 

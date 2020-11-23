@@ -4,13 +4,13 @@
 namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin;
 
 
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateLkaPluginProcess;
+use Ling\Light_DeveloperWizard\Helper\DeveloperWizardLkaHelper;
 
 /**
  * The CreateLkaPlanetProcess class.
  *
  */
-class CreateLkaPlanetProcess extends GenerateLkaPluginProcess
+class CreateLkaPlanetProcess extends LightKitAdminBaseProcess
 {
 
 
@@ -21,29 +21,19 @@ class CreateLkaPlanetProcess extends GenerateLkaPluginProcess
     {
         parent::__construct();
         $this->setName("create-lka-planet");
-        $this->setLabel("Creates the lka planet.");
+        $this->setLabel("Creates the lka planet (from the source planet).");
         $this->setLearnMoreByHash('create-lka-planet');
     }
 
 
-//    /**
-//     * @overrides
-//     */
-//    public function prepare()
-//    {
-//        // don't call the parent.
-//        $util = $this->container->get("developer_wizard")->getServiceManagerUtil();
-//        $planetName = $this->getContextVar("planet");
-//        $galaxyName = $this->getContextVar("galaxy");
-//        $util->setPlanet($planetName, $galaxyName);
-//        $util->setContainer($this->container);
-//        $this->util = $util;
-//
-//        if (0 !== strpos($planetName, "Light_")) {
-//            $this->setDisabledReason("The planet name must start with the \"Light_\" prefix.");
-//        }
-//
-//    }
+    /**
+     * @overrides
+     */
+    public function prepare()
+    {
+        parent::prepare();
+        $this->hasCreateFile();
+    }
 
     /**
      * @implementation
@@ -56,7 +46,7 @@ class CreateLkaPlanetProcess extends GenerateLkaPluginProcess
         //--------------------------------------------
         $planet = $this->getContextVar("planet");
         $galaxy = $this->getContextVar("galaxy");
-        $newPlanetName = $this->getLkaPlanetNameByPlanet($planet);
+        $newPlanetName = DeveloperWizardLkaHelper::getLkaPlanetNameByPlanet($planet);
 
 
         $this->generateLkaPlanet([

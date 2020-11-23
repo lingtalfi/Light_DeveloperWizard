@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2020-09-04
+2020-07-09 -> 2020-11-12
 
 
 
@@ -12,8 +12,10 @@ Task details
     - [Add standard permissions](#add-standard-permissions)
 - Generators
     - [Generate breeze api](#generate-breeze-api)
+    - [Generate breeze config](#generate-breeze-config)
     - [Execute the lka generator config file](#execute-the-lka-generator-config-file)
 - Light_Kit_Admin
+    - [Create lka generator config](#create-lka-generator-config)
     - [Create lka planet](#create-lka-planet)
     - [Generate Light_Kit_Admin plugin](#generate-light_kit_admin-plugin)
     - [Create the lka user main page with helloWorld](#create-the-lka-user-main-page)
@@ -89,6 +91,17 @@ Add standard permissions
 2020-07-09
 
 Adds [light standard permissions](https://github.com/lingtalfi/TheBar/blob/master/discussions/light-standard-permissions.md) for the given planet.
+
+
+
+Create lka generator config
+----------
+2020-11-12
+
+
+Creates a [Light_Kit_Admin_Generator](https://github.com/lingtalfi/Light_Kit_Admin_Generator) config file for the current planet, which name must start with the **Light_Kit_Admin_** prefix.
+
+See an [example of lka generator config file](https://github.com/lingtalfi/Light_Kit_Admin_Generator/blob/master/doc/pages/lkagen-configuration-example.md).
 
 
 
@@ -420,6 +433,15 @@ We create the breeze api for the given planet.
 The generator used is the [LingBreezeGenerator 2](https://github.com/lingtalfi/Light_BreezeGenerator/blob/master/doc/pages/ling-breeze-generator-2.md).
 
 All the classes will be generated in the **Api** directory at the root of your planet directory.
+
+
+
+Generate breeze config
+-----------
+2020-11-12
+
+
+Generates the [breeze config file](https://github.com/lingtalfi/Light_BreezeGenerator/blob/master/doc/pages/ling-breeze-generator-2.md#configuration) for the current planet.
 
 
 

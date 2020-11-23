@@ -5,12 +5,12 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin;
 
 
 use Ling\Light\Helper\LightNamesAndPathHelper;
-use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateLkaPluginProcess;
+
 
 /**
  * The ExecuteLkaGeneratorProcess class.
  */
-class ExecuteLkaGeneratorProcess extends GenerateLkaPluginProcess
+class ExecuteLkaGeneratorProcess extends LightKitAdminBaseProcess
 {
 
 
@@ -50,36 +50,35 @@ class ExecuteLkaGeneratorProcess extends GenerateLkaPluginProcess
     public function prepare()
     {
         parent::prepare();
+        $this->mustBeLkaPlanet();
+        $this->hasCreateFile();
+
         if (true === empty($this->getDisabledReason())) {
 
             $planet = $this->getContextVar("planet");
+            $appDir = $this->container->getApplicationDir();
+            $serviceName = LightNamesAndPathHelper::getServiceName($planet);
 
-            if (0 !== strpos($planet, "Light_Kit_Admin_")) {
-                $this->setDisabledReason("The planet name must start with Light_Kit_Admin_");
-            } else {
-                $appDir = $this->container->getApplicationDir();
-                $serviceName = LightNamesAndPathHelper::getServiceName($planet);
-
-                $lkaGenConfigPath = $appDir . "/config/data/$planet/Light_Kit_Admin_Generator/$serviceName.byml";
-                $lkaGenConfigPath2 = $appDir . "/config/data/$planet/Light_Kit_Admin_Generator/$serviceName.generated.byml";
+            $lkaGenConfigPath = $appDir . "/config/data/$planet/Light_Kit_Admin_Generator/$serviceName.byml";
+            $lkaGenConfigPath2 = $appDir . "/config/data/$planet/Light_Kit_Admin_Generator/$serviceName.generated.byml";
 
 
-                if (false === file_exists($lkaGenConfigPath)) {
-                    $lkaGenConfigPath = false;
-                }
-                if (false === file_exists($lkaGenConfigPath2)) {
-                    $lkaGenConfigPath2 = false;
-                }
-
-                $this->configFiles = [
-                    $lkaGenConfigPath,
-                    $lkaGenConfigPath2,
-                ];
-
-                if (false === $lkaGenConfigPath && false === $lkaGenConfigPath2) {
-                    $this->setDisabledReason('No lka generator config file found. See more details in the task details.');
-                }
+            if (false === file_exists($lkaGenConfigPath)) {
+                $lkaGenConfigPath = false;
             }
+            if (false === file_exists($lkaGenConfigPath2)) {
+                $lkaGenConfigPath2 = false;
+            }
+
+            $this->configFiles = [
+                $lkaGenConfigPath,
+                $lkaGenConfigPath2,
+            ];
+
+            if (false === $lkaGenConfigPath && false === $lkaGenConfigPath2) {
+                $this->setDisabledReason('No lka generator config file found. See more details in the task details.');
+            }
+
         }
     }
 

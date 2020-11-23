@@ -46,6 +46,7 @@ class RemovePlanetProcess extends LightDeveloperWizardCommonProcess
             $appDir . "/templates/$planet",
             $appDir . "/templates/Light_Mailer/$planet",
             $appDir . "/universe/$galaxy/$planet",
+            $appDir . "/universe/LingTalfi/DocBuilder/$planet",
             $appDir . "/www/libs/universe/$galaxy/$planet",
             $appDir . "/www/plugins/$planet",
         ];

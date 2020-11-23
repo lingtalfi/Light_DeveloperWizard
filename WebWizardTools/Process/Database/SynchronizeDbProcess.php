@@ -6,9 +6,11 @@ namespace Ling\Light_DeveloperWizard\WebWizardTools\Process\Database;
 
 use Ling\Bat\BDotTool;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
+use Ling\Light_Database\Service\LightDatabaseService;
 use Ling\Light_DbSynchronizer\Service\LightDbSynchronizerService;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\LightDeveloperWizardBaseProcess;
+use Ling\SimplePdoWrapper\Util\MysqlInfoUtil;
 use Ling\SqlWizard\Util\MysqlStructureReader;
 
 
@@ -63,6 +65,7 @@ class SynchronizeDbProcess extends LightDeveloperWizardBaseProcess
 
 
         if (true === $createFileExists) {
+            $infos = null;
             if (false === $preferencesExist) {
                 /**
                  * Let's gather the created tables and memorize them as scope for the next time
@@ -73,14 +76,42 @@ class SynchronizeDbProcess extends LightDeveloperWizardBaseProcess
                 $tables = array_keys($infos);
                 DeveloperWizardFileTool::updateFile($planetDir, [
                     "db_synchronizer" => [
-                        "scope" => $tables,
+                        "scope" => [], // old version: $tables, but now we use the scope_use_prefix instead...
+                        "scope_use_prefix" => true,
                     ]
                 ]);
                 $preferences = DeveloperWizardFileTool::getPreferences($planetDir);
             }
 
 
-            $scope = BDotTool::getDotValue("db_synchronizer.scope", $preferences, []);
+            $usePrefixForScope = $preferences['scope_use_prefix'] ?? true;
+            if (false === $usePrefixForScope) {
+                $scope = BDotTool::getDotValue("db_synchronizer.scope", $preferences, []);
+            } else {
+                if (null === $infos) {
+                    $reader = new MysqlStructureReader();
+                    $infos = $reader->readFile($createFile);
+                }
+                $tables = array_keys($infos);
+                if (count($tables) < 1) {
+                    $this->errorMessage("I cannot guess the table prefix, because there was no table defined in the create file.");
+                }
+                $anyTable = current($tables);
+                $p = explode("_", $anyTable, 2);
+                if (2 !== count($p)) {
+                    $this->errorMessage("I assumed that every tables had a prefix, but this one doesn't: $anyTable. Aborting process...");
+                }
+                $prefix = array_shift($p);
+                /**
+                 * @var $db LightDatabaseService
+                 */
+                $db = $container->get("database");
+                $util = new MysqlInfoUtil();
+                $util->setWrapper($db);
+                $scope = $util->getTables($prefix);
+            }
+
+
             $sScope = '';
             if (empty($scope)) {
                 $sScope = 'empty scope';

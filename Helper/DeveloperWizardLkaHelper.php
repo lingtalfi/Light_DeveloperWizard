@@ -28,6 +28,18 @@ class DeveloperWizardLkaHelper
         return 'Light_' . substr($lkaPlanetName, 16);
     }
 
+    /**
+     * Returns the lka planet name for the given planet.
+     *
+     * @param string $planet
+     * @return string
+     */
+    public static function getLkaPlanetNameByPlanet(string $planet): string
+    {
+        $planetId = self::getPlanetId($planet);
+        return "Light_Kit_Admin_" . $planetId;
+    }
+
 
     /**
      * Creates a basic lka generator config file, and returns its path.
@@ -169,4 +181,19 @@ class DeveloperWizardLkaHelper
         return BabyYamlUtil::readFile($path);
     }
 
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
+    /**
+     * Returns the planetId corresponding to the given planet name.
+     *
+     * @param $planet
+     * @return string
+     */
+    private static function getPlanetId($planet): string
+    {
+        return substr($planet, 6);
+    }
 }

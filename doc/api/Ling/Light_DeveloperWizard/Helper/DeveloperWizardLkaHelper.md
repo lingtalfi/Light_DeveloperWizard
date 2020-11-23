@@ -4,7 +4,7 @@
 
 The DeveloperWizardLkaHelper class
 ================
-2020-06-30 --> 2020-09-18
+2020-06-30 --> 2020-11-23
 
 
 
@@ -26,8 +26,10 @@ class <span class="pl-k">DeveloperWizardLkaHelper</span>  {
 
 - Methods
     - public static [getLkaOriginPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getLkaOriginPlanet.md)(string $lkaPlanetName) : string
+    - public static [getLkaPlanetNameByPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getLkaPlanetNameByPlanet.md)(string $planet) : string
     - public static [createLkaGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/createLkaGeneratorConfigFile.md)(array $params, ?array $options = []) : void
     - public static [getBasicLkaGeneratorConfig](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getBasicLkaGeneratorConfig.md)([Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) $container, string $galaxy, string $planet) : array
+    - private static [getPlanetId](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getPlanetId.md)($planet) : string
 
 }
 
@@ -40,8 +42,10 @@ Methods
 ==============
 
 - [DeveloperWizardLkaHelper::getLkaOriginPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getLkaOriginPlanet.md) &ndash; Returns the name of the planet from which the given lka planet originates from.
+- [DeveloperWizardLkaHelper::getLkaPlanetNameByPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getLkaPlanetNameByPlanet.md) &ndash; Returns the lka planet name for the given planet.
 - [DeveloperWizardLkaHelper::createLkaGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/createLkaGeneratorConfigFile.md) &ndash; Creates a basic lka generator config file, and returns its path.
 - [DeveloperWizardLkaHelper::getBasicLkaGeneratorConfig](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getBasicLkaGeneratorConfig.md) &ndash; Returns a basic lka configuration array.
+- [DeveloperWizardLkaHelper::getPlanetId](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getPlanetId.md) &ndash; Returns the planetId corresponding to the given planet name.
 
 
 

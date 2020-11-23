@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-09-18
+2020-06-30 -> 2020-11-23
 
 
 
@@ -62,6 +62,12 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.1 -- 2020-11-23
+
+    - update service to work with new realform, realist and realgen apis  
+    - update SynchronizeDbProcess, now use table prefix by default to fetch the scope   
+    - add GenerateBreezeConfigProcess   
+    
 - 1.28.0 -- 2020-09-18
 
     - update service to work with new realform and realist apis  
