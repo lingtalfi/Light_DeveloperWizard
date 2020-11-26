@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-11-23
+2020-06-30 -> 2020-11-26
 
 
 
@@ -62,6 +62,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.2 -- 2020-11-26
+
+    - update LightKitAdminBaseProcess, now doesn't add bmenu hook if addDirectInjector method already used  
+    
 - 1.28.1 -- 2020-11-23
 
     - update service to work with new realform, realist and realgen apis  

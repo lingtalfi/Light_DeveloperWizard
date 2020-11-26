@@ -496,16 +496,24 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
         // ADDING SERVICE CONFIG FILE HOOKS
         //--------------------------------------------
         if (true === $useMenu) {
-            $this->addServiceConfigHook('bmenu', [
-                'method' => 'addDirectItemsByFileAndParentPath',
-                'args' => [
+            if (false === $this->util->configHasHook("bmenu", [
+                    'with' => [
+                        'method' => 'addDirectInjector',
+                    ]
+                ])) {
+                $this->addServiceConfigHook('bmenu', [
+                    'method' => 'addDirectItemsByFileAndParentPath',
+                    'args' => [
+                        'menu_type' => 'admin_main_menu',
+                        'file' => "\${app_dir}/config/data/$planet/bmenu/generated/$serviceName.admin_mainmenu_1.byml",
+                        'path' => "lka-admin",
+                    ],
+                ], [
                     'menu_type' => 'admin_main_menu',
-                    'file' => "\${app_dir}/config/data/$planet/bmenu/generated/$serviceName.admin_mainmenu_1.byml",
-                    'path' => "lka-admin",
-                ],
-            ], [
-                'menu_type' => 'admin_main_menu',
-            ]);
+                ]);
+            } else {
+                $this->infoMessage("The service config file already has a hook to the \"$serviceName\" service (for planet \"$planet\").");
+            }
         }
 
 
