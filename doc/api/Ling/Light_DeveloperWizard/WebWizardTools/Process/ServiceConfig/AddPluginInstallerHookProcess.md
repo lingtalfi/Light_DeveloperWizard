@@ -4,7 +4,7 @@
 
 The AddPluginInstallerHookProcess class
 ================
-2020-06-30 --> 2020-11-26
+2020-06-30 --> 2020-11-27
 
 
 
