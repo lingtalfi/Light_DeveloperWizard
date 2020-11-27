@@ -63,6 +63,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.5 -- 2020-11-27
+
+    - fix ServiceManagerUtil->addConfigHook not adding hook comment section correctly in some cases
+    
 - 1.28.4 -- 2020-11-27
 
     - add create a service tutorial  
