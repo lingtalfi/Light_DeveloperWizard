@@ -33,6 +33,7 @@ Summary
 - Pages
     - [Conception notes](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conception-notes.md)
     - [Conventions](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md)
+    - [Tutorial: Create a service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/create-a-service-tutorial.md)
     - [Task details](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md)
 
 
@@ -62,6 +63,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.4 -- 2020-11-27
+
+    - add create a service tutorial  
+    
 - 1.28.3 -- 2020-11-27
 
     - update to accommodate latest Light_Kit api  

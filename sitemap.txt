@@ -241,5 +241,6 @@ https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Ligh
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conception-notes.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md
+https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/create-a-service-tutorial.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/nomenclature.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md
