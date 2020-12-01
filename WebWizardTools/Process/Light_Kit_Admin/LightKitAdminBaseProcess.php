@@ -353,7 +353,7 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
         // GENERATING CONTROLLER HUB CLASS
         //--------------------------------------------
         if (true === $useController) {
-            $controllerHubClassPath = $planetDir . "/ControllerHub/Generated/$tightName" . "ControllerHubHandler.php";
+            $controllerHubClassPath = $planetDir . "/Light_ControllerHub/Generated/$tightName" . "ControllerHubHandler.php";
 
             if (false === $recreateEverything && true === file_exists($controllerHubClassPath)) {
                 $this->infoMessage("ControllerHub class already found in " . $this->getSymbolicPath($controllerHubClassPath));
@@ -366,7 +366,7 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
                     'namespace Ling\Light_Kit_Admin_TaskScheduler\ControllerHub;',
                     'LightKitAdminTaskSchedulerControllerHubHandler',
                 ], [
-                    "namespace $galaxy\\$planet\ControllerHub\Generated;",
+                    "namespace $galaxy\\$planet\Light_ControllerHub\Generated;",
                     $tightName . 'ControllerHubHandler',
                 ], $tplContent);
                 FileSystemTool::mkfile($controllerHubClassPath, $tplContent);
@@ -518,22 +518,25 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
 
 
         if (true === $useController) {
-            $this->addServiceConfigHook('controller_hub', [
-                'method' => 'registerHandler',
-                'args' => [
-                    'plugin' => $planet,
-                    'handler' => [
-                        'instance' => "Ling\\$planet\ControllerHub\Generated\\${tightName}ControllerHubHandler",
-                        'methods' => [
-                            'setContainer' => [
-                                'container' => '@container()',
-                            ],
-                        ],
-                    ],
-                ],
-            ], [
-                'plugin' => $planet,
-            ]);
+            /**
+             * We now rely on dynamic registration rather, so the commented code below should be removed in the future
+             */
+//            $this->addServiceConfigHook('controller_hub', [
+//                'method' => 'registerHandler',
+//                'args' => [
+//                    'plugin' => $planet,
+//                    'handler' => [
+//                        'instance' => "Ling\\$planet\ControllerHub\Generated\\${tightName}ControllerHubHandler",
+//                        'methods' => [
+//                            'setContainer' => [
+//                                'container' => '@container()',
+//                            ],
+//                        ],
+//                    ],
+//                ],
+//            ], [
+//                'plugin' => $planet,
+//            ]);
         }
 
 

@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-11-27
+2020-06-30 -> 2020-12-01
 
 
 
@@ -63,6 +63,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.6 -- 2020-12-01
+
+    - update "execute lka generator", now controller hub generates the class in Light_ControllerHub instead of ControllerHub, also we now rely on dynamic registration (i.e. no hook generated in the config)
+    
 - 1.28.5 -- 2020-11-27
 
     - fix ServiceManagerUtil->addConfigHook not adding hook comment section correctly in some cases
