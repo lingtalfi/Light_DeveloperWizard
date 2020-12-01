@@ -63,6 +63,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.8 -- 2020-12-01
+
+    - update DeveloperWizardLkaHelper::getLkaPlanetNameByPlanet, now proxies to original lka method
+    
 - 1.28.7 -- 2020-12-01
 
     - add "create conception notes" task

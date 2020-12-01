@@ -6,6 +6,7 @@ dependencies:
         - Light_Database
         - SimplePdoWrapper
         - SqlWizard
+        - Light_Kit_Admin
         - Light_PluginInstaller
         - UniverseTools
         - ClassCooker
@@ -17,7 +18,6 @@ dependencies:
         - Light_LingStandardService
         - Light_UserDatabase
         - Light_ControllerHub
-        - Light_Kit_Admin
         - Jquery
     
 

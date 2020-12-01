@@ -648,6 +648,7 @@ Dependencies
 - [Light_Database](https://github.com/lingtalfi/Light_Database)
 - [SimplePdoWrapper](https://github.com/lingtalfi/SimplePdoWrapper)
 - [SqlWizard](https://github.com/lingtalfi/SqlWizard)
+- [Light_Kit_Admin](https://github.com/lingtalfi/Light_Kit_Admin)
 - [Light_PluginInstaller](https://github.com/lingtalfi/Light_PluginInstaller)
 - [UniverseTools](https://github.com/lingtalfi/UniverseTools)
 - [ClassCooker](https://github.com/lingtalfi/ClassCooker)
@@ -659,7 +660,6 @@ Dependencies
 - [Light_LingStandardService](https://github.com/lingtalfi/Light_LingStandardService)
 - [Light_UserDatabase](https://github.com/lingtalfi/Light_UserDatabase)
 - [Light_ControllerHub](https://github.com/lingtalfi/Light_ControllerHub)
-- [Light_Kit_Admin](https://github.com/lingtalfi/Light_Kit_Admin)
 - [Jquery](https://github.com/lingtalfi/Jquery)
 
 

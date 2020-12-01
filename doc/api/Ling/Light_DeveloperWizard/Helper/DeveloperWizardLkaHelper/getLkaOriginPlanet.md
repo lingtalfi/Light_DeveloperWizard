@@ -51,7 +51,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [DeveloperWizardLkaHelper::getLkaOriginPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Helper/DeveloperWizardLkaHelper.php#L26-L29)
+See the source code for method [DeveloperWizardLkaHelper::getLkaOriginPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Helper/DeveloperWizardLkaHelper.php#L27-L30)
 
 
 See Also

@@ -49,7 +49,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [DeveloperWizardLkaHelper::getLkaPlanetNameByPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Helper/DeveloperWizardLkaHelper.php#L37-L41)
+See the source code for method [DeveloperWizardLkaHelper::getLkaPlanetNameByPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/Helper/DeveloperWizardLkaHelper.php#L38-L41)
 
 
 See Also
