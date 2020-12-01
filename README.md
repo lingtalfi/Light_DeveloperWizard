@@ -63,6 +63,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.7 -- 2020-12-01
+
+    - add "create conception notes" task
+    
 - 1.28.6 -- 2020-12-01
 
     - update "execute lka generator", now controller hub generates the class in Light_ControllerHub instead of ControllerHub, also we now rely on dynamic registration (i.e. no hook generated in the config)

@@ -2,7 +2,7 @@
 
 
 
-The LightKitAdminBaseProcess class
+The CreateConceptionNotesProcess class
 ================
 2020-06-30 --> 2020-12-01
 
@@ -14,7 +14,7 @@ The LightKitAdminBaseProcess class
 Introduction
 ============
 
-The LightKitAdminBaseProcess class.
+The CreateConceptionNotesProcess class.
 
 
 
@@ -22,10 +22,7 @@ Class synopsis
 ==============
 
 
-abstract class <span class="pl-k">LightKitAdminBaseProcess</span> extends [LightDeveloperWizardCommonProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess.md) implements [LightServiceContainerAwareInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerAwareInterface.md) {
-
-- Properties
-    - protected bool [$checkCreateFileExists](#property-checkCreateFileExists) ;
+class <span class="pl-k">CreateConceptionNotesProcess</span> extends [LightDeveloperWizardCommonProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess.md) implements [LightServiceContainerAwareInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerAwareInterface.md) {
 
 - Inherited properties
     - protected [Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) [LightDeveloperWizardCommonProcess::$container](#property-container) ;
@@ -42,18 +39,12 @@ abstract class <span class="pl-k">LightKitAdminBaseProcess</span> extends [Light
     - protected string [WebWizardToolsProcess::$category](#property-category) ;
 
 - Methods
-    - public [__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/__construct.md)() : void
-    - public [prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/prepare.md)() : void
-    - protected [mustBeLkaPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/mustBeLkaPlanet.md)() : void
-    - protected [hostPlanetHasCreateFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/hostPlanetHasCreateFile.md)() : void
-    - protected [hasCreateFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/hasCreateFile.md)() : void
-    - protected [generateLkaPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/generateLkaPlanet.md)(array $params, ?array $options = []) : void
-    - protected [createLkaGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/createLkaGeneratorConfigFile.md)(array $params, ?array $options = []) : void
-    - protected [getLkaServiceNameByPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/getLkaServiceNameByPlanet.md)(string $planet) : string
-    - protected [executeGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/executeGeneratorConfigFile.md)(string $path, ?array $options = []) : void
+    - public [__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess/__construct.md)() : void
+    - protected [doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess/doExecute.md)(?array $options = []) : void
 
 - Inherited methods
     - public [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md)([Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) $container) : void
+    - public [LightDeveloperWizardCommonProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/prepare.md)() : void
     - protected [LightDeveloperWizardBaseProcess::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getSymbolicPath.md)(string $path) : string
     - protected [LightDeveloperWizardBaseProcess::isLightPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/isLightPlanet.md)(string $planet) : bool
     - protected [LightDeveloperWizardBaseProcess::getFryingPanByFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getFryingPanByFile.md)(string $file) : [FryingPan](https://github.com/lingtalfi/ClassCooker/blob/master/doc/api/Ling/ClassCooker/FryingPan/FryingPan.md)
@@ -83,7 +74,6 @@ abstract class <span class="pl-k">LightKitAdminBaseProcess</span> extends [Light
     - public WebWizardToolsProcess::setCategory(string $category) : self
     - public WebWizardToolsProcess::execute(?array $options = []) : void
     - public WebWizardToolsProcess::addLogMessage(string $msg, string $type) : void
-    - abstract protected WebWizardToolsProcess::doExecute(?array $options = []) : void
     - protected WebWizardToolsProcess::getContextVar(string $varName, ?$defaultValue = null, ?bool $throwEx = true) : void
     - protected WebWizardToolsProcess::traceMessage(string $msg) : void
     - protected WebWizardToolsProcess::infoMessage(string $msg) : void
@@ -97,105 +87,15 @@ abstract class <span class="pl-k">LightKitAdminBaseProcess</span> extends [Light
 
 
 
-Properties
-=============
-
-- <span id="property-checkCreateFileExists"><b>checkCreateFileExists</b></span>
-
-    This property holds the checkCreateFileExists for this instance.
-    
-    
-
-- <span id="property-container"><b>container</b></span>
-
-    This property holds the container for this instance.
-    
-    
-
-- <span id="property-util"><b>util</b></span>
-
-    This property holds the util for this instance.
-    
-    
-
-- <span id="property-report"><b>report</b></span>
-
-    This property holds the report for this instance.
-    
-    
-
-- <span id="property-controls"><b>controls</b></span>
-
-    The controls for this instance.
-    
-    It's an array of controlName => controlInstance.
-    
-    
-
-- <span id="property-name"><b>name</b></span>
-
-    This property holds the name for this instance.
-    
-    
-
-- <span id="property-label"><b>label</b></span>
-
-    This property holds the label for this instance.
-    
-    
-
-- <span id="property-learnMore"><b>learnMore</b></span>
-
-    This property holds the learnMore for this instance.
-    
-    
-
-- <span id="property-webWizard"><b>webWizard</b></span>
-
-    This property holds the webWizard for this instance.
-    
-    
-
-- <span id="property-params"><b>params</b></span>
-
-    The params for this instance.
-    See the [WebWizardTools conception notes](https://github.com/lingtalfi/WebWizardTools/blob/master/doc/pages/conception-notes.md) for more details.
-    
-    
-
-- <span id="property-enabled"><b>enabled</b></span>
-
-    This property holds the enabled for this instance.
-    
-    
-
-- <span id="property-disabledReason"><b>disabledReason</b></span>
-
-    This property holds the disabledReason for this instance.
-    
-    
-
-- <span id="property-category"><b>category</b></span>
-
-    This property holds the category for this instance.
-    
-    
-
 
 
 Methods
 ==============
 
-- [LightKitAdminBaseProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
-- [LightKitAdminBaseProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
-- [LightKitAdminBaseProcess::mustBeLkaPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/mustBeLkaPlanet.md) &ndash; This method should be called inside the prepare method call.
-- [LightKitAdminBaseProcess::hostPlanetHasCreateFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/hostPlanetHasCreateFile.md) &ndash; and adds a disabled reason error if that's not the case.
-- [LightKitAdminBaseProcess::hasCreateFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/hasCreateFile.md) &ndash; Checks that the create file exists for the current planet, and adds a disabled reason error if that's not the case.
-- [LightKitAdminBaseProcess::generateLkaPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/generateLkaPlanet.md) &ndash; Generate the Lka planet from the given params.
-- [LightKitAdminBaseProcess::createLkaGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/createLkaGeneratorConfigFile.md) &ndash; Creates the lka generator config file, and returns its path.
-- [LightKitAdminBaseProcess::getLkaServiceNameByPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/getLkaServiceNameByPlanet.md) &ndash; Returns the lka service name corresponding to the given planet name.
-- [LightKitAdminBaseProcess::executeGeneratorConfigFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/executeGeneratorConfigFile.md) &ndash; Executes the given generator config file path, using the [Light_Kit_Admin_Generator](https://github.com/lingtalfi/Light_Kit_Admin_Generator) plugin.
+- [CreateConceptionNotesProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+- [CreateConceptionNotesProcess::doExecute](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess/doExecute.md) &ndash; Executes the process.
 - [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md) &ndash; Sets the light service container interface.
+- [LightDeveloperWizardCommonProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
 - [LightDeveloperWizardBaseProcess::getSymbolicPath](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getSymbolicPath.md) &ndash; Returns the given absolute path, with the application directory replaced by a symbol if found.
 - [LightDeveloperWizardBaseProcess::isLightPlanet](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/isLightPlanet.md) &ndash; Returns whether the given planet is a light planet.
 - [LightDeveloperWizardBaseProcess::getFryingPanByFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardBaseProcess/getFryingPanByFile.md) &ndash; Returns a FryingPan instance configured to work with the given file.
@@ -225,7 +125,6 @@ Methods
 - WebWizardToolsProcess::setCategory &ndash; Sets the category.
 - WebWizardToolsProcess::execute &ndash; Executes the process.
 - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
-- WebWizardToolsProcess::doExecute &ndash; Executes the process.
 - WebWizardToolsProcess::getContextVar &ndash; Returns a variable from the wizard context.
 - WebWizardToolsProcess::traceMessage &ndash; Adds a message of type "trace" to the process report.
 - WebWizardToolsProcess::infoMessage &ndash; Adds a message of type "info" to the process report.
@@ -240,11 +139,11 @@ Methods
 
 Location
 =============
-Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\LightKitAdminBaseProcess<br>
-See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\LightKitAdminBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess.php)
+Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\CreateConceptionNotesProcess<br>
+See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\CreateConceptionNotesProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Planet/CreateConceptionNotesProcess.php)
 
 
 
 SeeAlso
 ==============
-Previous class: [ExecuteLkaGeneratorProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/ExecuteLkaGeneratorProcess.md)<br>Next class: [CreateConceptionNotesProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess.md)<br>
+Previous class: [LightKitAdminBaseProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess.md)<br>Next class: [RemovePlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/RemovePlanetProcess.md)<br>

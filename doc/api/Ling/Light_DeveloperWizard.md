@@ -378,6 +378,30 @@ Table of contents
     - WebWizardToolsProcess::setCategory &ndash; Sets the category.
     - WebWizardToolsProcess::execute &ndash; Executes the process.
     - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
+- [CreateConceptionNotesProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess.md) &ndash; The CreateConceptionNotesProcess class.
+    - [CreateConceptionNotesProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+    - [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md) &ndash; Sets the light service container interface.
+    - [LightDeveloperWizardCommonProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
+    - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
+    - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
+    - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
+    - WebWizardToolsProcess::setControl &ndash; Adds a control to this process.
+    - WebWizardToolsProcess::getName &ndash; Returns the name of this instance.
+    - WebWizardToolsProcess::setName &ndash; Sets the name.
+    - WebWizardToolsProcess::getLabel &ndash; Returns the label of this instance.
+    - WebWizardToolsProcess::setLabel &ndash; Sets the label.
+    - WebWizardToolsProcess::getParams &ndash; Returns the params of this instance.
+    - WebWizardToolsProcess::setParams &ndash; Sets the params.
+    - WebWizardToolsProcess::getLearnMore &ndash; Returns the learnMore of this instance.
+    - WebWizardToolsProcess::setLearnMore &ndash; Sets the learnMore.
+    - WebWizardToolsProcess::isEnabled &ndash; Returns the enabled of this instance.
+    - WebWizardToolsProcess::setEnabled &ndash; Sets the enabled.
+    - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
+    - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
+    - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
+    - WebWizardToolsProcess::setCategory &ndash; Sets the category.
+    - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [RemovePlanetProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/RemovePlanetProcess.md) &ndash; The RemovePlanetProcess class.
     - [RemovePlanetProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/RemovePlanetProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md) &ndash; Sets the light service container interface.
