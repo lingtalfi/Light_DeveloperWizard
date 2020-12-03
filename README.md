@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-12-01
+2020-06-30 -> 2020-12-03
 
 
 
@@ -63,6 +63,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.9 -- 2020-12-03
+
+    - update documentation to acknowledge new light init script location
+    
 - 1.28.8 -- 2020-12-01
 
     - update DeveloperWizardLkaHelper::getLkaPlanetNameByPlanet, now proxies to original lka method
