@@ -63,6 +63,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.10 -- 2020-12-04
+
+    - Add lpi-deps.byml file
+
 - 1.28.9 -- 2020-12-03
 
     - update documentation to acknowledge new light init script location
