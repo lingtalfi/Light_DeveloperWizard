@@ -63,6 +63,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.11 -- 2020-12-08
+
+    - Fix lpi-deps not using natsort.
+
 - 1.28.10 -- 2020-12-04
 
     - Add lpi-deps.byml file
