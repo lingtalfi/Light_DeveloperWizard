@@ -63,6 +63,14 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.12 -- 2021-02-19
+
+    - upgrade dependencies
+
+-- 1.28.12 -- 2021-01-22
+
+    - update SynchronizeDbProcess::doExecute, now uses LightDbSynchronizerHelper
+  
 - 1.28.11 -- 2020-12-08
 
     - Fix lpi-deps not using natsort.
