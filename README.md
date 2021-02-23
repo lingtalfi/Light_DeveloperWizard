@@ -63,6 +63,10 @@ developer_wizard:
 History Log
 =============
 
+- 1.28.13 -- 2021-02-23
+
+    - Update dependencies
+
 - 1.28.12 -- 2021-02-19
 
     - upgrade dependencies
