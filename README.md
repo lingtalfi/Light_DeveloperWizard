@@ -64,6 +64,10 @@ History Log
 =============
 
 
+- 1.28.15 -- 2021-02-23
+
+    - Update dependencies (pushed by SubscribersUtil)
+
 - 1.28.14 -- 2021-02-23
 
     - Update dependencies (pushed by SubscribersUtil)
@@ -71,10 +75,6 @@ History Log
 - 1.28.13 -- 2021-02-23
 
     - Update dependencies
-
-- 1.28.12 -- 2021-02-19
-
-    - upgrade dependencies
 
 - 1.28.12 -- 2021-01-22
 
