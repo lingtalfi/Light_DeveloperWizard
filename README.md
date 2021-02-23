@@ -63,6 +63,11 @@ developer_wizard:
 History Log
 =============
 
+
+- 1.28.14 -- 2021-02-23
+
+    - Update dependencies (pushed by SubscribersUtil)
+
 - 1.28.13 -- 2021-02-23
 
     - Update dependencies
@@ -71,7 +76,7 @@ History Log
 
     - upgrade dependencies
 
--- 1.28.12 -- 2021-01-22
+- 1.28.12 -- 2021-01-22
 
     - update SynchronizeDbProcess::doExecute, now uses LightDbSynchronizerHelper
   
