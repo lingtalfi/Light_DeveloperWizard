@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2020-12-03
+2020-06-30 -> 2021-02-25
 
 
 
@@ -64,6 +64,10 @@ History Log
 =============
 
 
+- 1.28.16 -- 2021-02-25
+
+    - fix assets/map accidentally removed
+  
 - 1.28.15 -- 2021-02-23
 
     - Update dependencies (pushed by SubscribersUtil)
