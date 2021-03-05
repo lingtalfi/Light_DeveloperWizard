@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-02-25
+2020-06-30 -> 2021-03-05
 
 
 
@@ -14,6 +14,11 @@ This is part of the [universe framework](https://github.com/karayabin/universe-s
 
 Install
 ==========
+Using the [planet installer](https://github.com/lingtalfi/Light_PlanetInstaller) via [light-cli](https://github.com/lingtalfi/Light_Cli)
+```bash
+lt install Ling.Light_DeveloperWizard
+```
+
 Using the [uni](https://github.com/lingtalfi/universe-naive-importer) command.
 ```bash
 uni import Ling/Light_DeveloperWizard
@@ -63,6 +68,10 @@ developer_wizard:
 History Log
 =============
 
+
+- 1.28.17 -- 2021-03-05
+
+    - update README.md, add install alternative
 
 - 1.28.16 -- 2021-02-25
 
