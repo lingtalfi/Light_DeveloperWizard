@@ -219,7 +219,7 @@ If the [create file](https://github.com/lingtalfi/TheBar/blob/master/discussions
 
 
 - create the extra files (i.e. not created already by the lka generator) required to make the plugin work
-- bind (if possible) the origin planet permissions to the Light_Kit_Admin.admin/user permission groups, as recommended in the [lka permissions documentation](https://github.com/lingtalfi/Light_Kit_Admin/blob/master/doc/pages/permissions.md#plugin-authors-the-light_kit_admin-permission-philosophy)
+- bind (if possible) the origin planet permissions to the Ling.Light_Kit_Admin.admin/user permission groups, as recommended in the [lka permissions documentation](https://github.com/lingtalfi/Light_Kit_Admin/blob/master/doc/pages/permissions.md#plugin-authors-the-light_kit_admin-permission-philosophy)
 - add the necessary hooks in the service config file, depending on the lka generator config
 
 
@@ -336,7 +336,7 @@ $bmenu.methods_collection:
         method: addDefaultItemByFile
         args:
             menu_type: admin_main_menu
-            file: ${app_dir}/config/data/Light_Kit_Admin_XXX/bmenu/generated/kit_admin_xxx.admin_mainmenu_1.byml
+            file: ${app_dir}/config/data/Ling.Light_Kit_Admin_XXX/Ling.Light_BMenu/generated/kit_admin_xxx.admin_mainmenu_1.byml
 
 $chloroform_extension.methods_collection:
     -
@@ -348,7 +348,7 @@ $chloroform_extension.methods_collection:
                 methods:
                     setConfigurationFile:
                         files:
-                            - ${app_dir}/config/data/Light_Kit_Admin_XXX/Light_ChloroformExtension/generated/kit_admin_xxx.table_list.byml
+                            - ${app_dir}/config/data/Ling.Light_Kit_Admin_XXX/Ling.Light_ChloroformExtension/generated/kit_admin_xxx.table_list.byml
 
 
 
@@ -380,13 +380,13 @@ $kit_admin.methods_collection:
                 instance: Ling\Light_Kit_Admin_XXX\LightKitAdminPlugin\Generated\LightKitAdminXXXLkaPlugin
                 methods:
                     setOptionsFile:
-                        file: ${app_dir}/config/data/Light_Kit_Admin_XXX/Light_Kit_Admin/lka-options.generated.byml
+                        file: ${app_dir}/config/data/Ling.Light_Kit_Admin_XXX/Light_Kit_Admin/lka-options.generated.byml
 
 $micro_permission.methods_collection:
     -
         method: registerMicroPermissionsByProfile
         args:
-            file: ${app_dir}/config/data/Light_Kit_Admin_XXX/Light_MicroPermission/kit_admin_xxx.profile.generated.byml
+            file: ${app_dir}/config/data/Ling.Light_Kit_Admin_XXX/Ling.Light_MicroPermission/kit_admin_xxx.profile.generated.byml
 
 
 
@@ -399,7 +399,7 @@ $realform.methods_collection:
                 instance: Ling\Light_Kit_Admin\Realform\Handler\LightKitAdminRealformHandler
                 methods:
                     setConfDir:
-                        dir: ${app_dir}/config/data/Light_Kit_Admin_XXX/Light_Realform
+                        dir: ${app_dir}/config/data/Ling.Light_Kit_Admin_XXX/Light_Realform
 
                 
                 
@@ -607,12 +607,12 @@ This task will create a controller in (only if the file doesn't exist yet):
 
 Will create a kit widget config nugget in (using a HelloWorldWidget):
 
-- {app}/config/data/{pluginName}/kit/zeroadmin/generated/{serviceName}_mainpage.byml
+- {app}/config/data/{pluginName}/Ling.Light_Kit/zeroadmin/generated/{serviceName}_mainpage.byml
 
 
 Will create a bmenu config nugget in:
 
-- {app}/config/data/{pluginName}/bmenu/generated/{serviceName}.admin_mainmenu-usermainpage.byml
+- {app}/config/data/{pluginName}/Ling.Light_BMenu/generated/{serviceName}.admin_mainmenu-usermainpage.byml
 
 
 Will update the service config file to update the bmenu, in:
@@ -635,7 +635,7 @@ With:
  
  
 Note: it's assumed that the zeroadmin theme of lka will be used, with a parent layout variable
-of: **Light_Kit_Admin/kit/zeroadmin/dev/mainlayout_base**.
+of: **Light_Kit_Admin/Ling.Light_Kit/zeroadmin/dev/mainlayout_base**.
  
  
  

@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-03-05
+2020-06-30 -> 2021-03-15
 
 
 
@@ -68,6 +68,10 @@ developer_wizard:
 History Log
 =============
 
+
+- 1.28.18 -- 2021-03-15
+
+    - update planet to adapt Ling.Light:0.70.0
 
 - 1.28.17 -- 2021-03-05
 

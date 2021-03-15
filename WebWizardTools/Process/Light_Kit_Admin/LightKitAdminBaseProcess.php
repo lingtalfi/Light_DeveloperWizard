@@ -255,9 +255,10 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
 
 
         $planet = $params['planet'];
+        $galaxy = $params['galaxy'];
         $serviceName = LightNamesAndPathHelper::getServiceName($planet);
         $appDir = $this->container->getApplicationDir();
-        $lkaGenConfigPath = $appDir . "/config/data/$planet/Light_Kit_Admin_Generator/$serviceName.generated.byml";
+        $lkaGenConfigPath = $appDir . "/config/data/$galaxy.$planet/Ling.Light_Kit_Admin_Generator/$serviceName.generated.byml";
 
 
         return DeveloperWizardLkaHelper::createLkaGeneratorConfigFile([
@@ -403,7 +404,7 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
         //--------------------------------------------
         if (true === $useForm) {
 
-            $path = $appDir . "/config/data/$planet/Light_Kit_Admin/lka-options.generated.byml";
+            $path = $appDir . "/config/data/$galaxy.$planet/Ling.Light_Kit_Admin/lka-options.generated.byml";
             $tablePrefix = DeveloperWizardGenericHelper::getTablePrefix($originPlanetDir, $createFile);
 
 
@@ -416,10 +417,10 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
                 $tplContent = file_get_contents($tpl);
                 $tplContent = str_replace([
                     'lts',
-                    'Light_Kit_Admin_TaskScheduler',
+                    'Ling.Light_Kit_Admin_TaskScheduler',
                 ], [
                     $tablePrefix,
-                    $planet,
+                    $galaxy . "." . $planet,
                 ], $tplContent);
                 FileSystemTool::mkfile($path, $tplContent);
             }
@@ -428,7 +429,7 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
         //--------------------------------------------
         // GENERATING MICRO-PERMISSION CONFIG DATA
         //--------------------------------------------
-        $path = $appDir . "/config/data/$planet/Light_MicroPermission/$serviceName.profile.generated.byml";
+        $path = $appDir . "/config/data/$galaxy.$planet/Ling.Light_MicroPermission/$serviceName.profile.generated.byml";
         if (false === $recreateEverything && true === file_exists($path)) {
             $this->infoMessage("MicroPermission config data already found in " . $this->getSymbolicPath($path));
         } else {
@@ -443,10 +444,10 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
 
 
             $tplContent = str_replace([
-                'Light_TaskScheduler',
-                '    - tables.lts_task_schedule.create',
+                'Ling.Light_TaskScheduler',
+                '    - store.lts_task_schedule.create',
             ], [
-                $originPlanet,
+                $galaxy . "." . $originPlanet,
                 $sTables,
             ], $tplContent);
             FileSystemTool::mkfile($path, $tplContent);
@@ -469,13 +470,13 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
                 if (true === $dbInfo->hasTable("lud_permission_group_has_permission")) {
 
 
-                    $this->infoMessage("Adding $originPlanet permissions to the Light_Kit_Admin.admin and Light_Kit_Admin.user permission groups.");
+                    $this->infoMessage("Adding $galaxy.$originPlanet permissions to the Ling.Light_Kit_Admin.admin and Ling.Light_Kit_Admin.user permission groups.");
 
                     /**
                      * @var $lud LightUserDatabaseService
                      */
                     $userDb = $this->container->get("user_database");
-                    LightKitAdminPermissionHelper::bindStandardLightPermissionsToLkaPermissionGroups($userDb, $originPlanet);
+                    LightKitAdminPermissionHelper::bindStandardLightPermissionsToLkaPermissionGroups($userDb, $galaxy . "." . $originPlanet);
 
 
                 } else {
@@ -506,7 +507,7 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
                     'method' => 'addDirectItemsByFileAndParentPath',
                     'args' => [
                         'menu_type' => 'admin_main_menu',
-                        'file' => "\${app_dir}/config/data/$planet/bmenu/generated/$serviceName.admin_mainmenu_1.byml",
+                        'file' => "\${app_dir}/config/data/$galaxy.$planet/Ling.Light_BMenu/generated/$serviceName.admin_mainmenu_1.byml",
                         'path' => "lka-admin",
                     ],
                 ], [
@@ -557,15 +558,16 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
 //            ]);
 
 
+
             $this->addServiceConfigHook('kit_admin', [
                 'method' => 'registerPlugin',
                 'args' => [
                     'pluginName' => $planet,
                     'plugin' => [
-                        'instance' => "Ling\\$planet\\LightKitAdminPlugin\\Generated\\${tightName}LkaPlugin",
+                        'instance' => "$galaxy\\$planet\\LightKitAdminPlugin\\Generated\\${tightName}LkaPlugin",
                         'methods' => [
                             'setOptionsFile' => [
-                                'file' => "\${app_dir}/config/data/$planet/Light_Kit_Admin/lka-options.generated.byml",
+                                'file' => "\${app_dir}/config/data/$galaxy.$planet/Ling.Light_Kit_Admin/lka-options.generated.byml",
                             ],
                         ],
                     ],
@@ -580,10 +582,10 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
         $this->addServiceConfigHook('micro_permission', [
             'method' => 'registerMicroPermissionsByProfile',
             'args' => [
-                'file' => "\${app_dir}/config/data/$planet/Light_MicroPermission/$serviceName.profile.generated.byml",
+                'file' => "\${app_dir}/config/data/$galaxy.$planet/Ling.Light_MicroPermission/$serviceName.profile.generated.byml",
             ],
         ], [
-            'file' => "\${app_dir}/config/data/$planet/Light_MicroPermission/$serviceName.profile.generated.byml",
+            'file' => "\${app_dir}/config/data/$galaxy.$planet/Ling.Light_MicroPermission/$serviceName.profile.generated.byml",
         ]);
 
 
