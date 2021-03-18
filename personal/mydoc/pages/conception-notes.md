@@ -1,6 +1,6 @@
 Light_DeveloperWizard, conception notes
 ===========
-2020-06-30 -> 2021-03-09
+2020-06-30 -> 2021-03-18
 
 
 
@@ -107,19 +107,8 @@ Then, use the wizard.
  
 Available tasks
 ----------
-2020-06-30 -> 2020-07-07
+2020-06-30 -> 2021-03-18
 
-Our tasks so far are (per planet):
-
-
-- synchronizing the db with the [create file](https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md)
-- generating the api using the [ling breeze generator 2](https://github.com/lingtalfi/Light_BreezeGenerator/blob/master/doc/pages/ling-breeze-generator-2.md) (requires a **create file**)
-- adding [standard permissions](https://github.com/lingtalfi/TheBar/blob/master/discussions/light-standard-permissions.md) (i.e. the [Light_UserDatabase](https://github.com/lingtalfi/Light_UserDatabase) permissions)
-- generating the Light_Kit_Admin plugin from a given Light plugin (this requires a **create file**), basically giving you access to your plugin inside the lka environment
-    The generated lka plugin is a complete light plugin that you can publish as a planet, it includes:
-    - the service config file(s)
-    - light kit admin lists, forms, menus
-    - the planet directory with the necessary classes
-
+Our tasks are listed in the [task details document](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md#create-conception-notes).
 
  
