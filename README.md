@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-03-15
+2020-06-30 -> 2021-03-18
 
 
 
@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.19 -- 2021-03-18
+
+    - update lka generator config model, changed name to admin_main_menu.byml file
+  
 - 1.28.18 -- 2021-03-15
 
     - update planet to adapt Ling.Light:0.70.0

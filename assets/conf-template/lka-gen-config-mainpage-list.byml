@@ -482,7 +482,7 @@ menu:
     # The target_file is the path of the file to generate.
     # It's an absolute path.
     # The tag {app_dir} can be used, and will be replaced with the actual "application root directory".
-    target_file: {app_dir}/config/data/!{galaxyName}.!{plugin}/Ling.Light_BMenu/generated/!{shortName}.admin_mainmenu_1.byml
+    target_file: {app_dir}/config/data/!{galaxyName}.!{plugin}/Ling.Light_BMenu/generated/admin_main_menu.byml
 
 
 
@@ -537,7 +537,7 @@ menu:
     prefix_to_rights:
         # Note: in this case, the Light_Database doesn't provide any permission group, so we use
         # the permissions provided by light kit admin
-        !{prefix}: Ling.Light_Kit_Admin.user
+        !{prefix}: Ling.Light_Kit_Admin.admin
 
 
     # An array of has keyword => has label.
