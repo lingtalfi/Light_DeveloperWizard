@@ -147,7 +147,7 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
         //--------------------------------------------
         // SERVICE CONFIG FILE
         //--------------------------------------------
-        $configServicePath = $appDir . "/config/services/$planet.byml";
+        $configServicePath = $appDir . "/config/services/$galaxy.$planet.byml";
 
 
         if (false === $recreateEverything && file_exists($configServicePath)) {

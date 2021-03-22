@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-03-18
+2020-06-30 -> 2021-03-22
 
 
 
@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.21 -- 2021-03-22
+
+    - fix CreateLkaPlanetProcess generating service file without galaxy prefix
+  
 - 1.28.20 -- 2021-03-18
 
     - update LightKitAdminBaseProcess->executeGeneratorConfigFile, now creates the Light_PlanetInstaller class if not exist
