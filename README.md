@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-03-22
+2020-06-30 -> 2021-03-23
 
 
 
@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.22 -- 2021-03-23
+
+    - adapt api to Ling.Light_Realist:2.0.15
+  
 - 1.28.21 -- 2021-03-22
 
     - fix CreateLkaPlanetProcess generating service file without galaxy prefix

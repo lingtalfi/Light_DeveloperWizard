@@ -326,7 +326,7 @@ list:
     related_links:
         -
             text: Add new "{label}" item
-            url: REALIST(Light_Realist, route, lch_route-hub, {plugin: !{galaxyName}/!{plugin}, controller: Generated/{TableClass}Controller, m:f})
+            url: REALIST(Ling.Light_Realist, route, lch_route-hub, {plugin: !{galaxyName}/!{plugin}, controller: Generated/{TableClass}Controller, m:f})
             icon: fas fa-plus-circle
 
 # This section defines the behaviour of the form configuration file generator
