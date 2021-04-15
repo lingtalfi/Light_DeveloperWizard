@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-03-23
+2020-06-30 -> 2021-04-15
 
 
 
@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.23 -- 2021-04-15
+
+    - update CreateConceptionNotesProcess, now can be applied to non Light planets
+  
 - 1.28.22 -- 2021-03-23
 
     - adapt api to Ling.Light_Realist:2.0.15
