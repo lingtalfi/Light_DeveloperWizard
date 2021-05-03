@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.25 -- 2021-05-03
+
+    - Update dependencies to Ling.Light_PluginInstaller (pushed by SubscribersUtil)
+
 - 1.28.24 -- 2021-05-03
 
     - Update dependencies to Ling.Light_PluginInstaller (pushed by SubscribersUtil)
