@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-04-15
+2020-06-30 -> 2021-05-03
 
 
 
@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.26 -- 2021-05-03
+
+    - update basic service task, now the error method uses an error message containing the containing class
+  
 - 1.28.25 -- 2021-05-03
 
     - Update dependencies to Ling.Light_PluginInstaller (pushed by SubscribersUtil)
