@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.24 -- 2021-05-03
+
+    - Update dependencies to Ling.Light_PluginInstaller (pushed by SubscribersUtil)
+
 - 1.28.23 -- 2021-04-15
 
     - update CreateConceptionNotesProcess, now can be applied to non Light planets
