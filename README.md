@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-05-03
+2020-06-30 -> 2021-05-06
 
 
 
@@ -68,6 +68,10 @@ developer_wizard:
 History Log
 =============
 
+
+- 1.28.27 -- 2021-05-06
+
+    - add create exception class task
 
 - 1.28.26 -- 2021-05-03
 
