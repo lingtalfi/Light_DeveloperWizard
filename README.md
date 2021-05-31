@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.28 -- 2021-05-31
+
+    - Removing trailing plus in lpi-deps file (to work with Light_PlanetInstaller:2.0.0 api
+
 - 1.28.27 -- 2021-05-06
 
     - add create exception class task
