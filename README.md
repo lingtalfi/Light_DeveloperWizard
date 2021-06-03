@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-05-06
+2020-06-30 -> 2021-06-03
 
 
 
@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.29 -- 2021-06-03
+
+    - fix AddServiceLingBreeze2GetFactoryMethodProcess class not working properly
+  
 - 1.28.28 -- 2021-05-31
 
     - Removing trailing plus in lpi-deps file (to work with Light_PlanetInstaller:2.0.0 api

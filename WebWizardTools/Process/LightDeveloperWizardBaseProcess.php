@@ -11,6 +11,7 @@ use Ling\ClassCooker\FryingPan\Ingredient\BasicConstructorVariableInitIngredient
 use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\PropertyIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
+use Ling\Light_Database\Service\LightDatabaseService;
 use Ling\Light_DeveloperWizard\Exception\LightDeveloperWizardException;
 use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
 use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
@@ -219,9 +220,11 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
 
         $factoryName = 'Custom' . CaseTool::toFlexiblePascal($planetName) . 'ApiFactory';
         $useStatementClass = $galaxyName . "\\" . $planetName . '\\Api\\Custom\\' . $factoryName;
+        $useStatementClass2 = "Ling\Light_Database\Service\LightDatabaseService";
 
 
         $pan->addIngredient(UseStatementIngredient::create()->setValue($useStatementClass));
+        $pan->addIngredient(UseStatementIngredient::create()->setValue($useStatementClass2));
 
 
         $pan->addIngredient(PropertyIngredient::create()->setValue("factory", [
@@ -254,7 +257,11 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
         if (null === $this->factory) {
             $this->factory = new ' . $factoryName . '();
             $this->factory->setContainer($this->container);
-            $this->factory->setPdoWrapper($this->container->get("database"));
+            /**
+             * @var $db LightDatabaseService
+             */
+            $db = $this->container->get("database");
+            $this->factory->setPdoWrapper($db);
         }
         return $this->factory;
     }

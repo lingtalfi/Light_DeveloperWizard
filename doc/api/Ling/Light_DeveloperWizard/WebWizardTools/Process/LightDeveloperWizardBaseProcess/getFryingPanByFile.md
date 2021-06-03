@@ -49,7 +49,7 @@ Returns [FryingPan](https://github.com/lingtalfi/ClassCooker/blob/master/doc/api
 
 Source Code
 ===========
-See the source code for method [LightDeveloperWizardBaseProcess::getFryingPanByFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/LightDeveloperWizardBaseProcess.php#L71-L98)
+See the source code for method [LightDeveloperWizardBaseProcess::getFryingPanByFile](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/LightDeveloperWizardBaseProcess.php#L72-L99)
 
 
 See Also
