@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-06-03
+2020-06-30 -> 2021-06-04
 
 
 
@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.30 -- 2021-06-04
+
+    - update AddServiceLingBreeze2GetFactoryMethodProcess, add property type hints
+  
 - 1.28.29 -- 2021-06-03
 
     - fix AddServiceLingBreeze2GetFactoryMethodProcess class not working properly

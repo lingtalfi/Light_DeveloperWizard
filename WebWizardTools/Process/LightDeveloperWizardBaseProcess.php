@@ -175,17 +175,17 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
      * This property holds the container for this instance.
      * @var LightServiceContainerInterface
      */
-    protected $container;
+    protected LightServiceContainerInterface $container;
     
 ',
             'top' => true,
         ]));
 
 
-        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('container', [
-            'template' => str_repeat(' ', 8) . '$this->container = null;        
-',
-        ]));
+//        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('container', [
+//            'template' => str_repeat(' ', 8) . '$this->container = null;
+//',
+//        ]));
 
 
         $pan->addIngredient(MethodIngredient::create()->setValue("setContainer", [
@@ -233,16 +233,16 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
      * This property holds the factory for this instance.
      * @var ' . $factoryName . '
      */
-    protected $factory;
+    protected '. $factoryName .' $factory;
     
 ',
         ]));
 
 
-        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('factory', [
-            'template' => str_repeat(' ', 8) . '$this->factory = null;        
-',
-        ]));
+//        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('factory', [
+//            'template' => str_repeat(' ', 8) . '$this->factory = null;
+//',
+//        ]));
 
 
         $pan->addIngredient(MethodIngredient::create()->setValue("getFactory", [
