@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.31 -- 2021-06-04
+
+    - fix AddServiceLingBreeze2GetFactoryMethodProcess generating property called before it's defined 
+  
 - 1.28.30 -- 2021-06-04
 
     - update AddServiceLingBreeze2GetFactoryMethodProcess, add property type hints

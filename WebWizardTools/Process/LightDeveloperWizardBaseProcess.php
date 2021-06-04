@@ -4,18 +4,14 @@
 namespace Ling\Light_DeveloperWizard\WebWizardTools\Process;
 
 
-use Ling\Bat\BDotTool;
 use Ling\Bat\CaseTool;
 use Ling\ClassCooker\FryingPan\FryingPan;
 use Ling\ClassCooker\FryingPan\Ingredient\BasicConstructorVariableInitIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\PropertyIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
-use Ling\Light_Database\Service\LightDatabaseService;
 use Ling\Light_DeveloperWizard\Exception\LightDeveloperWizardException;
 use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
-use Ling\Light_DeveloperWizard\Tool\DeveloperWizardFileTool;
-use Ling\SqlWizard\Util\MysqlStructureReader;
 use Ling\WebWizardTools\Process\WebWizardToolsProcess;
 
 
@@ -61,7 +57,6 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
     {
         return (0 === strpos($planet, "Light_"));
     }
-
 
 
     /**
@@ -231,18 +226,18 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
             'template' => '
     /**
      * This property holds the factory for this instance.
-     * @var ' . $factoryName . '
+     * @var ' . $factoryName . '|null
      */
-    protected '. $factoryName .' $factory;
+    protected ?' . $factoryName . ' $factory;
     
 ',
         ]));
 
 
-//        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('factory', [
-//            'template' => str_repeat(' ', 8) . '$this->factory = null;
-//',
-//        ]));
+        $pan->addIngredient(BasicConstructorVariableInitIngredient::create()->setValue('factory', [
+            'template' => str_repeat(' ', 8) . '$this->factory = null;
+',
+        ]));
 
 
         $pan->addIngredient(MethodIngredient::create()->setValue("getFactory", [
