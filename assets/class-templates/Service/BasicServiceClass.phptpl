@@ -18,7 +18,7 @@ class LightXXXService
      * This property holds the container for this instance.
      * @var LightServiceContainerInterface
      */
-    protected $container;
+    protected LightServiceContainerInterface $container;
 
     /**
      * This property holds the options for this instance.
@@ -40,7 +40,6 @@ class LightXXXService
      */
     public function __construct()
     {
-        $this->container = null;
         $this->options = [];
     }
 

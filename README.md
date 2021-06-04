@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.32 -- 2021-06-04
+
+    - update create basic service task, now adds type hint to the container property of the generated class
+  
 - 1.28.31 -- 2021-06-04
 
     - fix AddServiceLingBreeze2GetFactoryMethodProcess generating property called before it's defined 
