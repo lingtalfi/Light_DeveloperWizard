@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.34 -- 2021-06-18
+
+    - fix functional typo Light_Planet_Installer instead of Light_PlanetInstaller
+  
 - 1.28.33 -- 2021-06-18
 
     - update lka processes to generate classes compliant with open registration system for micro-permissions

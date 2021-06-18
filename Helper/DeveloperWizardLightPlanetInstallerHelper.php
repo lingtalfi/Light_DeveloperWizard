@@ -28,7 +28,7 @@ class DeveloperWizardLightPlanetInstallerHelper
      */
     public static function createPlanetInstaller(string $galaxy, string $planet, string $appDir, array $options = [])
     {
-        $tpl = __DIR__ . "/../assets/class-templates/Light_Planet_Installer/LightKitStorePlanetInstaller.php";
+        $tpl = __DIR__ . "/../assets/class-templates/Light_PlanetInstaller/LightKitStorePlanetInstaller.php";
         $tplContent = file_get_contents($tpl);
 
 
@@ -44,11 +44,11 @@ class DeveloperWizardLightPlanetInstallerHelper
         ], $tplContent);
 
 
-        $dstFile = $appDir . "/universe/$galaxy/$planet/Light_Planet_Installer/$className.php";
+        $dstFile = $appDir . "/universe/$galaxy/$planet/Light_PlanetInstaller/$className.php";
         if (true === file_exists($dstFile)) {
 
             $sPath = DeveloperWizardGenericHelper::getSymbolicPath($dstFile, $appDir);
-            throw new LightDeveloperWizardException("Light_Planet_Installer class already exists at $sPath. It will <b>NOT</b> be overwritten.");
+            throw new LightDeveloperWizardException("Light_PlanetInstaller class already exists at $sPath. It will <b>NOT</b> be overwritten.");
         }
 
         FileSystemTool::mkfile($dstFile, $tplContent);
