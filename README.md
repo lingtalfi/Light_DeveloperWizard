@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-06-04
+2020-06-30 -> 2021-06-18
 
 
 
@@ -69,6 +69,12 @@ History Log
 =============
 
 
+- 1.28.33 -- 2021-06-18
+
+    - update lka processes to generate classes compliant with open registration system for micro-permissions
+    - update lka processes to generate config compliant with modern Light_ControllerHub system (with execute instead of plugin/controller)
+    - add CreatePlanetInstallerExtendingLightDatabaseBasePlanetInstaller class
+  
 - 1.28.32 -- 2021-06-04
 
     - update create basic service task, now adds type hint to the container property of the generated class

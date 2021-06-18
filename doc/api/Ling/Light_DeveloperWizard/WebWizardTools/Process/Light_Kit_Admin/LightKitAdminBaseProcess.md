@@ -4,7 +4,7 @@
 
 The LightKitAdminBaseProcess class
 ================
-2020-06-30 --> 2021-06-04
+2020-06-30 --> 2021-06-18
 
 
 
@@ -256,4 +256,4 @@ See the source code of [Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_
 
 SeeAlso
 ==============
-Previous class: [ExecuteLkaGeneratorProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/ExecuteLkaGeneratorProcess.md)<br>Next class: [CreateConceptionNotesProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess.md)<br>
+Previous class: [ExecuteLkaGeneratorProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/ExecuteLkaGeneratorProcess.md)<br>Next class: [CreatePlanetInstallerExtendingLightDatabaseBasePlanetInstaller](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_PlanetInstaller/CreatePlanetInstallerExtendingLightDatabaseBasePlanetInstaller.md)<br>

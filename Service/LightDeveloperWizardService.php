@@ -18,6 +18,7 @@ use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaP
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaUserMainPage;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaUserMainPageList;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\ExecuteLkaGeneratorProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_PlanetInstaller\CreatePlanetInstallerExtendingLightDatabaseBasePlanetInstaller;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\CreateConceptionNotesProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\CreateExceptionClassProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Planet\RemovePlanetProcess;
@@ -274,6 +275,10 @@ class LightDeveloperWizardService
                 $ww->setProcess((new RemovePlanetProcess()));
                 $ww->setProcess((new CreateConceptionNotesProcess()));
                 $ww->setProcess((new CreateExceptionClassProcess()));
+
+
+                // planet installer
+                $ww->setProcess((new CreatePlanetInstallerExtendingLightDatabaseBasePlanetInstaller()));
 
 
                 // widget

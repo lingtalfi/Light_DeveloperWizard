@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2021-05-06
+2020-07-09 -> 2021-06-18
 
 
 
@@ -20,6 +20,8 @@ Task details
     - [Generate Light_Kit_Admin plugin](#generate-light_kit_admin-plugin)
     - [Create the lka user main page with helloWorld](#create-the-lka-user-main-page)
     - [Create the lka user main page with basicList](#create-the-lka-user-main-page-with-basiclist)
+- Light_PlanetInstaller
+    - [Create Light_PlanetInstaller class with database](#create-light_planetinstaller-class-with-database)
 - Planet
     - [Remove planet](#remove-planet)
     - [Create conception notes](#create-conception-notes)
@@ -37,6 +39,19 @@ Task details
     - [Disable service](#disable-service)
     - [Enable service](#enable-service)
 
+
+
+
+
+Create Light_PlanetInstaller class with database
+-------
+2021-06-18
+
+
+This task creates a [Light_PlanetInstaller](https://github.com/lingtalfi/Light_PlanetInstaller/) class,
+which extends the [LightDatabaseBasePlanetInstaller](https://github.com/lingtalfi/Light_Database/blob/master/doc/api/Ling/Light_Database/Light_PlanetInstaller/LightDatabaseBasePlanetInstaller.md) class.
+
+This is suited for planets which use a database along with the [create file](https://github.com/lingtalfi/TheBar/blob/master/discussions/create-file.md) technique.
 
 
 

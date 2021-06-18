@@ -15,6 +15,8 @@ https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Ligh
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardGenericHelper/getTablePrefixes.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardGenericHelper/getTablesByCreateFile.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardGenericHelper.md
+https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLightPlanetInstallerHelper/createPlanetInstaller.md
+https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLightPlanetInstallerHelper.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/createLkaGeneratorConfigFile.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getBasicLkaGeneratorConfig.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/DeveloperWizardLkaHelper/getLkaOriginPlanet.md
@@ -186,6 +188,9 @@ https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Ligh
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/mustBeLkaPlanet.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess/prepare.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Kit_Admin/LightKitAdminBaseProcess.md
+https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_PlanetInstaller/CreatePlanetInstallerExtendingLightDatabaseBasePlanetInstaller/__construct.md
+https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_PlanetInstaller/CreatePlanetInstallerExtendingLightDatabaseBasePlanetInstaller/doExecute.md
+https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_PlanetInstaller/CreatePlanetInstallerExtendingLightDatabaseBasePlanetInstaller.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess/__construct.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess/doExecute.md
 https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Planet/CreateConceptionNotesProcess.md
