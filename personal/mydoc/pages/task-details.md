@@ -218,7 +218,7 @@ The files are only created if they don't exist.
 
 Execute the lka generator config file
 ----------
-2020-08-03 -> 2021-03-18
+2020-08-03 -> 2021-06-18
 
 
 Pre-requisites:
@@ -275,12 +275,13 @@ Executing the lka generator alone can generate at most those files:
 ----------------------------- mpl_bottles.byml
 --------- open/
 ------------- Ling.Light_Kit_Admin/
------------------ lke/
---------------------- pages/
-------------------------- MyGalaxy.Light_Kit_Admin_MyPlanet/
------------------------------ generated/
---------------------------------- lmp_xxx_form.byml
---------------------------------- lmp_xxx_list.byml
+----------------- Ling.Light_Kit_Editor/
+--------------------- admin/
+------------------------- pages/
+----------------------------- MyGalaxy.Light_Kit_Admin_MyPlanet/
+--------------------------------- generated/
+------------------------------------- lmp_xxx_form.byml
+------------------------------------- lmp_xxx_list.byml
 ----- universe/
 --------- MyGalaxy/
 ------------- Light_Kit_Admin_MyPlanet/

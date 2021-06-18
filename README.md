@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.35 -- 2021-06-18
+
+    - fix code to be compliant with Ling.Light_Kit_Admin:0.13.0
+  
 - 1.28.34 -- 2021-06-18
 
     - fix functional typo Light_Planet_Installer instead of Light_PlanetInstaller
