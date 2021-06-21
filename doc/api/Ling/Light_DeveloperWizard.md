@@ -1,6 +1,6 @@
 Ling/Light_DeveloperWizard
 ================
-2020-06-30 --> 2021-06-18
+2020-06-30 --> 2021-06-21
 
 
 
@@ -214,6 +214,30 @@ Table of contents
     - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
 - [LightDeveloperWizardCommonProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess.md) &ndash; The LightDeveloperWizardCommonProcess class.
     - [LightDeveloperWizardCommonProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
+    - [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md) &ndash; Sets the light service container interface.
+    - [LightDeveloperWizardCommonProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
+    - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
+    - WebWizardToolsProcess::getControls &ndash; Returns the controls of this instance.
+    - WebWizardToolsProcess::setWebWizard &ndash; Sets the webWizard.
+    - WebWizardToolsProcess::setControl &ndash; Adds a control to this process.
+    - WebWizardToolsProcess::getName &ndash; Returns the name of this instance.
+    - WebWizardToolsProcess::setName &ndash; Sets the name.
+    - WebWizardToolsProcess::getLabel &ndash; Returns the label of this instance.
+    - WebWizardToolsProcess::setLabel &ndash; Sets the label.
+    - WebWizardToolsProcess::getParams &ndash; Returns the params of this instance.
+    - WebWizardToolsProcess::setParams &ndash; Sets the params.
+    - WebWizardToolsProcess::getLearnMore &ndash; Returns the learnMore of this instance.
+    - WebWizardToolsProcess::setLearnMore &ndash; Sets the learnMore.
+    - WebWizardToolsProcess::isEnabled &ndash; Returns the enabled of this instance.
+    - WebWizardToolsProcess::setEnabled &ndash; Sets the enabled.
+    - WebWizardToolsProcess::getDisabledReason &ndash; Returns the disabledReason of this instance.
+    - WebWizardToolsProcess::setDisabledReason &ndash; Sets the disabledReason.
+    - WebWizardToolsProcess::getCategory &ndash; Returns the category of this instance.
+    - WebWizardToolsProcess::setCategory &ndash; Sets the category.
+    - WebWizardToolsProcess::execute &ndash; Executes the process.
+    - WebWizardToolsProcess::addLogMessage &ndash; Adds a message of the given type to the log.
+- [CreateCliAppProcess](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Cli/CreateCliAppProcess.md) &ndash; The CreateCliAppProcess class.
+    - [CreateCliAppProcess::__construct](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/Light_Cli/CreateCliAppProcess/__construct.md) &ndash; Builds the WebWizardToolsProcess instance.
     - [LightDeveloperWizardCommonProcess::setContainer](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/setContainer.md) &ndash; Sets the light service container interface.
     - [LightDeveloperWizardCommonProcess::prepare](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/WebWizardTools/Process/LightDeveloperWizardCommonProcess/prepare.md) &ndash; An opportunity for the process to create the controls, and/or to change the label of the process dynamically.
     - WebWizardToolsProcess::getReport &ndash; Returns the report of this instance.
@@ -719,14 +743,17 @@ Dependencies
 - [BabyYaml](https://github.com/lingtalfi/BabyYaml)
 - [Bat](https://github.com/lingtalfi/Bat)
 - [ClassCooker](https://github.com/lingtalfi/ClassCooker)
+- [CliTools](https://github.com/lingtalfi/CliTools)
 - [Jquery](https://github.com/lingtalfi/Jquery)
 - [Light](https://github.com/lingtalfi/Light)
+- [Light_Cli](https://github.com/lingtalfi/Light_Cli)
 - [Light_ControllerHub](https://github.com/lingtalfi/Light_ControllerHub)
 - [Light_Database](https://github.com/lingtalfi/Light_Database)
 - [Light_DatabaseInfo](https://github.com/lingtalfi/Light_DatabaseInfo)
 - [Light_DbSynchronizer](https://github.com/lingtalfi/Light_DbSynchronizer)
 - [Light_Kit_Admin](https://github.com/lingtalfi/Light_Kit_Admin)
 - [Light_Kit_Admin_Generator](https://github.com/lingtalfi/Light_Kit_Admin_Generator)
+- [Light_PlanetInstallerXXX](https://github.com/lingtalfi/Light_PlanetInstallerXXX)
 - [Light_PluginInstaller](https://github.com/lingtalfi/Light_PluginInstaller)
 - [Light_UserDatabase](https://github.com/lingtalfi/Light_UserDatabase)
 - [SimplePdoWrapper](https://github.com/lingtalfi/SimplePdoWrapper)

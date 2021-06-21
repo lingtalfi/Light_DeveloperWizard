@@ -13,6 +13,7 @@ use Ling\Light_DeveloperWizard\WebWizardTools\Process\Database\AddStandardPermis
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Database\SynchronizeDbProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateBreezeApiProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Generators\GenerateBreezeConfigProcess;
+use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Cli\CreateCliAppProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaGeneratorConfigProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaPlanetProcess;
 use Ling\Light_DeveloperWizard\WebWizardTools\Process\Light_Kit_Admin\CreateLkaUserMainPage;
@@ -244,6 +245,11 @@ class LightDeveloperWizardService
                 // generators
                 $ww->setProcess((new GenerateBreezeConfigProcess()));
                 $ww->setProcess((new GenerateBreezeApiProcess()));
+
+
+                // Light_Cli
+                $ww->setProcess(new CreateCliAppProcess());
+
 
 
                 // lka

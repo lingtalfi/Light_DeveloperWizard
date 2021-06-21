@@ -1,6 +1,6 @@
 Task details
 =============
-2020-07-09 -> 2021-06-18
+2020-07-09 -> 2021-06-21
 
 
 
@@ -14,6 +14,8 @@ Task details
     - [Generate breeze api](#generate-breeze-api)
     - [Generate breeze config](#generate-breeze-config)
     - [Execute the lka generator config file](#execute-the-lka-generator-config-file)
+- Light_Cli
+    - [Create a basic cli app](#create-cli-app)
 - Light_Kit_Admin
     - [Create lka generator config](#create-lka-generator-config)
     - [Create lka planet](#create-lka-planet)
@@ -41,6 +43,39 @@ Task details
 
 
 
+
+
+
+Create cli app
+-------
+2021-06-21
+
+
+This task creates a basic [Light_Cli](https://github.com/lingtalfi/Light_Cli/) application,
+with two commands:
+
+- DemoCommand
+- HelpCommand
+
+Basically, the created files are (if they don't exist):
+
+
+```txt
+- $planetDir/
+----- Helper
+--------- ${tightPlanetName}Helper.php
+----- CliTools/
+--------- Command/
+------------- DemoCommand.php
+------------- HelpCommand.php
+------------- ${tightPlanetName}BaseCommand.php
+--------- Program/
+------------- ${tightPlanetName}Application.php
+```
+
+
+A config hook is also added in your service configuration file, so that the created application instance is registered
+to the **Light_Cli** service.
 
 
 Create Light_PlanetInstaller class with database

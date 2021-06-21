@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-06-18
+2020-06-30 -> 2021-06-21
 
 
 
@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.36 -- 2021-06-21
+
+    - add create cli app process
+  
 - 1.28.35 -- 2021-06-18
 
     - fix code to be compliant with Ling.Light_Kit_Admin:0.13.0
