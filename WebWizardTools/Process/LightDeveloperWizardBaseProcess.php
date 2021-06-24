@@ -11,6 +11,7 @@ use Ling\ClassCooker\FryingPan\Ingredient\BasicConstructorVariableInitIngredient
 use Ling\ClassCooker\FryingPan\Ingredient\MethodIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\PropertyIngredient;
 use Ling\ClassCooker\FryingPan\Ingredient\UseStatementIngredient;
+use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_DeveloperWizard\Exception\LightDeveloperWizardException;
 use Ling\Light_DeveloperWizard\Helper\DeveloperWizardGenericHelper;
 use Ling\WebWizardTools\Process\WebWizardToolsProcess;
@@ -46,6 +47,16 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
     {
         $appDir = $this->getContextVar("container")->getApplicationDir();
         return DeveloperWizardGenericHelper::getSymbolicPath($path, $appDir);
+    }
+
+
+    /**
+     * Returns the container instance.
+     * @return LightServiceContainerInterface
+     */
+    protected function getContainer(): LightServiceContainerInterface
+    {
+        return $this->getContextVar("container");
     }
 
 

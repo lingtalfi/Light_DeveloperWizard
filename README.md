@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.38 -- 2021-06-24
+
+    - update related breeze generator processes, now are disabled if breeze gen service not installed  
+  
 - 1.28.37 -- 2021-06-24
 
     - update create cli app process, now generate a more useful DemoCommand. 

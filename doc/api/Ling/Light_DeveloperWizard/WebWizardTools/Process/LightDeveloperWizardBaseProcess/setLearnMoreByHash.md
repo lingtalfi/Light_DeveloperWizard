@@ -51,7 +51,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightDeveloperWizardBaseProcess::setLearnMoreByHash](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/LightDeveloperWizardBaseProcess.php#L365-L371)
+See the source code for method [LightDeveloperWizardBaseProcess::setLearnMoreByHash](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/LightDeveloperWizardBaseProcess.php#L376-L382)
 
 
 See Also

@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightDeveloperWizardBaseProcess::createExceptionClass](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/LightDeveloperWizardBaseProcess.php#L318-L356)
+See the source code for method [LightDeveloperWizardBaseProcess::createExceptionClass](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/LightDeveloperWizardBaseProcess.php#L329-L367)
 
 
 See Also
