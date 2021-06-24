@@ -47,7 +47,7 @@ class CreateCliAppProcess extends LightDeveloperWizardCommonProcess
         $helperFile = $planetDir . "/Helper/${tightPlanetName}Helper.php";
 
         if (false === file_exists($helperFile)) {
-            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Helper/HelperClass.php";
+            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Helper/HelperClass.phptpl";
             $tplContent = file_get_contents($tpl);
             $tplContent = str_replace([
                 'Ling\Light_PlanetInstallerXXX',
@@ -104,7 +104,7 @@ EEE;
             $this->infoMessage("creating ${tightPlanetName}BaseCommand file in <b>$commandFile</b>.");
             $helperRef = "${tightPlanetName}Helper";
 
-            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Command/BaseCommand.php";
+            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Command/BaseCommand.phptpl";
             $tplContent = file_get_contents($tpl);
             $tplContent = str_replace([
                 'Ling\Light_PlanetInstallerXXX',
@@ -128,7 +128,7 @@ EEE;
         } else {
             $this->infoMessage("creating DemoCommand file in <b>$commandFile</b>.");
 
-            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Command/DemoCommand.php";
+            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Command/DemoCommand.phptpl";
             $tplContent = file_get_contents($tpl);
             $tplContent = str_replace([
                 'Ling\Light_PlanetInstallerXXX',
@@ -154,7 +154,7 @@ EEE;
 
 
             $humanPlanetName = str_replace('_', ' ', $planet);
-            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Command/HelpCommand.php";
+            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Command/HelpCommand.phptpl";
             $tplContent = file_get_contents($tpl);
             $tplContent = str_replace([
                 'Ling\Light_PlanetInstallerXXX',
@@ -180,7 +180,7 @@ EEE;
             $this->message("Application file already exists, skipping. Tip: if you don't have all the functionality you need, consider copying from:: Ling\Light_PlanetInstaller\CliTools\Program\LightPlanetInstallerApplication", "warning");
         } else {
             $this->infoMessage("creating Application file in <b>$appFile</b>.");
-            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Program/ApplicationClass.php";
+            $tpl = __DIR__ . "/../../../assets/class-templates/Light_Cli/Program/ApplicationClass.phptpl";
             $tplContent = file_get_contents($tpl);
             $tplContent = str_replace([
                 'Ling\Light_PlanetInstallerXXX',

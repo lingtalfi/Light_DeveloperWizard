@@ -28,7 +28,7 @@ class DeveloperWizardLightPlanetInstallerHelper
      */
     public static function createPlanetInstaller(string $galaxy, string $planet, string $appDir, array $options = [])
     {
-        $tpl = __DIR__ . "/../assets/class-templates/Light_PlanetInstaller/LightKitStorePlanetInstaller.php";
+        $tpl = __DIR__ . "/../assets/class-templates/Light_PlanetInstaller/LightKitStorePlanetInstaller.phptpl";
         $tplContent = file_get_contents($tpl);
 
 

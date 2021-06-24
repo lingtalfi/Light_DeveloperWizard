@@ -362,7 +362,7 @@ abstract class LightKitAdminBaseProcess extends LightDeveloperWizardCommonProces
             } else {
                 $this->infoMessage("Creating ControllerHub class in " . $this->getSymbolicPath($controllerHubClassPath));
 
-                $tpl = __DIR__ . "/../../../assets/class-templates/ControllerHub/LightKitAdminTaskSchedulerControllerHubHandler.php";
+                $tpl = __DIR__ . "/../../../assets/class-templates/ControllerHub/LightKitAdminTaskSchedulerControllerHubHandler.phptpl";
                 $tplContent = file_get_contents($tpl);
                 $tplContent = str_replace([
                     'namespace Ling\Light_Kit_Admin_TaskScheduler\ControllerHub;',

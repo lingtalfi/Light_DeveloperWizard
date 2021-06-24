@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-06-21
+2020-06-30 -> 2021-06-24
 
 
 
@@ -69,6 +69,12 @@ History Log
 =============
 
 
+- 1.28.37 -- 2021-06-24
+
+    - update create cli app process, now generate a more useful DemoCommand. 
+    - getSymbolicPath now proxies to Bat::getSymbolicPath 
+    - fix wrong dependencies to ...PlanetXXX 
+  
 - 1.28.36 -- 2021-06-21
 
     - add create cli app process

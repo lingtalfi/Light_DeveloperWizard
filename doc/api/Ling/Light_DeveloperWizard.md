@@ -1,6 +1,6 @@
 Ling/Light_DeveloperWizard
 ================
-2020-06-30 --> 2021-06-21
+2020-06-30 --> 2021-06-24
 
 
 
@@ -743,17 +743,13 @@ Dependencies
 - [BabyYaml](https://github.com/lingtalfi/BabyYaml)
 - [Bat](https://github.com/lingtalfi/Bat)
 - [ClassCooker](https://github.com/lingtalfi/ClassCooker)
-- [CliTools](https://github.com/lingtalfi/CliTools)
 - [Jquery](https://github.com/lingtalfi/Jquery)
 - [Light](https://github.com/lingtalfi/Light)
-- [Light_Cli](https://github.com/lingtalfi/Light_Cli)
-- [Light_ControllerHub](https://github.com/lingtalfi/Light_ControllerHub)
 - [Light_Database](https://github.com/lingtalfi/Light_Database)
 - [Light_DatabaseInfo](https://github.com/lingtalfi/Light_DatabaseInfo)
 - [Light_DbSynchronizer](https://github.com/lingtalfi/Light_DbSynchronizer)
 - [Light_Kit_Admin](https://github.com/lingtalfi/Light_Kit_Admin)
 - [Light_Kit_Admin_Generator](https://github.com/lingtalfi/Light_Kit_Admin_Generator)
-- [Light_PlanetInstallerXXX](https://github.com/lingtalfi/Light_PlanetInstallerXXX)
 - [Light_PluginInstaller](https://github.com/lingtalfi/Light_PluginInstaller)
 - [Light_UserDatabase](https://github.com/lingtalfi/Light_UserDatabase)
 - [SimplePdoWrapper](https://github.com/lingtalfi/SimplePdoWrapper)
