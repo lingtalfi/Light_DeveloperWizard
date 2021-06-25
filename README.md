@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-06-24
+2020-06-30 -> 2021-06-25
 
 
 
@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.39 -- 2021-06-25
+
+    - update create basic service process, enhance the created service config file  
+  
 - 1.28.38 -- 2021-06-24
 
     - update related breeze generator processes, now are disabled if breeze gen service not installed  
