@@ -346,7 +346,11 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
 
         } else {
             $this->infoMessage("Creating <a target='_blank' href=\"https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md#basic-service\">basic service exception</a> for planet $planetIdentifier.");
-            $tpl = __DIR__ . "/../../../assets/class-templates/Exception/BasicException.phptpl";
+
+
+            $tpl = __DIR__ . "/../../assets/class-templates/Exception/BasicException.phptpl";
+
+
 
             $planet = $util->getPlanetName();
             $tightName = $util->getTightPlanetName();

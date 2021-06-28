@@ -69,6 +69,10 @@ History Log
 =============
 
 
+- 1.28.41 -- 2021-06-28
+
+    - fix create basic service process, incorrect BasicException path   
+
 - 1.28.40 -- 2021-06-28
 
     - update create basic service process, add getOption method if the file doesn't exist  
