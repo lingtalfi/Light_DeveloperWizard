@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-06-25
+2020-06-30 -> 2021-06-28
 
 
 
@@ -69,6 +69,11 @@ History Log
 =============
 
 
+- 1.28.40 -- 2021-06-28
+
+    - update create basic service process, add getOption method if the file doesn't exist  
+    - fix api wrong reference to Ling.Light_Logger  
+  
 - 1.28.39 -- 2021-06-25
 
     - update create basic service process, enhance the created service config file  
