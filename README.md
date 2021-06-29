@@ -70,7 +70,11 @@ History Log
 =============
 
 
-- 1.28.42 -- 2021-06-28
+- 1.28.43 -- 2021-06-29
+
+    - update create_controller command, removes Controller suffix from the guessed route name
+  
+- 1.28.42 -- 2021-06-29
 
     - add cli tool with create_controller command
     - update basic service class template

@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [CreateControllerCommand::getDescription](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/CliTools/Command/CreateControllerCommand.php#L274-L281)
+See the source code for method [CreateControllerCommand::getDescription](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/CliTools/Command/CreateControllerCommand.php#L284-L291)
 
 
 See Also

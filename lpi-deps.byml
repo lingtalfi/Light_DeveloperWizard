@@ -1761,3 +1761,27 @@
     - Ling:TokenFun:1.11.11
     - Ling:UniverseTools:1.22.42
     - Ling:WebWizardTools:1.3.5
+
+1.28.43: 
+    - Ling:BabyYaml:1.7.11
+    - Ling:Bat:1.330
+    - Ling:ClassCooker:1.16.6
+    - Ling:CliTools:1.10.29
+    - Ling:DirScanner:1.13.6
+    - Ling:Jquery:1.1.6
+    - Ling:Light:0.70.11
+    - Ling:Light_Cli:1.0.25
+    - Ling:Light_Database:1.14.30
+    - Ling:Light_DatabaseInfo:1.12.7
+    - Ling:Light_DbSynchronizer:1.2.22
+    - Ling:Light_EasyRoute:1.3.13
+    - Ling:Light_Kit_Admin:0.13.4
+    - Ling:Light_Kit_Admin_Generator:1.19.22
+    - Ling:Light_Logger:1.11.11
+    - Ling:Light_PluginInstaller:2.0.23
+    - Ling:Light_UserDatabase:1.31.25
+    - Ling:SimplePdoWrapper:1.30.20
+    - Ling:SqlWizard:1.13.17
+    - Ling:TokenFun:1.11.11
+    - Ling:UniverseTools:1.22.42
+    - Ling:WebWizardTools:1.3.5

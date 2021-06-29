@@ -146,41 +146,44 @@ class CreateControllerCommand extends LightDeveloperWizardBaseCommand
         $controllerClassName = "$rPathRoot\\$relativePath";
         $dstPath = "$uniDir/" . str_replace("\\", "/", $controllerClassName) . ".php";
 
+
+        $writeController = true;
         if (true === file_exists($dstPath)) {
             $userAnswer = QuestionHelper::askYesNo($output, "The controller already exists in <blue>$dstPath</blue>, do you want to overwrite it?");
             if (false === $userAnswer) {
-                $this->write("Ok, bye." . PHP_EOL);
-                goto end;
+                $this->write("Ok." . PHP_EOL);
+                $writeController = false;
             }
         }
 
         //--------------------------------------------
         // WRITING THE CONTROLLER
         //--------------------------------------------
-        $this->write("Writing the controller to <b>$controllerClassName</b>...");
-
-        $srcClassName = FileSystemTool::getBasename($controllerFile);
         $p = explode('\\', $relativePath);
         $dstClassName = array_pop($p);
+        $srcClassName = FileSystemTool::getBasename($controllerFile);
         $dirRelPath = "Controller";
         if (false === empty($p)) {
             $dirRelPath = "Controller\\" . implode("\\", $p);
         }
 
 
-        $tpl = $controllerRootDir . "/" . $controllerFile;
-        $c = file_get_contents($tpl);
-        $c = str_replace([
-            $srcClassName,
-            "namespace Ling\Light_Kit_StoreXXX\Controller;",
-        ], [
-            $dstClassName,
-            "namespace $galaxy\\$planet\\$dirRelPath;",
-        ], $c);
+        if (true === $writeController) {
+            $this->write("Writing the controller to <b>$controllerClassName</b>...");
+            $tpl = $controllerRootDir . "/" . $controllerFile;
+            $c = file_get_contents($tpl);
+            $c = str_replace([
+                $srcClassName,
+                "namespace Ling\Light_Kit_StoreXXX\Controller;",
+            ], [
+                $dstClassName,
+                "namespace $galaxy\\$planet\\$dirRelPath;",
+            ], $c);
 
 
-        FileSystemTool::mkfile($dstPath, $c);
-        $this->write("<success>ok.</success>" . PHP_EOL);
+            FileSystemTool::mkfile($dstPath, $c);
+            $this->write("<success>ok.</success>" . PHP_EOL);
+        }
 
 
         //--------------------------------------------
@@ -191,7 +194,14 @@ class CreateControllerCommand extends LightDeveloperWizardBaseCommand
             $this->write("<b>Ling.Light_EasyRoute</b> open registration system detected." . PHP_EOL);
             if (true === QuestionHelper::askYesNo($output, "Do you want to create a route for your controller ?")) {
                 $routePrefix = LightEasyRouteHelper::guessRoutePrefix($appDir, $planetDotName);
-                $shortRouteName = CaseTool::toUnderscoreLow($dstClassName);
+
+                $classNameForRoute = $dstClassName;
+                if (true === str_ends_with($classNameForRoute, "Controller")) {
+                    $classNameForRoute = substr($classNameForRoute, 0, -10);
+                }
+
+
+                $shortRouteName = CaseTool::toUnderscoreLow($classNameForRoute);
                 $fullRouteName = $routePrefix . $shortRouteName;
 
                 $userFullRouteName = QuestionHelper::askClear(
