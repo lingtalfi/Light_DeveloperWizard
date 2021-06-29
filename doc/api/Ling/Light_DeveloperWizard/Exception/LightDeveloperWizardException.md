@@ -4,7 +4,7 @@
 
 The LightDeveloperWizardException class
 ================
-2020-06-30 --> 2021-06-28
+2020-06-30 --> 2021-06-29
 
 
 
@@ -54,4 +54,4 @@ See the source code of [Ling\Light_DeveloperWizard\Exception\LightDeveloperWizar
 
 SeeAlso
 ==============
-Next class: [ConfigHelper](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/ConfigHelper.md)<br>
+Previous class: [LightDeveloperWizardApplication](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/CliTools/Program/LightDeveloperWizardApplication.md)<br>Next class: [ConfigHelper](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/api/Ling/Light_DeveloperWizard/Helper/ConfigHelper.md)<br>

@@ -158,11 +158,13 @@ EEE;
             $tplContent = file_get_contents($tpl);
             $tplContent = str_replace([
                 'Ling\Light_PlanetInstallerXXX',
+                'Ling.Light_PlanetInstallerXXX',
                 'Light_PlanetInstallerXXX',
                 'Light Planet Installer',
                 'LightPlanetInstaller',
             ], [
                 "$galaxy\\$planet",
+                "$galaxy.$planet",
                 $planet,
                 $humanPlanetName,
                 $tightPlanetName,

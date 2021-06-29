@@ -49,7 +49,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [CreateCliAppProcess::getAlias](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Light_Cli/CreateCliAppProcess.php#L221-L240)
+See the source code for method [CreateCliAppProcess::getAlias](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/WebWizardTools/Process/Light_Cli/CreateCliAppProcess.php#L223-L242)
 
 
 See Also

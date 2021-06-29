@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-06-28
+2020-06-30 -> 2021-06-29
 
 
 
@@ -37,6 +37,7 @@ Summary
 - [Services](#services)
 - Pages
     - [Conception notes](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conception-notes.md)
+    - [cli](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/cli.md)
     - [Conventions](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/conventions.md)
     - [Tutorial: Create a service](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/create-a-service-tutorial.md)
     - [Task details](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/doc/pages/task-details.md)
@@ -68,6 +69,11 @@ developer_wizard:
 History Log
 =============
 
+
+- 1.28.42 -- 2021-06-28
+
+    - add cli tool with create_controller command
+    - update basic service class template
 
 - 1.28.41 -- 2021-06-28
 
