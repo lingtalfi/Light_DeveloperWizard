@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-06-29
+2020-06-30 -> 2021-07-08
 
 
 
@@ -70,6 +70,10 @@ History Log
 =============
 
 
+- 1.28.44 -- 2021-07-08
+
+    - fix create "conception notes" command overwriting the conception notes file if it exists
+  
 - 1.28.43 -- 2021-06-29
 
     - update create_controller command, removes Controller suffix from the guessed route name
