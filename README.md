@@ -70,6 +70,10 @@ History Log
 =============
 
 
+- 1.28.46 -- 2021-08-12
+
+    - fix RemovePlanetProcess, remove call to deprecated plugin_installer service  
+  
 - 1.28.45 -- 2021-08-12
 
     - fix generated basic service, missing array hint in $options property declaration  
