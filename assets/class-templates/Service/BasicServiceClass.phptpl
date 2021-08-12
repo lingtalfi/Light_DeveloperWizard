@@ -32,7 +32,7 @@ class LightXXXService
      *
      * @var array
      */
-    protected $options;
+    protected array $options;
 
 
     /**

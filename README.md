@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-07-08
+2020-06-30 -> 2021-08-12
 
 
 
@@ -70,6 +70,10 @@ History Log
 =============
 
 
+- 1.28.45 -- 2021-08-12
+
+    - fix generated basic service, missing array hint in $options property declaration  
+  
 - 1.28.44 -- 2021-07-08
 
     - fix create "conception notes" command overwriting the conception notes file if it exists
