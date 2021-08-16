@@ -119,6 +119,11 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
      */
     protected function addServiceOptions(FryingPan $pan, string $planetName)
     {
+
+
+        $pan->addIngredient(UseStatementIngredient::create()->setValue('Ling\Bat\BDotTool'));
+
+
         $pan->addIngredient(PropertyIngredient::create()->setValue("options", [
             'template' => '
     /**
@@ -133,7 +138,7 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
      *
      * @var array
      */
-    protected $options;
+    protected array $options;
     
 ',
             'afterProperty' => 'container',
@@ -159,6 +164,57 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
     
 ',
             "afterMethod" => 'setContainer',
+        ]));
+
+
+        $pan->addIngredient(MethodIngredient::create()->setValue("getOptions", [
+            'template' => '
+    /**
+     * Returns the options of this instance.
+     *
+     * @return array
+     */
+    public function getOptions(): array
+    {
+        return $this->options;
+    }
+    
+',
+            "afterMethod" => 'setOptions',
+        ]));
+
+
+        $pan->addIngredient(MethodIngredient::create()->setValue("getOption", [
+            'template' => '
+    /**
+     * Returns the option value corresponding to the given key.
+     * If the option is not found, the return depends on the throwEx flag:
+     *
+     * - if set to true, an exception is thrown
+     * - if set to false, the default value is returned
+     *
+     *
+     * @param string $key
+     * @param null $default
+     * @param bool $throwEx
+     * @throws \Exception
+     */
+    public function getOption(string $key, $default = null, bool $throwEx = false)
+    {
+        $found = false;
+        $value = BDotTool::getDotValue($key, $this->options, $default, $found);
+
+        if (false !== $found) {
+            return $value;
+        }
+        if (true === $throwEx) {
+            $this->error("Undefined option: $key.");
+        }
+        return $default;
+    }
+    
+',
+            "afterMethod" => 'getOptions',
         ]));
 
 
@@ -349,7 +405,6 @@ abstract class LightDeveloperWizardBaseProcess extends WebWizardToolsProcess
 
 
             $tpl = __DIR__ . "/../../assets/class-templates/Exception/BasicException.phptpl";
-
 
 
             $planet = $util->getPlanetName();

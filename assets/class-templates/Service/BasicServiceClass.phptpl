@@ -4,6 +4,7 @@
 namespace Ling\Light_XXX\Service;
 
 
+use Ling\Bat\BDotTool;
 use Ling\Light_XXX\Exception\LightXXXException;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 
@@ -64,11 +65,24 @@ class LightXXXService
     }
 
     /**
+     * Returns the options of this instance.
+     *
+     * @return array
+     */
+    public function getOptions(): array
+    {
+        return $this->options;
+    }
+
+    /**
      * Returns the option value corresponding to the given key.
+     *
      * If the option is not found, the return depends on the throwEx flag:
      *
      * - if set to true, an exception is thrown
      * - if set to false, the default value is returned
+     *
+     * The key uses the bdot format (https://github.com/karayabin/universe-snapshot/blob/master/universe/Ling/Bat/doc/bdot-notation.md).
      *
      *
      * @param string $key
@@ -78,8 +92,11 @@ class LightXXXService
      */
     public function getOption(string $key, $default = null, bool $throwEx = false)
     {
-        if (true === array_key_exists($key, $this->options)) {
-            return $this->options[$key];
+        $found = false;
+        $value = BDotTool::getDotValue($key, $this->options, $default, $found);
+
+        if (false !== $found) {
+            return $value;
         }
         if (true === $throwEx) {
             $this->error("Undefined option: $key.");

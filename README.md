@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-08-12
+2020-06-30 -> 2021-08-16
 
 
 
@@ -70,6 +70,10 @@ History Log
 =============
 
 
+- 1.28.47 -- 2021-08-16
+
+    - update LightDeveloperWizardBaseProcess->addServiceOptions, getOptions method now uses BdotTool, and fix some inconsistencies   
+  
 - 1.28.46 -- 2021-08-12
 
     - fix RemovePlanetProcess, remove call to deprecated plugin_installer service  
