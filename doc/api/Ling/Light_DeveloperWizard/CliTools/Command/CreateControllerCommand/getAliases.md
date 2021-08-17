@@ -49,7 +49,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [CreateControllerCommand::getAliases](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/CliTools/Command/CreateControllerCommand.php#L296-L304)
+See the source code for method [CreateControllerCommand::getAliases](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/CliTools/Command/CreateControllerCommand.php#L289-L297)
 
 
 See Also

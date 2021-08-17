@@ -53,7 +53,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [CreateControllerCommand::doRun](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/CliTools/Command/CreateControllerCommand.php#L39-L276)
+See the source code for method [CreateControllerCommand::doRun](https://github.com/lingtalfi/Light_DeveloperWizard/blob/master/CliTools/Command/CreateControllerCommand.php#L39-L269)
 
 
 See Also

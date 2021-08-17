@@ -189,79 +189,72 @@ class CreateControllerCommand extends LightDeveloperWizardBaseCommand
         //--------------------------------------------
         // ROUTE
         //--------------------------------------------
-        $easyRouteFile = LightEasyRouteHelper::getPluginFile($appDir, $planetDotName);
-        if (true === file_exists($easyRouteFile)) {
-            $this->write("<b>Ling.Light_EasyRoute</b> open registration system detected." . PHP_EOL);
-            if (true === QuestionHelper::askYesNo($output, "Do you want to create a route for your controller ?")) {
-                $routePrefix = LightEasyRouteHelper::guessRoutePrefix($appDir, $planetDotName);
+        if (true === QuestionHelper::askYesNo($output, "Do you want to create a route for your controller ?")) {
+            $routePrefix = LightEasyRouteHelper::guessRoutePrefix($appDir, $planetDotName);
 
-                $classNameForRoute = $dstClassName;
-                if (true === str_ends_with($classNameForRoute, "Controller")) {
-                    $classNameForRoute = substr($classNameForRoute, 0, -10);
-                }
-
-
-                $shortRouteName = CaseTool::toUnderscoreLow($classNameForRoute);
-                $fullRouteName = $routePrefix . $shortRouteName;
-
-                $userFullRouteName = QuestionHelper::askClear(
-                    $output,
-                    "What's the name of the route? (defaults to <b>$fullRouteName</b>):",
-                    "Invalid answer, type the route name (defaults to <b>$fullRouteName</b> ):",
-                    function ($res) {
-                        return (false === is_numeric(trim($res)));
-                    });
-
-                if ('' === trim($userFullRouteName)) {
-                    $userFullRouteName = $fullRouteName;
-                }
-
-                $p = explode("-", $userFullRouteName);
-                $pattern = "/" . array_pop($p);
-
-
-                $userPattern = QuestionHelper::askClear(
-                    $output,
-                    "What's the pattern of the route? (defaults to <b>$pattern</b>):",
-                    "Invalid answer, type the route pattern (defaults to <b>$pattern</b> ):",
-                    function ($res) {
-                        return (false === is_numeric(trim($res)));
-                    });
-
-                if ('' === trim($userPattern)) {
-                    $userPattern = $pattern;
-                }
-
-                /**
-                 * My idea here is that the controller method shall be defined in some meta info file with the same name as the template,
-                 * but with the ".info" or ".byml" file extension, so that the user doesn't have to type it...
-                 *
-                 * But this is just a shortcut to help the user getting things faster, it doesn't have to be complete and accurate,
-                 * so for now I'll just state render in hardcode, that should be fine.
-                 */
-                $controllerMethod = "render";
-
-
-                $fullClassName = "$galaxy\\$planet\\$dirRelPath\\$dstClassName";
-                $controller = "$fullClassName->$controllerMethod";
-
-
-                $this->write("Writing route to plugin file...");
-                LightEasyRouteHelper::writeRouteToPluginFile($appDir, $planetDotName, $userFullRouteName, [
-                    "pattern" => $userPattern,
-                    "controller" => $controller,
-                ]);
-                $this->write("<success>ok.</success>" . PHP_EOL);
-
-
-                $this->write("copying routes to master...");
-                LightEasyRouteHelper::copyRoutesFromPluginToMaster($appDir, $planetDotName);
-                $output->write("<success>ok.</success>" . PHP_EOL);
-
+            $classNameForRoute = $dstClassName;
+            if (true === str_ends_with($classNameForRoute, "Controller")) {
+                $classNameForRoute = substr($classNameForRoute, 0, -10);
             }
 
-        } else {
-            $this->write("<b>Ling.Light_EasyRoute</b> open registration system <b>NOT</b> detected." . PHP_EOL);
+
+            $shortRouteName = CaseTool::toUnderscoreLow($classNameForRoute);
+            $fullRouteName = $routePrefix . $shortRouteName;
+
+            $userFullRouteName = QuestionHelper::askClear(
+                $output,
+                "What's the name of the route? (defaults to <b>$fullRouteName</b>):",
+                "Invalid answer, type the route name (defaults to <b>$fullRouteName</b> ):",
+                function ($res) {
+                    return (false === is_numeric(trim($res)));
+                });
+
+            if ('' === trim($userFullRouteName)) {
+                $userFullRouteName = $fullRouteName;
+            }
+
+            $p = explode("-", $userFullRouteName);
+            $pattern = "/" . array_pop($p);
+
+
+            $userPattern = QuestionHelper::askClear(
+                $output,
+                "What's the pattern of the route? (defaults to <b>$pattern</b>):",
+                "Invalid answer, type the route pattern (defaults to <b>$pattern</b> ):",
+                function ($res) {
+                    return (false === is_numeric(trim($res)));
+                });
+
+            if ('' === trim($userPattern)) {
+                $userPattern = $pattern;
+            }
+
+            /**
+             * My idea here is that the controller method shall be defined in some meta info file with the same name as the template,
+             * but with the ".info" or ".byml" file extension, so that the user doesn't have to type it...
+             *
+             * But this is just a shortcut to help the user getting things faster, it doesn't have to be complete and accurate,
+             * so for now I'll just state render in hardcode, that should be fine.
+             */
+            $controllerMethod = "render";
+
+
+            $fullClassName = "$galaxy\\$planet\\$dirRelPath\\$dstClassName";
+            $controller = "$fullClassName->$controllerMethod";
+
+
+            $this->write("Writing route to plugin file...");
+            LightEasyRouteHelper::writeRouteToPluginFile($appDir, $planetDotName, $userFullRouteName, [
+                "pattern" => $userPattern,
+                "controller" => $controller,
+            ]);
+            $this->write("<success>ok.</success>" . PHP_EOL);
+
+
+            $this->write("copying routes to master...");
+            LightEasyRouteHelper::copyRoutesFromPluginToMaster($appDir, $planetDotName);
+            $output->write("<success>ok.</success>" . PHP_EOL);
+
         }
 
 

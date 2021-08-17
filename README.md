@@ -1,6 +1,6 @@
 Light_DeveloperWizard
 ===========
-2020-06-30 -> 2021-08-16
+2020-06-30 -> 2021-08-17
 
 
 
@@ -69,6 +69,11 @@ developer_wizard:
 History Log
 =============
 
+
+- 1.28.48 -- 2021-08-17
+
+    - update CreateControllerCommand, now asks whether to create the route
+    - add api controller template
 
 - 1.28.47 -- 2021-08-16
 
